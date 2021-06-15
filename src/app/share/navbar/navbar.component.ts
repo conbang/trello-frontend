@@ -4,6 +4,8 @@ import {LoginServiceService} from '../../service/login/login-service.service';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {GroupFormComponent} from './group-form/group-form.component';
 import {MatDialog} from '@angular/material';
+import {BoardComponent} from '../../user/board/board.component';
+import {BoardFormComponent} from './board-form/board-form.component';
 
 @Component({
   selector: 'app-navbar',
@@ -31,7 +33,7 @@ export class NavbarComponent implements OnInit {
     }, 1000);
   }
   openDialog(): void {
-    this.dialog.open(GroupFormComponent);
+    this.dialog.open(BoardFormComponent);
   }
 
 }

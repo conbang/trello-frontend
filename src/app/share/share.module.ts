@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { GroupMenuComponent } from './sidebar/group-menu/group-menu.component';
 import { NoftificationComponent } from './navbar/noftification/noftification.component';
+import { BoardFormComponent } from './navbar/board-form/board-form.component';
 
 
 @NgModule({
@@ -26,10 +27,11 @@ import { NoftificationComponent } from './navbar/noftification/noftification.com
     FooterComponent,
     GroupFormComponent,
     AlertComponent,
-    GroupMenuComponent,
-    NoftificationComponent
+    NoftificationComponent,
+    BoardFormComponent,
+    GroupMenuComponent
   ],
-  entryComponents: [GroupFormComponent],
+  entryComponents: [BoardFormComponent],
   imports: [
     FormModule,
     MatListModule,
@@ -50,6 +52,7 @@ import { NoftificationComponent } from './navbar/noftification/noftification.com
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
+    GroupMenuComponent,
   ],
 })
 export class ShareModule { }

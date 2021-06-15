@@ -8,15 +8,8 @@ import {Group} from '../../../interface/group';
 })
 export class GroupFormComponent {
 
-  data: Group;
 
   constructor() {
-    this.data = {
-      id: 0,
-      name: '',
-      type: '',
-      description: ''
-    };
   }
 
 }

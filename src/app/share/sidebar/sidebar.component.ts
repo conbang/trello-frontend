@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GroupFormComponent} from '../navbar/group-form/group-form.component';
 import {MatDialog} from '@angular/material';
 import {Group} from '../../interface/group';
+import {BoardFormComponent} from '../navbar/board-form/board-form.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -38,6 +39,6 @@ export class SidebarComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(GroupFormComponent);
+    this.dialog.open(BoardFormComponent);
   }
 }

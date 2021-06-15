@@ -1,4 +1,6 @@
 <div class="sidebar">
+  <button mat-flat-button><mat-icon>table_chart</mat-icon>Table</button>
+  <button mat-flat-button><mat-icon>home</mat-icon>Homepage</button>
   <p>workspaces <mat-icon (click)="openDialog()">add</mat-icon> </p>
   <mat-accordion>
     <app-group-menu *ngFor="let group of groups" [group]="group"></app-group-menu>

@@ -17,11 +17,11 @@
   <mat-menu #notifications="matMenu" >
   </mat-menu>
   <mat-menu #add="matMenu">
-    <span mat-menu-item>
+    <span mat-menu-item (click)="openDialog()">
         <mat-icon>date_range</mat-icon>
         Create Table
     </span>
-    <span mat-menu-item (click)="openDialog()">
+    <span mat-menu-item >
       <mat-icon>person_pin</mat-icon>Create Workspace
     </span>
   </mat-menu>
