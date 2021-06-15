@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
-body{
- background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
- background-size: cover;
- background-repeat: no-repeat;
+.login{
+  background-image: url('https://trello-backgrounds.s3.amazonaws.com/559ddf21aa988af0e583d451/2562x1440/2806d91651310fb7aefc3aa4229db9bd/astros_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
   font-family: 'Numans', sans-serif;
 }
@@ -11,11 +11,11 @@ body{
 .container{
   height: 100%;
   align-content: center;
-  margin-top: 50px;
+  padding-top: 50px;
 }
 
 .card{
-  height: 650px;
+  height: 550px;
   margin-top: auto;
   margin-bottom: auto;
   width: 400px;
