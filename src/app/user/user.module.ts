@@ -11,6 +11,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
+import { ListComponent } from './board/list/list.component';
+import { CardComponent } from './board/card/card.component';
+import { LabelComponent } from './board/label/label.component';
 
 
 
