@@ -5,6 +5,7 @@ import {RegisterComponent} from './form/register/register.component';
 import {LayoutWithSidebarComponent} from './layout/layout-with-sidebar/layout-with-sidebar.component';
 import {UserModule} from './user/user.module';
 import {UpdateComponent} from './user/update/update.component';
+import {AddPrivateBoardComponent} from './share/navbar/add-private-board/add-private-board.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },
-  {
+  },{
     path: 'register',
     component: RegisterComponent
   },{

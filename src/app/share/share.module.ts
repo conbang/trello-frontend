@@ -14,6 +14,7 @@ import {
   MatMenuModule, MatSelectModule,
   MatToolbarModule,
 } from '@angular/material';
+import { AddPrivateBoardComponent } from './navbar/add-private-board/add-private-board.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    SidebarDialog
+    SidebarDialog,
+    AddPrivateBoardComponent
   ],
   imports: [
     FormModule,
