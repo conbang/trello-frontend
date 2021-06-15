@@ -4,7 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormRoutingModule } from './form-routing.module';
 import {FormsModule} from '@angular/forms';
-
+import {IgxAvatarModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import {FormsModule} from '@angular/forms';
   imports: [
     FormsModule,
     CommonModule,
-    FormRoutingModule
+    FormRoutingModule,
+    IgxAvatarModule
   ]
 })
 export class FormModule { }
