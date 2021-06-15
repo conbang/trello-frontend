@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Login} from '../../interface/login';
 import {UserService} from '../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -23,23 +23,28 @@ export class UpdateComponent implements OnInit {
     phone: '',
     role: [],
   };
-  message: string = 'Old password incorrect, please try again';
-  isPasswordCorrect: boolean = false;
-  id: number = 0;
-  constructor(private userService: UserService, private router: Router, private activatedRoute: ActivatedRoute,
+  message = 'Old password incorrect, please try again';
+  isPasswordCorrect = false;
+  id = 0;
+
+  constructor(private userService: UserService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
   }
+
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(paraMap =>{
-        this.id = Number (paraMap.get("id"));
-        this.userService.findUserById(this.id).subscribe(data =>{
-          this.appUser = data
-        })
+    this.activatedRoute.paramMap.subscribe(paraMap => {
+        this.id = Number(paraMap.get('id'));
+        this.userService.findUserById(this.id).subscribe(data => {
+          this.appUser = data;
+        });
       }
     );
   }
+
   onFileSelected(event: any) {
-    let n = Date.now();
+    const n = Date.now();
     const file = event.target.files[0];
     const filePath = `trelloFIle/${n}`;
     const fileRef = this.storage.ref(filePath);
@@ -57,17 +62,18 @@ export class UpdateComponent implements OnInit {
         })
       ).subscribe(url => {
       if (url) {
-        console.log("Upload success");
+        console.log('Upload success');
       }
     });
   }
-  editUser(){
-    this.userService.editAppUser(this.appUser,this.id).subscribe(()=>{
-      this.router.navigateByUrl("/");
+
+  editUser() {
+    this.userService.editAppUser(this.appUser, this.id).subscribe(() => {
+      this.router.navigateByUrl('/');
       this.isPasswordCorrect = false;
     }, error => {
-      this.isPasswordCorrect = true
-    })
+      this.isPasswordCorrect = true;
+    });
   }
 
 }

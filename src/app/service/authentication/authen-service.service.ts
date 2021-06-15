@@ -31,6 +31,7 @@ export class AuthenServiceService {
       userName: username,
       passWord: password
     };
+    console.log(user);
     // tslint:disable-next-line:no-shadowed-variable
     return this.httpClient.post(API_URL + 'login', user).pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));

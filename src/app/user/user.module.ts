@@ -12,8 +12,6 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
 
-
-
 @NgModule({
   declarations: [
     HomepageComponent,

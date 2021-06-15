@@ -1,10 +1,9 @@
 import { Role } from "./role";
 export interface Token {
-	roles?: Role[]
+	roles?: Role[],
 	id?: number;
 	username?: string;
-	passWord?: string;
 	email?: string;
-	accessToken?: string;
+	token?: string;
 	avatar?: string
 }
