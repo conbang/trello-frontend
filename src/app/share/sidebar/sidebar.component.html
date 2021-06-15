@@ -1,1 +1,39 @@
-<p>sidebar works!</p>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div class="w3-container">
+  <p>WORKSPACES <a mat-button (click)="openDialog()"><mat-icon>add</mat-icon></a></p>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon color="primary">group</mat-icon> &nbsp;
+        Dự án C1220G1
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a mat-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon color="primary">space_dashboard</mat-icon>
+      &nbsp;&nbsp;&nbsp;Boards
+    </a>
+    <br>
+    <a mat-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon color="primary">groups</mat-icon>
+      &nbsp;&nbsp;&nbsp;Members
+    </a>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <mat-icon color="primary">person</mat-icon>	&nbsp;
+        Dự án Cá nhân
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <a mat-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon color="primary">space_dashboard</mat-icon>
+      &nbsp;&nbsp;&nbsp;Boards
+    </a>
+    <br>
+    <a mat-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<mat-icon color="primary">groups</mat-icon>
+      &nbsp;&nbsp;&nbsp;Members
+    </a>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+

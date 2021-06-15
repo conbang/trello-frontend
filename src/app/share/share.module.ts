@@ -1,20 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ShareRoutingModule } from './share-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import {SidebarComponent} from './sidebar/sidebar.component';
+import {SidebarComponent, SidebarDialog} from './sidebar/sidebar.component';
 import {FormModule} from '../form/form.module';
-import {FormsModule} from '@angular/forms';
-import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule, MatDialogModule, MatExpansionModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule, MatSelectModule,
+  MatToolbarModule,
+} from '@angular/material';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarDialog
   ],
   imports: [
     FormModule,
@@ -25,12 +32,20 @@ import {MatButtonModule, MatCardModule, MatIconModule, MatListModule, MatMenuMod
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    ShareRoutingModule
+    ShareRoutingModule,
+    MatInputModule,
+    MatExpansionModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarDialog
+  ],
+  entryComponents: [
+    SidebarDialog
   ]
 })
 export class ShareModule { }
