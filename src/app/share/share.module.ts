@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ShareRoutingModule } from './share-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import {SidebarComponent, SidebarDialog} from './sidebar/sidebar.component';
+import {SidebarComponent } from './sidebar/sidebar.component';
 import {FormModule} from '../form/form.module';
 import {
   MatButtonModule,
@@ -14,6 +14,8 @@ import {
   MatMenuModule, MatSelectModule,
   MatToolbarModule,
 } from '@angular/material';
+import { GroupFormComponent } from './navbar/group-form/group-form.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,8 +23,9 @@ import {
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    SidebarDialog
+    GroupFormComponent
   ],
+  entryComponents: [GroupFormComponent],
   imports: [
     FormModule,
     MatListModule,
@@ -36,16 +39,13 @@ import {
     MatInputModule,
     MatExpansionModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule
   ],
   exports: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    SidebarDialog
   ],
-  entryComponents: [
-    SidebarDialog
-  ]
 })
 export class ShareModule { }

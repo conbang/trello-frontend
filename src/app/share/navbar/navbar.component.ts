@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginServiceService} from '../../service/login/login-service.service';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
+import {GroupFormComponent} from './group-form/group-form.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,8 @@ export class NavbarComponent implements OnInit {
   title: string;
 
   constructor(private router: Router,
-              private authenService: AuthenServiceService) {
+              private authenService: AuthenServiceService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -26,6 +29,9 @@ export class NavbarComponent implements OnInit {
     setTimeout(() => {
       this.router.navigateByUrl('/login');
     }, 1000);
+  }
+  openDialog(): void {
+    this.dialog.open(GroupFormComponent);
   }
 
 }

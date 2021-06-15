@@ -1,11 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldModule} from '@angular/material';
-
-export interface DialogData {
-  name: string;
-  type: string;
-  description: string;
-}
+import { Component, OnInit } from '@angular/core';
+import {GroupFormComponent} from '../navbar/group-form/group-form.component';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,36 +8,12 @@ export interface DialogData {
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  name: string;
-  type: string;
-  description: string;
 
-
-  constructor(public dialog: MatDialog) {}
-
-  openDialog(): void {
-      this.dialog.open(SidebarDialog, {
-      width: '600px',
-      data: {name: this.name, type: this.type, description: this.description}
-      });
-  }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
-
-}
-
-@Component({
-  selector: 'app-sidebar-dialog',
-  templateUrl: './sidebar-dialog.component.html',
-})
-export class SidebarDialog {
-  constructor(
-    // public dialogRef: MatDialogRef<WorkspaceDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  // onNoClick(): void {
-  //   this.dialogRef.close();
-  // }
-
+  openDialog(): void {
+    this.dialog.open(GroupFormComponent);
+  }
 }

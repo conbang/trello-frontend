@@ -1,92 +1,81 @@
 <div class="login">
   <div class="container">
-    <form #form="ngForm" (ngSubmit)="form.valid&&registionUser()">
+    <form #form="ngForm" (ngSubmit)="form.valid && registionUser()">
       <div class="d-xl-flex justify-content-center h-100">
         <div class="card">
           <div class="card-header">
             <h3>Sign up</h3>
           </div>
           <div class="card-body">
-
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <span class="input-group-text"><mat-icon>person</mat-icon></span>
               </div>
-              <input type="text" name="username" class="form-control" placeholder="username"
-                     [(ngModel)]="login.userName"
-                     #name="ngModel" required minlength="4" maxlength="20">
+              <input type="text" name="username" class="form-control" placeholder="username" [(ngModel)]="login.userName"
+                     #name="ngModel" required  maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9]{3,30}">
             </div>
             <span class="error" *ngIf="error1"> Username is existed! </span>
             <span class="error" *ngIf="name.invalid && name.touched">
-		  <span *ngIf="name.errors?.required"> Username is required! </span>
-		  <span *ngIf="name.errors?.minlength">
-		    Username must contain at least 4 characters and not contain special characters!
-		  </span>
-		</span>
+		        <span *ngIf="name.errors?.required"> Username is required! </span>
+      		  <span *ngIf="name.errors?.pattern">
+		            Username must contain at least 4 characters and not contain special characters!
+      		  </span>
+        		</span>
 
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
               </div>
               <input type="password" name="password" class="form-control" placeholder="password"
-                     [(ngModel)]="login.passWord" #password="ngModel" required minlength="6" maxlength="30">
+                     [(ngModel)]="login.passWord" #password="ngModel" required pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}">
             </div>
             <div class="error" *ngIf="password.invalid && password.touched">
-              Password must contain at least 6 characters and not contain special characters!
+              <span *ngIf="password.errors?.pattern">
+                Password must contain at least 6 characters and not contain special characters!
+              </span>
             </div>
 
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
               </div>
               <input type="password" name="confirmPsw" class="form-control" placeholder="Confirm password"
-                     [(ngModel)]="login.confirmPassword" #confirmPsw="ngModel" required="required" minlength="6"
-                     maxlength="30">
+                     [(ngModel)]="login.confirmPassword" #confirmPsw="ngModel" required="required"
+                     pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}">
             </div>
-            <div class="error" *ngIf="confirmPsw.invalid&&confirmPsw.touched">
-
+            <div class="error" *ngIf="confirmPsw.invalid && confirmPsw.touched">
             <span *ngIf="confirmPsw.errors?.required ">
               Confirm passord!
         		</span>
               <span *ngIf="(confirmPsw?.value != password?.value) && !confirmPsw.errors?.required">
-              Password doesn't match'!
-		        </span>
+                Password doesn't match'!
+		          </span>
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-address-book"></i></span>
+                <span class="input-group-text"><mat-icon>mail</mat-icon></span>
               </div>
               <input type="email" name="email" class="form-control" placeholder="email" [(ngModel)]="login.email"
                      #email="ngModel" required pattern="^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$">
             </div>
-            <span class="error" *ngIf="error2">
-		    Email is existed!
-		</span>
+            <span class="error" *ngIf="error2"> Email is existed! </span>
             <div class="error" *ngIf="email.touched && email.invalid">
-		  <span *ngIf="email.errors?.pattern">
-		    Invalid email!
-		  </span>
-              <span *ngIf="email.errors?.required">
-		    Email is required!
-		  </span>
+		          <span *ngIf="email.errors?.pattern"> Invalid email! </span>
+              <span *ngIf="email.errors?.required"> Email is required! </span>
             </div>
-
             <div class="input-group form-group">
               <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                <span class="input-group-text"><mat-icon>phone_iphone</mat-icon></span>
               </div>
               <input type="text" name="phone" class="form-control" placeholder="phone" [(ngModel)]="login.phone"
                      #phone="ngModel" pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b">
             </div>
             <div class="error" *ngIf="phone.invalid && phone.touched">
-              <span *ngIf="phone.errors?.pattern">
-		    Invalid phone
-		  </span>
+              <span *ngIf="phone.errors?.pattern"> Invalid phone </span>
             </div>
             <div class="form-group">
               <input type="submit" value="Register" class="btn float-right login_btn">
             </div>
-
           </div>
           <div class="card-footer">
             <div class="d-xl-flex justify-content-center links">
@@ -94,9 +83,7 @@
             </div>
           </div>
         </div>
-
       </div>
     </form>
   </div>
-
 </div>

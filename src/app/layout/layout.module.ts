@@ -5,7 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import {LayoutWithSidebarComponent} from './layout-with-sidebar/layout-with-sidebar.component';
 import {LayoutNoSidebarComponent} from './layout-no-sidebar/layout-no-sidebar.component';
 import {ShareModule} from '../share/share.module';
-import {MatGridListModule} from '@angular/material';
+import {MatGridListModule, MatSidenavModule} from '@angular/material';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import {MatGridListModule} from '@angular/material';
         CommonModule,
         ShareModule,
         LayoutRoutingModule,
-        MatGridListModule
+        MatGridListModule,
+        MatSidenavModule
     ]
 })
 export class LayoutModule { }

@@ -22,4 +22,4 @@ import {MatDialogModule, MatIconModule} from '@angular/material';
     MatIconModule,
   ]
 })
-export class FormModule { }
+export class FormModule {}
