@@ -1,0 +1,9 @@
+.sidebar {
+  padding-top: 30px;
+  min-width: 250px;
+}
+
+.sidebar button {
+  width: 100%;
+  text-align:left;
+}

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Group} from '../../../interface/group';
 
 @Component({
   selector: 'app-group-form',
@@ -7,13 +8,15 @@ import {Component} from '@angular/core';
 })
 export class GroupFormComponent {
 
-  data: {
-    name: string,
-    type: string,
-    description: string
-  };
+  data: Group;
 
   constructor() {
+    this.data = {
+      id: 0,
+      name: '',
+      type: '',
+      description: ''
+    };
   }
 
 }
