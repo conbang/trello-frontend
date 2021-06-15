@@ -1,8 +1,9 @@
-import { User } from "./user";
+import { User } from './user';
 
 export interface Board {
 	id?: number;
 	name?: string;
-	type?: string;
 	appUser?: User;
+  groupTrello?: string;
+  type?: string;
 }

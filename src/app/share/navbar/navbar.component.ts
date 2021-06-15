@@ -17,4 +17,7 @@ export class NavbarComponent implements OnInit {
   }
 
 
+  onCreate() {
+
+  }
 }
