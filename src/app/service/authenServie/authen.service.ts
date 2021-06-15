@@ -1,47 +1,50 @@
-import {EventEmitter, Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {Token} from '../../interface/token';
-import {HttpClient} from '@angular/common/http';
-import {User} from '../../interface/user';
 import {environment} from '../../../environments/environment';
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {IUserToken} from '../../interface/i-user-token';
 import {map} from 'rxjs/operators';
 
-const API_URL = environment.api_url;
+import {BehaviorSubject, Observable} from 'rxjs';
+import {User} from '../../interface/user';
 
+const API_URL = environment.api_url;
+// @ts-ignore
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenServiceService {
+export class AuthenService {
   update = new EventEmitter<string>();
-
-  private currentUserSubject: BehaviorSubject<Token>;
-  public currentUser: Observable<Token>;
+  // @ts-ignore
+  private currentUserSubject: BehaviorSubject<IUserToken>;
+  // @ts-ignore
+  public currentUser: Observable<IUserToken>;
 
   constructor(private httpClient: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('user')));
+    // @ts-ignore
+    this.currentUserSubject = new BehaviorSubject<IUserToken>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): Token {
+  public get currentUserValue(): IUserToken {
     return this.currentUserSubject.value;
   }
 
   login(username: string, password: string) {
-    const user: User = {
+    let user: User = {
       userName: username,
       passWord: password
-    };
-    // tslint:disable-next-line:no-shadowed-variable
-    return this.httpClient.post(API_URL + 'login', user).pipe(map(user => {
+    }
+    return this.httpClient.post(API_URL + 'login', user)
+      .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
         this.update.emit('login');
         return user;
-      })
-    );
+      }));
   }
   logout() {
     localStorage.removeItem('user');
+    // @ts-ignore
     this.currentUserSubject.next(null);
   }
 }

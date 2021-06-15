@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
 import {Login} from '../../interface/login';
-import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {first} from 'rxjs/operators';
+import {AuthenService} from '../../service/authenServie/authen.service';
 
 const API_BACKEND = environment.api_url;
 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   hide = true;
   isLoginFailed = false;
 
-  constructor(private authenService: AuthenServiceService,
+  constructor(private authenService: AuthenService,
               private router: Router) {
     this.authenService.currentUser.subscribe(value => this.currentUser = value);
   }

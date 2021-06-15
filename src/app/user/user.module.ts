@@ -14,10 +14,10 @@ import {IgxAvatarModule} from 'igniteui-angular';
 import { ListComponent } from './board/list/list.component';
 import { CardComponent } from './board/card/card.component';
 import { LabelComponent } from './board/label/label.component';
-
-
+import {ModalBackdropComponent, ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
+  providers: [ModalBackdropComponent],
   declarations: [
     HomepageComponent,
     BoardComponent,
@@ -34,7 +34,8 @@ import { LabelComponent } from './board/label/label.component';
         FormsModule,
         AngularFireStorageModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-        IgxAvatarModule
+        IgxAvatarModule,
+      ModalModule.forRoot()
     ]
 })
 export class UserModule { }
