@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-icon>date_range</mat-icon>
+  Trello
+  <div class="spacer"></div>
+  <a mat-button [matMenuTriggerFor]="add">
+    <mat-icon>add</mat-icon>
+  </a>
+  <a mat-button>
+    <mat-icon>home</mat-icon>
+  </a>
+  <a mat-button [matMenuTriggerFor]="notifications">
+    <mat-icon>notifications</mat-icon>
+  </a>
+  <a mat-button [matMenuTriggerFor]="user">
+    <img src={{avatar}} alt="avatar" class="avatar" />
+  </a>
+  <mat-menu #notifications="matMenu" >
+    <div class='notifications'>
+      <div class="title">
+        <p>Noftifications</p>
+      </div>
+        <mat-card class="notification">
+          <mat-card-header>
+            <mat-card-subtitle class="title">noftification 1</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content class="notification_content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+            </p>
+          </mat-card-content>
+        </mat-card>
+    </div>
+  </mat-menu>
+  <mat-menu #add="matMenu">
+    <span mat-menu-item>
+        <mat-icon>date_range</mat-icon>
+        create table
+    </span>
+    <span mat-menu-item>
+      <mat-icon>person_pin</mat-icon>create workspace
+    </span>
+  </mat-menu>
+  <mat-menu #user="matMenu">
+    <a mat-menu-item>
+      <mat-icon>info</mat-icon>Information
+    </a>
+    <a mat-menu-item>
+      <mat-icon>settings</mat-icon>Settings
+    </a>
+    <a mat-menu-item>
+      <mat-icon color="primary">logout</mat-icon>Logout
+    </a>
+  </mat-menu>
+</mat-toolbar>

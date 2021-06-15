@@ -1,0 +1,29 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.avatar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: inline;
+}
+
+.nav_menu{
+  max-width: 400px;
+}
+
+.title{
+  text-align: center;
+}
+
+.notifications{
+  padding: 0px 10px;
+}
+
+.notification{
+  margin-bottom: 5px;
+}
+
+.notification_content{
+  background-color: #F4F5F7;
+}
