@@ -14,15 +14,11 @@
               <input type="text" class="form-control" placeholder="Email/username" name="username"
                      #username="ngModel" [(ngModel)]="login.userName" required="required" maxlength="30"
                      pattern="^[a-zA-Z0-9][a-zA-Z0-9]{3,30}">
-            </div>
-            <div class="error" *ngIf="username.invalid && username.touched">
-                <span *ngIf="username.errors?.required">
-                  Enter username!
-                </span>
-              <span *ngIf="username.errors?.pattern">
-                  Invalid username!
-                </span>
-            </div>
+              </div>
+              <div class="error" *ngIf="username.invalid && username.touched">
+                <span *ngIf="username.errors?.required"> Enter username! </span>
+              <span *ngIf="username.errors?.pattern"> Invalid username! </span>
+              </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
@@ -38,14 +34,10 @@
                 <span *ngIf="password.errors?.required">
                   Enter password!
                 </span>
-              <span *ngIf="password.errors?.pattern">
-                  Invalid password!
-                </span>
+              <span *ngIf="password.errors?.pattern"> Invalid password! </span>
             </div>
             <div class="input-group-prepend">
-              <div style="color: red;" *ngIf="isLoginFailed">
-                Wrong username or password!
-              </div>
+              <div style="color: red;" *ngIf="isLoginFailed"> Wrong username or password! </div>
             </div>
             <div class="row align-items-center remember">
               <input type="checkbox">Remember Me
