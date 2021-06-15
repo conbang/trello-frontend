@@ -41,6 +41,7 @@ export class AuthenServiceService {
       })
     );
   }
+
   logout() {
     localStorage.removeItem('user');
     this.currentUserSubject.next(null);
