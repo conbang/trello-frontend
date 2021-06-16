@@ -1,0 +1,44 @@
+<app-drawer>
+  <div *ngFor="let board of boards;
+  let boardIndex = index;"
+       class="board"
+       cdkDropList [cdkDropListData]="board.list"
+       (cdkDropListDropped)="onTrackDrop($event)"
+       cdkDropListOrientation="horizontal">
+
+    <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let track of board.list;">
+      <div class="row" fxLayoutAlign="start center">
+        <h2 fxFlex="80" class="text-center" >
+          <span contenteditable [textContent]="track?.title"
+                (input)="track.title=$event.target.textContent">
+          </span>
+        </h2>
+      </div>
+
+      <div class="card-list-content"
+           cdkDropList [id]="track.id"
+           [cdkDropListData]="track.cards"
+           [cdkDropListConnectedTo]="trackIds(boardIndex)">
+
+        <app-card *ngFor="let talk of track.cards"
+                  [tags]="talk.tags"
+                  [issueType]="talk?.label"
+                  [text]="talk.text"
+
+                  [image]="talk.image" cdkDrag
+                  (edit)="addEditTalk(talk, track, true)">
+        </app-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="baseline baseline">
+        <button style="width: fit-content;" class="add-talk"
+                (click)="addEditTalk(track, track)"
+                color="primary" mat-raised-button>Add talk
+        </button>
+      </div>
+    </div>
+
+  </div>
+</app-drawer>
+
+<!-- <router-outlet></router-outlet> -->

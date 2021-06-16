@@ -5,5 +5,5 @@ export interface Card {
 	title? : string;
 	content?: string;
 	position?: number;
-	list?: List
+	list?: List[];
 }

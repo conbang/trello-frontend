@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Day one",
+    "list": [
+      {
+        "id": "track-one",
+        "title": "Track one",
+        "cards": [
+          {
+            "label": "low",
+            "text": "Keynote address",
+            "image": "https://i.ytimg.com/vi/7Bj4R7lGl4A/maxresdefault.jpg"
+          },{
+            "label": "story",
+            "text": "VS Code Can Do That",
+            "tags": [
+              {
+                "name": "medium",
+                "color": "#e0e0e0"
+              }
+            ]
+          },{
+            "label": "high",
+            "text": "VS Code Can Do That",
+            "tags": [
+              {
+                "name": "medium",
+                "color": "#e0e0e0"
+              }
+            ]
+          },
+          {
+            "label": "epic",
+            "text": "How to save time & money by planning your ngUpgrade"
+          },
+          {
+            "label": "medium",
+            "text": "How to save time & money by planning your ngUpgrade"
+          }
+        ]
+      }
+    ]
+  }
+]
