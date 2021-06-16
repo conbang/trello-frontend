@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
 import {Login} from '../../interface/login';
+import {User} from '../../interface/user';
 
 const API_URL = environment.api_url;
 
@@ -20,6 +21,10 @@ export class AuthenServiceService {
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('user')));
     this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  public set changeAvatar(user: User) {
+    this.currentUserSubject.value.avatar = user.avatar;
   }
 
   public get currentUserValue(): Token {

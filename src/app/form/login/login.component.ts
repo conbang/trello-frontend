@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    console.log(this.login);
     this.authenService.login(this.login.username, this.login.password).pipe(first()).subscribe(
       () => {
         setTimeout(() => {

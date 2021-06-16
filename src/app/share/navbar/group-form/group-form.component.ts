@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Group} from '../../../interface/group';
+import {GroupForm} from '../../../interface/groupForm';
 
 @Component({
   selector: 'app-group-form',

@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
-import {AlertComponent} from './share/alert/alert.component';
 
 @NgModule({
   declarations: [

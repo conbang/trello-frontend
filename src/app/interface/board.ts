@@ -1,10 +1,10 @@
 import {User} from './user';
-import {Group} from './group';
+import {GroupForm} from './groupForm';
 
 export interface Board {
   id?: number;
   name?: string;
   user?: User;
-  groupTrello?: Group;
+  groupTrello?: GroupForm;
   type: string;
 }

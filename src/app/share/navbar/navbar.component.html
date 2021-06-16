@@ -13,7 +13,7 @@
     <mat-icon>notifications</mat-icon>
   </a>
   <a mat-button [matMenuTriggerFor]="user">
-    <img src={{avatar}} alt="avatar" class="avatar" />
+    <img src={{avatar}} alt={{username}} class="avatar" />
   </a>
   <mat-menu #notificationMenu="matMenu" >
     <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
@@ -28,7 +28,7 @@
     </span>
   </mat-menu>
   <mat-menu #user="matMenu">
-    <a mat-menu-item>
+    <a mat-menu-item [routerLink]="'update'">
       <mat-icon>info</mat-icon>Information
     </a>
     <a mat-menu-item>

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Group} from '../../../interface/group';
+import {GroupForm} from '../../../interface/groupForm';
 
 @Component({
   selector: 'app-group-menu',
@@ -8,7 +8,7 @@ import {Group} from '../../../interface/group';
 })
 export class GroupMenuComponent implements OnInit {
 
-  @Input() group: Group;
+  @Input() group: GroupForm;
   constructor() { }
 
   ngOnInit() {

@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {GroupFormComponent} from '../navbar/group-form/group-form.component';
 import {MatDialog} from '@angular/material';
-import {Group} from '../../interface/group';
 import {BoardFormComponent} from '../navbar/board-form/board-form.component';
+import {AuthenServiceService} from '../../service/authentication/authen-service.service';
+import {GroupService} from '../../service/group/group.service';
+import {Group} from '../../interface/group';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,31 +12,27 @@ import {BoardFormComponent} from '../navbar/board-form/board-form.component';
 })
 export class SidebarComponent implements OnInit {
 
-  groups: Group[] = [
-    {
-      id: 1,
-      name: 'c1220g1',
-      type: 'private',
-      description: '',
-    },
-    {
-      id: 1,
-      name: 'c1330g2',
-      type: 'private',
-      description: '',
-    },
-    {
-      id: 1,
-      name: 'c1220g1',
-      type: 'private',
-      description: '',
-    }
-  ];
+  groups: Group[] = [];
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,
+              private authenService: AuthenServiceService,
+              private groupService: GroupService) {
+    this.loadGourps();
   }
 
   ngOnInit() {
+  }
+
+  loadGourps(): void {
+    const currentUser = this.authenService.currentUserValue;
+    const id = currentUser.id;
+    if (currentUser && id) {
+      this.groupService.getGroups(id).subscribe(groups => {
+          this.groups = groups;
+      }, error => {
+        console.log(error);
+      });
+    }
   }
 
   openDialog(): void {
