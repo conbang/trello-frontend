@@ -1,0 +1,17 @@
+<mat-list>
+
+  <div mat-subheader><mat-icon color="primary">person_outline</mat-icon>&nbsp;&nbsp;Your Workspace boards</div>
+  <mat-list-item *ngFor="let tag of tagged">
+    <mat-icon mat-list-icon color="primary">folder</mat-icon>
+    <div mat-line><a mat-button><mat-icon>visibility</mat-icon></a> {{tag.name}}</div>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <div mat-subheader><mat-icon color="primary">people_outline</mat-icon>&nbsp;&nbsp;Workspace boards</div>
+  <mat-list-item *ngFor="let notag of notagged">
+    <mat-icon mat-list-icon color="primary">folder</mat-icon>
+    <div mat-line><a mat-button><mat-icon>visibility</mat-icon></a>{{notag.name}}</div>
+  </mat-list-item>
+
+</mat-list>

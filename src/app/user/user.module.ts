@@ -11,6 +11,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
+import { ListBoardComponent } from './list-board/list-board.component';
+import {MatButtonModule, MatIconModule, MatListModule} from '@angular/material';
 
 
 
@@ -19,19 +21,23 @@ import {IgxAvatarModule} from 'igniteui-angular';
     HomepageComponent,
     BoardComponent,
     WorkspaceComponent,
-    UpdateComponent
+    UpdateComponent,
+    ListBoardComponent
   ],
   exports: [
     UpdateComponent
   ],
-    imports: [
-        CommonModule,
-        UserRoutingModule,
-        ShareModule,
-        FormsModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-        IgxAvatarModule
-    ]
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    ShareModule,
+    FormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    IgxAvatarModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
+  ]
 })
 export class UserModule { }
