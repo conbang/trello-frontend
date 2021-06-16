@@ -4,18 +4,22 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormRoutingModule } from './form-routing.module';
 import {FormsModule} from '@angular/forms';
-import {IgxAvatarModule} from 'igniteui-angular';
+import {MatDialogModule, MatIconModule} from '@angular/material';
+import {DialogComponent} from './register/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     FormsModule,
     CommonModule,
     FormRoutingModule,
-    IgxAvatarModule
+    MatDialogModule,
+    MatIconModule,
   ]
 })
-export class FormModule { }
+export class FormModule {}

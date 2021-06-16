@@ -1,10 +1,10 @@
-import { Role } from "./role";
+import {Role} from './role';
+
 export interface Token {
-	roles?: Role[]
-	id?: number;
-	username?: string;
-	passWord?: string;
-	email?: string;
-	accessToken?: string;
-	avatar?: string
+  id?: number;
+  username?: string;
+  email?: string;
+  token?: string;
+  avatar?: string;
+  roles?: Role[];
 }

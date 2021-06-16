@@ -34,6 +34,7 @@
 
 .card-header h3 {
   color: white;
+  text-align: center;
 }
 
 .social_icon {
@@ -82,4 +83,11 @@
 
 .error {
   color: red;
+}
+
+.toggle_password{
+  width: 50px;
+  background-color: #FFFFFF;
+  color: black;
+  border: 0 !important;
 }

@@ -1,1 +1,10 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <button mat-flat-button><mat-icon color="primary">table_chart</mat-icon>Table</button>
+  <button mat-flat-button><mat-icon color="primary">home</mat-icon>Homepage</button>
+  <div class="workspace">
+  <span>workspaces </span><mat-icon (click)="openDialog()">add</mat-icon>
+  </div>
+  <mat-accordion>
+    <app-group-menu *ngFor="let group of groups" [group]="group"></app-group-menu>
+  </mat-accordion>
+</div>

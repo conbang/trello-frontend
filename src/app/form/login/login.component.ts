@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-import {Login} from '../../interface/login';
+import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {first} from 'rxjs/operators';
-import {AuthenService} from '../../service/authenServie/authen.service';
+import {Login} from '../../interface/login';
 
 const API_BACKEND = environment.api_url;
 
@@ -13,22 +13,17 @@ const API_BACKEND = environment.api_url;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  hidden: true;
   login: Login = {
-    id: 0,
-    userName: '',
-    passWord: '',
-    email: '',
-    confirmPassword: '',
-    phone: '',
-    role: [],
+    username: '',
+    password: '',
   };
   // @ts-ignore
   currentUser: IUserToken;
   hide = true;
   isLoginFailed = false;
 
-  constructor(private authenService: AuthenService,
+  constructor(private authenService: AuthenServiceService,
               private router: Router) {
     this.authenService.currentUser.subscribe(value => this.currentUser = value);
   }
@@ -37,10 +32,13 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
-    this.authenService.login(this.login.userName, this.login.passWord).pipe(first()).subscribe(
+    console.log(this.login);
+    this.authenService.login(this.login.username, this.login.password).pipe(first()).subscribe(
       () => {
-        this.authenService.currentUserValue.accessToken;
-        this.router.navigate(['/home']);
+        setTimeout(() => {
+          this.authenService.currentUserValue.token;
+          this.router.navigate(['/home']);
+        }, 1500);
       },
       error => {
         this.isLoginFailed = true;

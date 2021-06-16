@@ -1,44 +1,30 @@
-<mat-toolbar color="primary" class="mat-elevation-z6">
-  <mat-icon>date_range</mat-icon>
-  Trello
-  <div class="spacer"></div>
+<mat-toolbar color="primary" class="mat-elevation-z6 navbar">
+  <mat-icon>menu</mat-icon>
+  <h5>Trello</h5>
+
+  <div class="spacer">
   <a mat-button [matMenuTriggerFor]="add">
     <mat-icon>add</mat-icon>
   </a>
   <a mat-button>
     <mat-icon>home</mat-icon>
   </a>
-  <a mat-button [matMenuTriggerFor]="notifications">
+  <a mat-button [matMenuTriggerFor]="notificationMenu">
     <mat-icon>notifications</mat-icon>
   </a>
   <a mat-button [matMenuTriggerFor]="user">
     <img src={{avatar}} alt="avatar" class="avatar" />
   </a>
-  <mat-menu #notifications="matMenu" >
-    <div class='notifications'>
-      <div class="title">
-        <p>Noftifications</p>
-      </div>
-        <mat-card class="notification">
-          <mat-card-header>
-            <mat-card-subtitle class="title">noftification 1</mat-card-subtitle>
-          </mat-card-header>
-          <mat-divider></mat-divider>
-          <mat-card-content class="notification_content">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-            </p>
-          </mat-card-content>
-        </mat-card>
-    </div>
+  <mat-menu #notificationMenu="matMenu" >
+    <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
   </mat-menu>
   <mat-menu #add="matMenu">
-    <span mat-menu-item>
+    <span mat-menu-item (click)="openDialog()">
         <mat-icon>date_range</mat-icon>
-        create table
+        Create Table
     </span>
-    <span mat-menu-item>
-      <mat-icon>person_pin</mat-icon>create workspace
+    <span mat-menu-item >
+      <mat-icon>person_pin</mat-icon>Create Workspace
     </span>
   </mat-menu>
   <mat-menu #user="matMenu">
@@ -48,8 +34,9 @@
     <a mat-menu-item>
       <mat-icon>settings</mat-icon>Settings
     </a>
-    <a mat-menu-item>
+    <a mat-menu-item (click)="logout()" >
       <mat-icon color="primary">logout</mat-icon>Logout
     </a>
-  </mat-menu>
+  </mat-menu></div>
 </mat-toolbar>
+

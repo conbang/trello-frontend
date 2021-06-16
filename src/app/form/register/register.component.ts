@@ -1,40 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { Login } from './../../interface/login';
-import { LoginServiceService } from 'src/app/service/login/login-service.service';
-import { Observable } from 'rxjs';
+import {Component} from '@angular/core';
+import {Register} from '../../interface/register';
+import {LoginServiceService} from 'src/app/service/login/login-service.service';
+import {MatDialog} from '@angular/material';
+import {Router} from '@angular/router';
+import {DialogComponent} from './dialog/dialog.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  selectedFile: File = null;
-
-  downloadURL: Observable<string>;
-  error1: boolean = false;
-  error2: boolean = false;
-  login: Login = {
+  error1 = false;
+  error2 = false;
+  login: Register = {
     id: 0,
-    userName: '',
-    passWord: '',
+    username: '',
+    password: '',
     email: '',
     confirmPassword: '',
-    phone: '',
+    phone: null,
     role: [],
   };
-  constructor(private loginService: LoginServiceService) { }
 
+  constructor(private loginService: LoginServiceService,
+              public dialog: MatDialog,
+              private router: Router) {
+  }
 
-  ngOnInit() { }
-
-  registionUser() {
+  register() {
+    console.log(this.login);
     this.loginService.createAppUser(this.login).subscribe(() => {
-      alert('register success')
+      const successDialog = this.dialog.open(DialogComponent);
+      setTimeout(() => {
+        this.dialog.closeAll();
+        this.router.navigate(['login']);
+      }, 2000);
     }, e => {
-      // this.error1 = e.error?.indexOf('username') >= 0;
-      // this.error2 = e.error?.indexOf('email') >= 0 ? true : false;
+      this.error1 = e.error.indexOf('username') >= 0 ? true : false;
+      this.error2 = e.error.indexOf('email') >= 0 ? true : false;
     });
   }
 }
