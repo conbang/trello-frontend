@@ -1,10 +1,7 @@
-import {User} from './user';
-import {Group} from './group';
+import { User } from "./user";
 
 export interface Board {
-  id?: number;
-  name?: string;
-  user?: User;
-  groupTrello?: Group;
-  type: string;
+	id?: number;
+	name?: string;
+	appUser?: User;
 }

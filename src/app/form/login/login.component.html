@@ -6,13 +6,13 @@
           <h3>Sign In</h3>
         </div>
         <div class="card-body">
-          <form #form="ngForm" (ngSubmit)="form.valid && loginUser()">
+          <form #form="ngForm" (ngSubmit)="form.valid&&loginUser()">
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>person</mat-icon></span>
               </div>
               <input type="text" class="form-control" placeholder="Email/username" name="username"
-                     #username="ngModel" [(ngModel)]="login.username" required="required" maxlength="30"
+                     #username="ngModel" [(ngModel)]="login.userName" required="required" maxlength="30"
                      pattern="^[a-zA-Z0-9][a-zA-Z0-9]{3,30}">
             </div>
             <div class="error" *ngIf="username.invalid && username.touched">
@@ -27,7 +27,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
               </div>
-              <input type="password" class="form-control" name="passWord" [(ngModel)]="login.password"
+              <input type="password" class="form-control" name="passWord" [(ngModel)]="login.passWord"
                      placeholder="password" #password="ngModel" required="required"
                      pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}" [type]="hidden ? 'text' : 'password'">
               <div class="toggle_password">

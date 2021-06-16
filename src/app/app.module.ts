@@ -5,17 +5,14 @@ import {ShareModule} from './share/share.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
 import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
-import {TokenInterceptor} from './helper/token-interceptor';
-import {ErrorInterceptor} from './helper/error-interceptor';
-import {AlertComponent} from './share/alert/alert.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -27,10 +24,7 @@ import {AlertComponent} from './share/alert/alert.component';
     ShareModule,
     UserModule
   ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

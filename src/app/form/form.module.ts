@@ -4,14 +4,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormRoutingModule } from './form-routing.module';
 import {FormsModule} from '@angular/forms';
+import { DialogComponent } from './register/dialog/dialog.component';
 import {MatDialogModule, MatIconModule} from '@angular/material';
-import {DialogComponent} from './register/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    DialogComponent
+    DialogComponent,
   ],
   entryComponents: [DialogComponent],
   imports: [

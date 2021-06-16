@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
+import {Login} from '../../interface/login';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {first} from 'rxjs/operators';
-import {Login} from '../../interface/login';
 
 const API_BACKEND = environment.api_url;
 
@@ -15,8 +15,13 @@ const API_BACKEND = environment.api_url;
 export class LoginComponent implements OnInit {
   hidden: true;
   login: Login = {
-    username: '',
-    password: '',
+    id: 0,
+    userName: '',
+    passWord: '',
+    email: '',
+    confirmPassword: '',
+    phone: '',
+    role: [],
   };
   // @ts-ignore
   currentUser: IUserToken;
@@ -33,7 +38,7 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     console.log(this.login);
-    this.authenService.login(this.login.username, this.login.password).pipe(first()).subscribe(
+    this.authenService.login(this.login.userName, this.login.passWord).pipe(first()).subscribe(
       () => {
         setTimeout(() => {
           this.authenService.currentUserValue.token;
@@ -41,6 +46,7 @@ export class LoginComponent implements OnInit {
         }, 1500);
       },
       error => {
+        console.log(error);
         this.isLoginFailed = true;
       }
     );

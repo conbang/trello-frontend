@@ -1,29 +1,44 @@
-<mat-toolbar color="primary" class="mat-elevation-z6 navbar">
-  <mat-icon>menu</mat-icon>
-  <h5>Trello</h5>
-
-  <div class="spacer">
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-icon>date_range</mat-icon>
+  Trello
+  <div class="spacer"></div>
   <a mat-button [matMenuTriggerFor]="add">
     <mat-icon>add</mat-icon>
   </a>
   <a mat-button>
     <mat-icon>home</mat-icon>
   </a>
-  <a mat-button [matMenuTriggerFor]="notificationMenu">
+  <a mat-button [matMenuTriggerFor]="notifications">
     <mat-icon>notifications</mat-icon>
   </a>
   <a mat-button [matMenuTriggerFor]="user">
     <img src={{avatar}} alt="avatar" class="avatar" />
   </a>
-  <mat-menu #notificationMenu="matMenu" >
-    <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
+  <mat-menu #notifications="matMenu" >
+    <div class='notifications'>
+      <div class="title">
+        <p>Notifications</p>
+      </div>
+        <mat-card class="notification">
+          <mat-card-header>
+            <mat-card-subtitle class="title">Notification</mat-card-subtitle>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <br>
+          <mat-card-content class="notification_content">
+            <p>
+              Someone poked you!!
+            </p>
+          </mat-card-content>
+        </mat-card>
+    </div>
   </mat-menu>
   <mat-menu #add="matMenu">
-    <span mat-menu-item (click)="openDialog()">
+    <span mat-menu-item>
         <mat-icon>date_range</mat-icon>
         Create Table
     </span>
-    <span mat-menu-item >
+    <span mat-menu-item (click)="openDialog()">
       <mat-icon>person_pin</mat-icon>Create Workspace
     </span>
   </mat-menu>
@@ -37,6 +52,6 @@
     <a mat-menu-item (click)="logout()" >
       <mat-icon color="primary">logout</mat-icon>Logout
     </a>
-  </mat-menu></div>
+  </mat-menu>
 </mat-toolbar>
 

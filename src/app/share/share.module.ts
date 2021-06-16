@@ -6,32 +6,26 @@ import { FooterComponent } from './footer/footer.component';
 import {SidebarComponent } from './sidebar/sidebar.component';
 import {FormModule} from '../form/form.module';
 import {
-  MatButtonModule, MatCardModule,
-  MatDialogModule, MatExpansionModule,
-  MatIconModule, MatInputModule,
-  MatListModule, MatMenuModule,
-  MatSelectModule, MatToolbarModule,
+  MatButtonModule,
+  MatCardModule, MatDialogModule, MatExpansionModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule, MatSelectModule,
+  MatToolbarModule,
 } from '@angular/material';
 import { GroupFormComponent } from './navbar/group-form/group-form.component';
 import {FormsModule} from '@angular/forms';
-import {AlertComponent} from './alert/alert.component';
-import { GroupMenuComponent } from './sidebar/group-menu/group-menu.component';
-import {NoftificationComponent} from './navbar/noftification/noftification.component';
-import {BoardFormComponent} from './navbar/board-form/board-form.component';
+
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    GroupFormComponent,
-    AlertComponent,
-    NoftificationComponent,
-    BoardFormComponent,
-    GroupMenuComponent
+    GroupFormComponent
   ],
-  entryComponents: [AlertComponent,
-    BoardFormComponent],
+  entryComponents: [GroupFormComponent],
   imports: [
     FormModule,
     MatListModule,
@@ -52,7 +46,6 @@ import {BoardFormComponent} from './navbar/board-form/board-form.component';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    GroupMenuComponent,
   ],
 })
 export class ShareModule { }

@@ -1,26 +1,30 @@
-import {Component} from '@angular/core';
-import {Register} from '../../interface/register';
+import {Component, OnInit} from '@angular/core';
+import {Login} from './../../interface/login';
 import {LoginServiceService} from 'src/app/service/login/login-service.service';
+import {Observable} from 'rxjs';
 import {MatDialog} from '@angular/material';
-import {Router} from '@angular/router';
 import {DialogComponent} from './dialog/dialog.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
+  selectedFile: File = null;
+
+  downloadURL: Observable<string>;
   error1 = false;
   error2 = false;
-  login: Register = {
+  login: Login = {
     id: 0,
-    username: '',
-    password: '',
+    userName: '',
+    passWord: '',
     email: '',
     confirmPassword: '',
-    phone: null,
+    phone: '',
     role: [],
   };
 
@@ -29,8 +33,11 @@ export class RegisterComponent {
               private router: Router) {
   }
 
-  register() {
-    console.log(this.login);
+
+  ngOnInit() {
+  }
+
+  registionUser() {
     this.loginService.createAppUser(this.login).subscribe(() => {
       const successDialog = this.dialog.open(DialogComponent);
       setTimeout(() => {

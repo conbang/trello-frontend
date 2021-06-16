@@ -2,9 +2,9 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Token} from '../../interface/token';
 import {HttpClient} from '@angular/common/http';
+import {User} from '../../interface/user';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
-import {Login} from '../../interface/login';
 
 const API_URL = environment.api_url;
 
@@ -12,8 +12,8 @@ const API_URL = environment.api_url;
   providedIn: 'root'
 })
 export class AuthenServiceService {
-
   update = new EventEmitter<string>();
+
   private currentUserSubject: BehaviorSubject<Token>;
   public currentUser: Observable<Token>;
 
@@ -26,13 +26,14 @@ export class AuthenServiceService {
     return this.currentUserSubject.value;
   }
 
-  login(name: string, psw: string) {
-    const login: Login = {
-      username: name,
-      password: psw
+  login(username: string, password: string) {
+    const user: User = {
+      userName: username,
+      passWord: password
     };
-
-    return this.httpClient.post(API_URL + 'login', login).pipe(map(user => {
+    console.log(user);
+    // tslint:disable-next-line:no-shadowed-variable
+    return this.httpClient.post(API_URL + 'login', user).pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
         this.currentUserSubject.next(user);
         this.update.emit('login');

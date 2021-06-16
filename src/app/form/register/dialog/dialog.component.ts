@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-dialog',
@@ -6,5 +6,7 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent {
+
   constructor() {}
+
 }

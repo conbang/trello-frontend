@@ -1,6 +1,5 @@
-.navbar{
-  display:flex;
-  justify-content: space-between;
+.spacer {
+  flex: 1 1 auto;
 }
 .avatar{
   height: 30px;
