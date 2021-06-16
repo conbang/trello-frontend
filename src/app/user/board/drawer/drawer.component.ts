@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,8 +12,6 @@ import {BoardService} from '../../../service/boardService/board.service';
   styleUrls: ['./drawer.component.scss'],
 })
 export class DrawerComponent {
-  @Output() emitText: EventEmitter<any> = new EventEmitter();
-
   boards: Board[];
   constructor(
     private breakpointObserver: BreakpointObserver,

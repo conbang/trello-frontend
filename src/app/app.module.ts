@@ -13,6 +13,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatButtonModule, MatIconModule} from '@angular/material';
 import {EditTalkComponent} from './user/board/edit-talk/edit-talk.component';
 import {ColorPickerDialogComponent} from './user/board/color-picker-dialog/color-picker-dialog.component';
+import {DialogBodyComponent} from './user/board/dialog/dialog-body/dialog-body.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {ColorPickerDialogComponent} from './user/board/color-picker-dialog/color
   bootstrap: [AppComponent],
   entryComponents: [
     EditTalkComponent,
-    ColorPickerDialogComponent
+    ColorPickerDialogComponent,
+    DialogBodyComponent
   ]
 })
 export class AppModule {

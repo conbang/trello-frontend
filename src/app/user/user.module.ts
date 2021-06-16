@@ -30,6 +30,7 @@ import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
 import {NavbarComponent} from '../share/navbar/navbar.component';
 import {ColorPickerDialogComponent} from './board/color-picker-dialog/color-picker-dialog.component';
 import {ColorChromeModule} from 'ngx-color/chrome';
+import {DialogModule} from './board/dialog/dialog.module';
 
 @NgModule({
   providers: [ModalBackdropComponent],
@@ -41,7 +42,7 @@ import {ColorChromeModule} from 'ngx-color/chrome';
     CardComponent,
     EditTalkComponent,
     DrawerComponent,
-    ColorPickerDialogComponent
+    ColorPickerDialogComponent,
   ],
   exports: [
     UpdateComponent,
@@ -50,30 +51,31 @@ import {ColorChromeModule} from 'ngx-color/chrome';
     DrawerComponent,
     ColorPickerDialogComponent
   ],
-  imports: [
-    CommonModule,
-    UserRoutingModule,
-    ShareModule,
-    FormsModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    IgxAvatarModule,
-    ModalModule.forRoot(),
-    DragDropModule,
-    MatButtonModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    MatInputModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatListModule,
-    MatCardModule,
-    MatChipsModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    ColorChromeModule,
+    imports: [
+        CommonModule,
+        UserRoutingModule,
+        ShareModule,
+        FormsModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+        IgxAvatarModule,
+        ModalModule.forRoot(),
+        DragDropModule,
+        MatButtonModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatDialogModule,
+        MatInputModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatListModule,
+        MatCardModule,
+        MatChipsModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        ColorChromeModule,
+        DialogModule,
 
-  ]
+    ]
 })
 export class UserModule { }
