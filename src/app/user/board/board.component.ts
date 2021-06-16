@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BoardService} from '../../service/boardService/board.service';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class BoardComponent implements OnInit {
 
   constructor(
+    public boardService: BoardService
+
   ) { }
 
   ngOnInit() {

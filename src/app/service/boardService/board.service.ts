@@ -34,7 +34,9 @@ export class BoardService {
   getBoards(): Board[] {
     return this._boards;
   }
-
+  getBoard$() {
+    return this.board$.asObservable();
+  }
   addColumn (title: string) {
     const newList: List = {
       id: 1,
