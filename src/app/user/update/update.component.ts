@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Login} from '../../interface/login';
+import {Register} from '../../interface/register';
 import {UserService} from '../../service/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
@@ -14,7 +14,7 @@ import {finalize} from 'rxjs/operators';
 export class UpdateComponent implements OnInit {
   selectedFile: File = null;
   downloadURL: Observable<string>;
-  appUser: Login = {
+  appUser: Register = {
     id: 0,
     userName: '',
     passWord: '',

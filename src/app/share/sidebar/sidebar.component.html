@@ -1,19 +1,10 @@
-<div mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>Workspace name</mat-label>
-    <input matInput>
-  </mat-form-field><br>
-  <mat-form-field appearance="outline">
-    <mat-label>Workspace type</mat-label>
-    <mat-select>
-      <mat-option value="one">Public Workspace</mat-option>
-      <mat-option value="two">Private Workspace</mat-option>
-    </mat-select>
-  </mat-form-field><br>
-  <mat-form-field appearance="outline">
-    <mat-label>Workspace description </mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <br>
-  <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+<div class="sidebar">
+  <button mat-flat-button><mat-icon color="primary">table_chart</mat-icon>Table</button>
+  <button mat-flat-button><mat-icon color="primary">home</mat-icon>Homepage</button>
+  <div class="workspace">
+  <span>workspaces </span><mat-icon (click)="openDialog()">add</mat-icon>
+  </div>
+  <mat-accordion>
+    <app-group-menu *ngFor="let group of groups" [group]="group"></app-group-menu>
+  </mat-accordion>
 </div>
