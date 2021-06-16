@@ -1,6 +1,6 @@
 <div class="login">
   <div class="container">
-    <form #form="ngForm" (ngSubmit)="form.valid && registionUser()">
+    <form #form="ngForm" (ngSubmit)="form.valid && register()">
       <div class="d-xl-flex justify-content-center h-100">
         <div class="card">
           <div class="card-header">
@@ -11,7 +11,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>person</mat-icon></span>
               </div>
-              <input type="text" name="username" class="form-control" placeholder="username" [(ngModel)]="login.userName"
+              <input type="text" name="username" class="form-control" placeholder="username" [(ngModel)]="login.username"
                      #name="ngModel" required  maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9]{3,30}">
             </div>
             <span class="error" *ngIf="error1"> Username is existed! </span>
@@ -27,7 +27,7 @@
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
               </div>
               <input type="password" name="password" class="form-control" placeholder="password"
-                     [(ngModel)]="login.passWord" #password="ngModel" required pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}">
+                     [(ngModel)]="login.password" #password="ngModel" required pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}">
             </div>
             <div class="error" *ngIf="password.invalid && password.touched">
               <span *ngIf="password.errors?.pattern">
