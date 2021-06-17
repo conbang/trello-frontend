@@ -1,4 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {DialogData} from '../../interface/dialog-data';
 
 @Component({
   selector: 'app-alert',
@@ -7,21 +9,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class AlertComponent implements OnInit {
 
-  message = '';
-  icon = '';
+  message = 'Create success!';
+  icon = 'check_circle_outline';
 
-  constructor() {
+  constructor(@Inject(MAT_DIALOG_DATA) public para: DialogData) {
   }
 
   ngOnInit() {
-  }
-
-  setMessage(message: string) {
-    this.message = message;
-  }
-
-  setIcon(icon: string) {
-    this.icon = icon;
   }
 
 }

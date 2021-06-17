@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import {EditTalkComponent} from './user/board/edit-talk/edit-talk.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import {ErrorInterceptor} from './helper/error-interceptor';
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    EditTalkComponent,
+  ]
 })
 export class AppModule {
 }

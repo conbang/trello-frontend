@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Board} from '../../../interface/board';
 import {Router} from '@angular/router';
 import {BoardService} from '../../../service/board/board.service';
-import {error} from 'util';
+import {MatDialog} from '@angular/material';
+import {AlertComponent} from '../../alert/alert.component';
+import {Board} from '../../../interface/board';
 
 @Component({
   selector: 'app-board-form',
@@ -14,7 +15,8 @@ export class BoardFormComponent implements OnInit {
   data: Board;
 
   constructor(private boardService: BoardService,
-              private router: Router) {
+              private router: Router,
+              public dialog: MatDialog) {
     this.data = {
       id: 0,
       name: '',
@@ -27,11 +29,13 @@ export class BoardFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  createBoard() {
-    this.boardService.createBoard(this.data).subscribe((board) => {
-      this.router.navigate([`/board/${board.id}`]);
-    }, error => {
-      console.log(error);
-    });
-  }
+  // createBoard() {
+  //   this.boardService.createBoard(this.data).subscribe((board) => {
+  //     this.dialog.open(AlertComponent);
+  //     setTimeout(() => {
+  //       this.dialog.closeAll();
+  //       this.router.navigate([`/board/${board.id}`]);
+  //     }, 1500);
+  //   });
+  // }
 }

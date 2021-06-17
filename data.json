@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Day one",
+    "tracks": [
+      {
+        "id": "track-one",
+        "title": "Track one",
+        "talks": [
+          {
+            "issueType": "epic",
+            "text": "Keynote addess",
+            "speaker": "Igor Minar",
+            "createdAt": "2018-01-01T09:26:05.026Z",
+            "image": "https://i.ytimg.com/vi/7Bj4R7lGl4A/maxresdefault.jpg"
+          },
+          {
+            "issueType": "bug",
+            "text": "VS Code Can Do That",
+            "speaker": "John Papa",
+            "createdAt": "2020-02-01T09:26:05.026Z",
+            "tags": [
+              {
+                "name": "Intro",
+                "color": "#e0e0e0"
+              }
+            ]
+          },
+          {
+            "issueType": "sub-task",
+            "text": "How to save time & money by planning your ngUpgrade",
+            "speaker": "Sam Julien",
+            "createdAt": "2019-03-01T09:26:05.026Z"
+          },
+          {
+            "issueType": "task",
+            "text": "How to AI in JS?",
+            "speaker": "Asim Hussain",
+            "createdAt": "2020-04-01T09:26:05.026Z",
+            "tags": [
+              {
+                "name": "Intro",
+                "color": "#e0e0e0"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+<app-drawer>
+  <div *ngFor="let board of boards;
+  let boardIndex = index;"
+       class="board"
+       cdkDropList [cdkDropListData]="board.tracks"
+       cdkDropListOrientation="horizontal">
+
+    <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let track of board.tracks; let trackIndex = index;">
+      <div class="row" fxLayoutAlign="start center">
+        <h2 fxFlex="80" class="mat-h2">
+          <span contenteditable [textContent]="track?.title"
+                (input)="track.title=$event.target.textContent"></span>
+        </h2>
+        <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle>
+
+          <button fxFlex="50" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon>drag_handle</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <div
+           class="card-list-content"
+           cdkDropList [id]="track.id"
+           [cdkDropListData]="track.talks"
+           [cdkDropListConnectedTo]="trackIds(boardIndex)"
+      >
+
+        <app-card *ngFor="let talk of track.talks"
+                  [title]="talk.title"
+                  [content]="talk.content"
+                  [issueType]="talk?.issueType"
+                  [image]="talk.image"
+                  cdkDrag
+                  (edit)="addEditTalk(talk, track, true)"
+        >
+
+        </app-card>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="baseline baseline">
+        <button style="width: fit-content;" class="add-talk"
+                (click)="addEditTalk(track, track)"
+                color="primary" mat-raised-button>Add talk
+        </button>
+      </div>
+    </div>
+
+  </div>
+</app-drawer>
+
+<!-- <router-outlet></router-outlet> -->

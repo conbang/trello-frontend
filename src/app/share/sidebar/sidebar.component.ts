@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {BoardFormComponent} from '../navbar/board-form/board-form.component';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {GroupService} from '../../service/group/group.service';
 import {Group} from '../../interface/group';
+import {GroupFormComponent} from '../navbar/group-form/group-form.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -36,6 +36,6 @@ export class SidebarComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(BoardFormComponent);
+    this.dialog.open(GroupFormComponent);
   }
 }

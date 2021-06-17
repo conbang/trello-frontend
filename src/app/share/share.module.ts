@@ -30,7 +30,8 @@ import {BoardFormComponent} from './navbar/board-form/board-form.component';
     BoardFormComponent,
     GroupMenuComponent
   ],
-  entryComponents: [AlertComponent,
+  entryComponents: [GroupFormComponent,
+    AlertComponent,
     BoardFormComponent],
   imports: [
     FormModule,

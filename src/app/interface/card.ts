@@ -1,9 +1,12 @@
-import { List } from "./list";
+import {Label} from './Label';
+import {List} from './list';
 
 export interface Card {
-	id? : number;
-	title? : string;
+	id?: number;
+	title?: string;
 	content?: string;
 	position?: number;
-	list?: List
+	list?: List;
+	image?: string;
+	label: Label;
 }
