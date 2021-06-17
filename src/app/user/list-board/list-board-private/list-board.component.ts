@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IBoard} from '../board/interface/i-board';
-import {BoardService} from '../../service/board/board.service';
+import {IBoard} from '../../board/interface/i-board';
+import {BoardService} from '../../../service/board/board.service';
 import {Router} from '@angular/router';
 
 @Component({

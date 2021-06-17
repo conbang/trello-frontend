@@ -32,4 +32,8 @@ export class BoardService {
   getBoardPrivate(): Observable<IBoard[]> {
     return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardPrivate');
   }
+
+  getBoardGroup(): Observable<IBoard[]> {
+    return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardGroup');
+  }
 }

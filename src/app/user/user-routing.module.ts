@@ -3,7 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {UpdateComponent} from './update/update.component';
 import {BoardComponent} from './board/board.component';
-import {ListBoardComponent} from './list-board-private/list-board.component';
+import {ListBoardComponent} from './list-board/list-board-private/list-board.component';
+import {ListBoardGroupComponent} from './list-board/list-board-group/list-board-group.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,12 @@ const routes: Routes = [
     component: UpdateComponent
   },
   {
-    path: 'listBoard',
+    path: 'listBoardPrivate',
     component: ListBoardComponent
+  },
+  {
+    path: 'listBoardGroup',
+    component: ListBoardGroupComponent
   }
 ];
 
