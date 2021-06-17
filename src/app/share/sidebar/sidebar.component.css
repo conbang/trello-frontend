@@ -6,11 +6,11 @@
 .sidebar button {
   width:100%;
   text-align:left;
-  padding: 5px ;
+  padding: 5px 20px;
 }
 
 .workspace{
   display: flex;
   justify-content: space-around;
-  padding: 10px 0px;
+  padding: 10px 20px;
 }
