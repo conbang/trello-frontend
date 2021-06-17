@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Board} from '../../interface/schema.model';
+import {IBoard} from '../../user/board/interface/i-board';
 
 const API_BACKEND = environment.api_url;
 
@@ -26,5 +27,9 @@ export class BoardService {
 
   createBoard(board: Board): Observable<Board> {
     return this.httpClient.post<Board>(API_BACKEND + 'board', board);
+  }
+
+  getBoardPrivate(): Observable<IBoard[]> {
+    return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardPrivate');
   }
 }

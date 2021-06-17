@@ -18,7 +18,7 @@ import {DrawerComponent} from './board/drawer/drawer.component';
 import {
   MatButtonModule,
   MatCardModule,
-  MatChipsModule, MatDialogModule, MatFormFieldModule,
+  MatChipsModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
   MatListModule, MatSelectModule,
   MatSidenavModule,
@@ -26,7 +26,7 @@ import {
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
 import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
-import { ListBoardComponent } from './list-board/list-board.component';
+import { ListBoardComponent } from './list-board-private/list-board.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +67,8 @@ import { ListBoardComponent } from './list-board/list-board.component';
     MatFormFieldModule,
     MatSelectModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatGridListModule
   ]
 })
 export class UserModule { }

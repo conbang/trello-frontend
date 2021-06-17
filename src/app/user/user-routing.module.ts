@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {UpdateComponent} from './update/update.component';
 import {BoardComponent} from './board/board.component';
+import {ListBoardComponent} from './list-board-private/list-board.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'update',
     component: UpdateComponent
+  },
+  {
+    path: 'listBoard',
+    component: ListBoardComponent
   }
 ];
 
