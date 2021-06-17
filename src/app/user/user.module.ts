@@ -28,6 +28,7 @@ import {CardComponent} from './board/card/card.component';
 import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
 import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
 import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
+import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ListBoardGroupComponent } from './list-board/list-board-group/list-boar
     CardComponent,
     EditTalkComponent,
     ListBoardComponent,
-    ListBoardGroupComponent
+    ListBoardGroupComponent,
+    ListBoardPublicComponent
   ],
   exports: [
     UpdateComponent,
