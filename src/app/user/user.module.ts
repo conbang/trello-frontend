@@ -26,6 +26,7 @@ import {
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
 import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
+import { ListBoardComponent } from './list-board/list-board.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
     MainBoardComponent,
     DrawerComponent,
     CardComponent,
-    EditTalkComponent
+    EditTalkComponent,
+    ListBoardComponent
   ],
   exports: [
     UpdateComponent,
