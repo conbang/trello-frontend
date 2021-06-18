@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Group} from '../../interface/group';
 import {GroupForm} from '../../interface/groupForm';
+import {Board} from '../../interface/schema.model';
 
 const API_BACKEND = environment.api_url;
 
@@ -12,11 +13,11 @@ const API_BACKEND = environment.api_url;
 })
 export class GroupService {
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {  }
+
 
   getGroups(id: number): Observable<Group[]> {
-    return this.httpClient.get<Group[]>(API_BACKEND + `groupTagUser/listgroup/${id}`);
+    return this.httpClient.get<Group[]>(API_BACKEND + `group-tag-user/list-group/${id}`);
   }
 
   create(group: GroupForm): Observable<Group> {
