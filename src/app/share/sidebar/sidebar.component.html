@@ -1,8 +1,17 @@
-<div class="sidebar">
+<div class="sidebar" xmlns="http://www.w3.org/1999/html">
   <button mat-flat-button><mat-icon color="primary">table_chart</mat-icon>Table</button>
+  <div style="margin-left: 50px">
+    <span [routerLink]="'/boards/private'">Private</span>
+  </div>
+  <div style="margin-left: 50px">
+    <span [routerLink]="'/boards/groups'">Group</span>
+  </div>
+  <div style="margin-left: 50px">
+    <span [routerLink]="'/boards/public'">Public</span>
+  </div>
   <button mat-flat-button><mat-icon color="primary" [routerLink]="'/home'">home</mat-icon>Homepage</button>
   <div class="workspace">
-  <span>workspaces </span><mat-icon (click)="openDialog()">add</mat-icon>
+  <span>Workspaces </span><mat-icon (click)="openDialog()">add</mat-icon>
   </div>
   <mat-accordion>
     <app-group-menu *ngFor="let group of groups" [group]="group?.groupTrello"></app-group-menu>

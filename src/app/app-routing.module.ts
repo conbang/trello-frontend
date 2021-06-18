@@ -8,6 +8,7 @@ import {AuthGuard} from './helper/auth-guard';
 import {HomeComponent} from './user/home/home.component';
 import {LayoutNoSidebarComponent} from './layout/layout-no-sidebar/layout-no-sidebar.component';
 import {BoardModule} from './user/board/board.module';
+import {MemberComponent} from './user/member/member.component';
 
 const routes: Routes = [
   {
@@ -30,11 +31,15 @@ const routes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'board',
+    path: 'board/:id',
     component: LayoutNoSidebarComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     loadChildren: () => BoardModule
+  },
+  {
+    path: 'member',
+    component: MemberComponent
   }
 ];
 

@@ -15,13 +15,17 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {
   MatButtonModule,
   MatCardModule,
-  MatChipsModule, MatDialogModule, MatFormFieldModule,
+  MatChipsModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
-  MatListModule, MatMenuModule, MatSelectModule,
-  MatSidenavModule,
+  MatListModule, MatSelectModule,
+  MatSidenavModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
+import { MemberComponent } from './member/member.component';
+import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
+import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
+import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +34,16 @@ import {CardComponent} from './board/card/card.component';
     UpdateComponent,
     HomeComponent,
     CardComponent,
+    MemberComponent,
+    ListBoardComponent,
+    ListBoardGroupComponent,
+    ListBoardPublicComponent
   ],
   exports: [
     UpdateComponent,
     HomeComponent,
     CardComponent,
+    MemberComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +66,9 @@ import {CardComponent} from './board/card/card.component';
     MatSelectModule,
     MatDialogModule,
     MatInputModule,
-    MatMenuModule
+    MatInputModule,
+    MatTableModule,
+    MatGridListModule,
   ]
 })
 export class UserModule { }

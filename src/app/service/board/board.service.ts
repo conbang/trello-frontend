@@ -30,4 +30,16 @@ export class BoardService {
   createBoard(board: Board): Observable<Board> {
     return this.httpClient.post<Board>(API_BACKEND + 'board', board);
   }
+
+  getBoardPrivate(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPrivate');
+  }
+
+  getBoardGroup(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardGroup');
+  }
+
+  getBoardPublic(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPublic');
+  }
 }

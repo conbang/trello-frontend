@@ -1,0 +1,4 @@
+<p><b>Board public</b></p>
+<mat-grid-list cols="5" rowHeight="3:1">
+  <mat-grid-tile *ngFor="let b of boards" [ngStyle]="{'background-image': 'url(' + b.image + ')'}" style="background-size: cover; color: white"><b>{{b.name}}</b></mat-grid-tile>
+</mat-grid-list>
