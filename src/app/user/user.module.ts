@@ -12,20 +12,18 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
 import { HomeComponent } from './home/home.component';
-import {MainBoardComponent} from './board/main-board/main-board.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {DrawerComponent} from './board/drawer/drawer.component';
 import {
-    MatButtonModule,
-    MatCardModule,
-    MatChipsModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule,
-    MatIconModule, MatInputModule,
-    MatListModule, MatMenuModule, MatSelectModule,
-    MatSidenavModule,
-    MatToolbarModule
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+  MatIconModule, MatInputModule,
+  MatListModule, MatSelectModule, MatExpansionModule,
+  MatSidenavModule, MatTableModule, MatMenuModule,
+  MatToolbarModule
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
-import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
+import { MemberComponent } from './member/member.component';
 import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
 import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
 import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
@@ -34,14 +32,11 @@ import { InviteFormComponent } from './board/invite-form/invite-form.component';
 @NgModule({
   declarations: [
     HomepageComponent,
-    BoardComponent,
     WorkspaceComponent,
     UpdateComponent,
     HomeComponent,
-    MainBoardComponent,
-    DrawerComponent,
     CardComponent,
-    EditTalkComponent,
+    MemberComponent,
     ListBoardComponent,
     ListBoardGroupComponent,
     ListBoardPublicComponent,
@@ -53,33 +48,37 @@ import { InviteFormComponent } from './board/invite-form/invite-form.component';
   exports: [
     UpdateComponent,
     HomeComponent,
-    BoardComponent,
-    MainBoardComponent
+    CardComponent,
+    MemberComponent
   ],
-    imports: [
-        CommonModule,
-        UserRoutingModule,
-        ShareModule,
-        FormsModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-        IgxAvatarModule,
-        DragDropModule,
-        MatIconModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatListModule,
-        MatCardModule,
-        MatChipsModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatDialogModule,
-        MatInputModule,
-        MatGridListModule,
-        MatMenuModule,
-        MatExpansionModule
-    ]
+  imports: [
+    CommonModule,
+    UserRoutingModule,
+    ShareModule,
+    FormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    IgxAvatarModule,
+    DragDropModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatCardModule,
+    MatChipsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatInputModule,
+    MatInputModule,
+    MatTableModule,
+    MatGridListModule,
+    MatInputModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatExpansionModule
+  ]
 })
 export class UserModule { }

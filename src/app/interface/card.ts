@@ -1,12 +1,11 @@
 import {Label} from './Label';
-import {List} from './list';
+import {Comment} from './comment';
 
 export interface Card {
-	id?: number;
-	title?: string;
-	content?: string;
-	position?: number;
-	list?: List;
-	image?: string;
-	label: Label;
+  id?: number;
+  title?: string;
+  content?: string;
+  position?: number;
+  label: Label[];
+  comments: Comment[];
 }

@@ -1,8 +1,8 @@
-import { Card } from "./card";
-import { User } from "./user";
+import {Card} from './card';
+import {User} from './user';
 
 export interface CardUser {
-  id?: number
-  card? : Card,
-  appUser?: User
+  id?: number;
+  card?: Card;
+  appUser?: User;
 }

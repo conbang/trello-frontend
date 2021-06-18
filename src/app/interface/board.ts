@@ -5,6 +5,7 @@ import {List} from './list';
 export interface Board {
   id?: number;
   name?: string;
+  image?: string;
   user?: User;
   groupTrello?: GroupForm;
   type: string;

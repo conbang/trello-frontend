@@ -1,52 +1,61 @@
-<app-drawer>
-  <div *ngFor="let board of boards;
-  let boardIndex = index;"
-       class="board"
-       cdkDropList [cdkDropListData]="board.tracks"
-       cdkDropListOrientation="horizontal">
+<div class="body">
+  <section>
+    <button mat-button>trello 1</button>
+    <span class="divider"></span>
+    <button mat-button>group c1220g1</button>
+    <span class="divider"></span>
+    <button mat-button [matMenuTriggerFor]="privary">Change privacy</button>
+    <span class="divider"></span>
+    <button mat-button>
+      <mat-icon>person_add</mat-icon>
+    </button>
+    <mat-menu #privary="matMenu">
+      <mat-form-field appearance="legacy">
+        <mat-label>Workspace type</mat-label>
+        <mat-select name="type" required>
+          <mat-option value="public">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
+                 viewBox="0 0 16 16">
+              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+            <span>Public</span>
+          </mat-option>
+          <mat-option value="private">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill"
+                 viewBox="0 0 16 16">
+              <path
+                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+            </svg>
+            Private
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-menu>
+  </section>
+  <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
 
-    <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let track of board.tracks; let trackIndex = index;">
+    <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index;">
       <div class="row" fxLayoutAlign="start center">
-        <h2 fxFlex="80" class="mat-h2">
-          <span contenteditable [textContent]="track?.title"
-                (input)="track.title=$event.target.textContent"></span>
-        </h2>
+        <h2 fxFlex="80" class="mat-h2"><span contenteditable [textContent]="list.title"
+                                             (input)="list.title=$event.target.textContent"></span></h2>
         <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle>
-
           <button fxFlex="50" mat-icon-button aria-label="Example icon-button with a menu">
             <mat-icon>drag_handle</mat-icon>
           </button>
         </div>
       </div>
-
-      <div
-           class="card-list-content"
-           cdkDropList [id]="track.id"
-           [cdkDropListData]="track.talks"
-           [cdkDropListConnectedTo]="trackIds(boardIndex)"
-      >
-
-        <app-card *ngFor="let talk of track.talks"
-                  [title]="talk.title"
-                  [content]="talk.content"
-                  [issueType]="talk?.issueType"
-                  [image]="talk.image"
-                  cdkDrag
-                  (edit)="addEditTalk(talk, track, true)"
-        >
-
-        </app-card>
-      </div>
-
+      <app-card *ngFor="let card of list.cards"
+                [card]="card">
+        <!--                  [image]="card.image" cdkDrag (edit)="editCard(card, list, true)" (delete)="deleteTalk(card, list)"> -->
+      </app-card>
       <div fxLayout="row" fxLayoutAlign="baseline baseline">
-        <button style="width: fit-content;" class="add-talk"
-                (click)="addEditTalk(track, track)"
-                color="primary" mat-raised-button>Add talk
+        <button style="width: fit-content;" class="add-talk" (click)="create(list)" color="primary"
+                mat-raised-button>Add card
         </button>
+        <span fxFlex style="text-align: right; cursor: pointer;" (click)="list['collapsed'] = !list['collapsed']">Click to {{ list['collapsed'] ? 'expand' : 'collapse'}}</span>
       </div>
     </div>
 
   </div>
-</app-drawer>
-
-<!-- <router-outlet></router-outlet> -->
+</div>

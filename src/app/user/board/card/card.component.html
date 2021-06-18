@@ -1,17 +1,16 @@
-<mat-card class="card" [style.backgroundColor]="issueTypesWithColor[issueType]?.color">
-  <img *ngIf="image" mat-card-image [src]="image" draggable="false">
+<mat-card class="card">
   <mat-card-content>
-    {{text}}
-    <div>
-      <mat-chip-list>
-        <mat-chip [style.background]="tag?.color ? tag.color : '#e0e0e0'"
-                  *ngFor="let tag of tags"
-                  selectable="false">{{tag?.name}}
-        </mat-chip>
-      </mat-chip-list>
-    </div>
+    {{card.title}}
+<!--    <div>-->
+<!--      <mat-chip-list>-->
+<!--        <mat-chip [style.background]="label?.color ? label.color : '#e0e0e0'"-->
+<!--                  *ngFor="let label of labels"-->
+<!--                  selectable="false">{{label?.title}}-->
+<!--        </mat-chip>-->
+<!--      </mat-chip-list>-->
+<!--    </div>-->
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)="edit.next()">EDIT</button>
+    <button mat-button (click)="edit()">Edit</button>
   </mat-card-actions>
 </mat-card>

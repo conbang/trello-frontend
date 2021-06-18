@@ -1,14 +1,4 @@
 <p><b>Board private</b></p>
-<!--<div class="container">-->
-<!--  <table class="table table-striped">-->
-<!--    <tr>-->
-<!--      <td>NAME</td>-->
-<!--    </tr>-->
-<!--    <tr *ngFor="let b of boards">-->
-<!--      <td ><a routerLink="/board/{{b.id}}">{{b.name}}</a></td>-->
-<!--    </tr>-->
-<!--  </table>-->
-<!--</div>-->
 <mat-grid-list cols="5" rowHeight="3:1">
-  <mat-grid-tile *ngFor="let b of boards" style="background: lightsteelblue">{{b.name}}</mat-grid-tile>
+  <mat-grid-tile *ngFor="let b of boards" [ngStyle]="{'background-image': 'url(' + b.image + ')'}" style="background-size: cover; color: white"><b>{{b.name}}</b></mat-grid-tile>
 </mat-grid-list>

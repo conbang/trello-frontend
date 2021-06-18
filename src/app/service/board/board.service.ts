@@ -2,8 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Board} from '../../interface/schema.model';
-import {IBoard} from '../../user/board/interface/i-board';
+import {Board} from '../../interface/board';
 
 const API_BACKEND = environment.api_url;
 
@@ -11,11 +10,14 @@ const API_BACKEND = environment.api_url;
   providedIn: 'root'
 })
 export class BoardService {
-  private _boards: Board[] = require('data.json');
+  private boards: Board[] = require('data.json');
+
   getBoards(): Board[] {
-    return this._boards;
+    return this.boards;
   }
-  constructor(private httpClient: HttpClient) {}
+
+  constructor(private httpClient: HttpClient) {
+  }
 
   showAll(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(API_BACKEND + 'board');
@@ -29,15 +31,15 @@ export class BoardService {
     return this.httpClient.post<Board>(API_BACKEND + 'board', board);
   }
 
-  getBoardPrivate(): Observable<IBoard[]> {
-    return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardPrivate');
+  getBoardPrivate(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPrivate');
   }
 
-  getBoardGroup(): Observable<IBoard[]> {
-    return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardGroup');
+  getBoardGroup(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardGroup');
   }
 
-  getBoardPublic(): Observable<IBoard[]> {
-    return this.httpClient.get<IBoard[]>(API_BACKEND + 'board/showAllBoardPublic');
+  getBoardPublic(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPublic');
   }
 }

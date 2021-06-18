@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {appConstants} from '../../../interface/appConstants';
-import {IssueType} from '../../../interface/schema.model';
-
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Card} from '../../../interface/card';
+import {MatDialog} from '@angular/material/dialog';
+import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
 
 @Component({
   selector: 'app-card',
@@ -10,20 +10,17 @@ import {IssueType} from '../../../interface/schema.model';
 })
 export class CardComponent implements OnInit {
 
-  issueTypesWithColor = appConstants.issueTypeListWithColor;
-  issueTypes = Object.values(IssueType);
-  @Output() edit = new EventEmitter<void>();
-  @Output() delete = new EventEmitter<void>();
-  @Input() title: string;
-  @Input() content: string;
-  @Input() tags: [];
-  @Input() image: string;
-  @Input() issueType?: string;
-  @Input() createdAt: Date;
+  @Input() card: Card;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {
+  }
 
   ngOnInit() {
   }
 
+  edit(card: Card) {
+    this.dialog.open(CardEditFormComponent, {
+      data: {card: {card}}
+    });
+  }
 }
