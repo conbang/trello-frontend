@@ -1,5 +1,9 @@
 <div class="body">
   <section>
+    <button mat-button [routerLink]="'/home'">
+      <mat-icon>home</mat-icon>
+    </button>
+    <span class="divider"></span>
     <button mat-button>trello 1</button>
     <span class="divider"></span>
     <button mat-button>group c1220g1</button>
@@ -33,29 +37,34 @@
       </mat-form-field>
     </mat-menu>
   </section>
-  <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
-
-    <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index;">
-      <div class="row" fxLayoutAlign="start center">
-        <h2 fxFlex="80" class="mat-h2"><span contenteditable [textContent]="list.title"
-                                             (input)="list.title=$event.target.textContent"></span></h2>
-        <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle>
-          <button fxFlex="50" mat-icon-button aria-label="Example icon-button with a menu">
-            <mat-icon>drag_handle</mat-icon>
-          </button>
+  <div cdkDropListGroup>
+    <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
+      <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
+        <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle>
+          <span contenteditable [textContent]="list.title" (input)="list.title=$event.target.textContent"></span>
+          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle><mat-icon>drag_indicator</mat-icon></span>
+        </div>
+        <div *ngIf="!list['colapsed']" class="card-list-content" cdkDropList [id]="list.id"
+             [cdkDropListData]="list.cards" (cdkDropListDropped)="dropCard($event)">
+          <app-card *ngFor="let card of list.cards" cdkDrag [card]="card"></app-card>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="baseline baseline">
+          <button style="width: fit-content;" class="add-talk" (click)="create(list)" color="primary" mat-raised-button> Add card </button>
+          <span fxFlex style="text-align: right; cursor: pointer;" (click)="list['collapsed'] = !list['collapsed']">Click to {{ list['collapsed'] ? 'expand' : 'collapse'}}</span>
         </div>
       </div>
-      <app-card *ngFor="let card of list.cards"
-                [card]="card">
-        <!--                  [image]="card.image" cdkDrag (edit)="editCard(card, list, true)" (delete)="deleteTalk(card, list)"> -->
-      </app-card>
-      <div fxLayout="row" fxLayoutAlign="baseline baseline">
-        <button style="width: fit-content;" class="add-talk" (click)="create(list)" color="primary"
-                mat-raised-button>Add card
-        </button>
-        <span fxFlex style="text-align: right; cursor: pointer;" (click)="list['collapsed'] = !list['collapsed']">Click to {{ list['collapsed'] ? 'expand' : 'collapse'}}</span>
+      <div class="card-list">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title><mat-icon>add</mat-icon>Add list </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-form-field>
+            <mat-label>Type in title list</mat-label>
+            <input matInput>
+          </mat-form-field>
+          <button mat-flat-button color="primary">Add list</button>
+        </mat-expansion-panel>
       </div>
     </div>
-
   </div>
 </div>

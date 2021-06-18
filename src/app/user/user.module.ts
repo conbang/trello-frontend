@@ -43,7 +43,10 @@ import { ListBoardPublicComponent } from './list-board/list-board-public/list-bo
     UpdateComponent,
     HomeComponent,
     CardComponent,
-    MemberComponent
+    MemberComponent,
+    ListBoardComponent,
+    ListBoardGroupComponent,
+    ListBoardPublicComponent
   ],
   imports: [
     CommonModule,

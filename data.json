@@ -3,7 +3,7 @@
         "id": 1 ,
         "title": "Track one",
         "position": 1,
-        "card": [
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",
@@ -31,7 +31,7 @@
         "id": 2 ,
         "title": "Track one",
         "position": 2,
-        "card": [
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",
@@ -59,7 +59,7 @@
         "id": 3 ,
         "title": "Track two",
         "position": 3,
-        "card": [
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",

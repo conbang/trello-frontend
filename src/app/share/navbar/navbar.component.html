@@ -1,31 +1,23 @@
 <mat-toolbar color="primary" class="mat-elevation-z6 navbar">
-  <mat-icon>menu</mat-icon>
-  <h5>Trello</h5>
-
-  <div class="spacer">
-  <a mat-button [matMenuTriggerFor]="add">
-    <mat-icon>add</mat-icon>
-  </a>
-  <a mat-button>
-    <mat-icon>home</mat-icon>
-  </a>
+  <mat-icon style="cursor:pointer;">menu</mat-icon>
+  <div> Trello </div> <div>
+  <a mat-button [matMenuTriggerFor]="add"> <mat-icon>add</mat-icon> </a>
+  <a mat-button> <mat-icon>home</mat-icon> </a>
   <a mat-button [matMenuTriggerFor]="notificationMenu">
     <mat-icon>notifications</mat-icon>
   </a>
-  <a mat-button [matMenuTriggerFor]="user">
-    <img src={{avatar}} alt={{username}} class="avatar" />
-  </a>
+    <igx-avatar src={{avatar}} class="avatar"
+                [roundShape]="true"
+                size="small" [matMenuTriggerFor]="user">
+    </igx-avatar>
   <mat-menu #notificationMenu="matMenu" >
     <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
   </mat-menu>
   <mat-menu #add="matMenu">
     <span mat-menu-item (click)="openDialog()">
-        <mat-icon>date_range</mat-icon>
-        Create Table
+        <mat-icon>date_range</mat-icon> Create Table
     </span>
-    <span mat-menu-item >
-      <mat-icon>person_pin</mat-icon>Create Workspace
-    </span>
+    <span mat-menu-item > <mat-icon>person_pin</mat-icon>Create Workspace </span>
   </mat-menu>
   <mat-menu #user="matMenu">
     <a mat-menu-item [routerLink]="'/update'">

@@ -6,6 +6,7 @@ import {BoardService} from '../../../service/board/board.service';
 import {List} from '../../../interface/list';
 import {Card} from '../../../interface/card';
 import {CardCreateFormComponent} from '../card-create-form/card-create-form.component';
+import {Token} from '../../../interface/token';
 
 @Component({
   selector: 'app-main-board',
@@ -14,6 +15,7 @@ import {CardCreateFormComponent} from '../card-create-form/card-create-form.comp
 })
 export class MainBoardComponent implements OnInit {
   lists: List[];
+  user: Token;
 
   constructor(private boardService: BoardService,
               private dialog: MatDialog) {
