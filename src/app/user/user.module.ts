@@ -20,12 +20,13 @@ import {
   MatCardModule,
   MatChipsModule, MatDialogModule, MatFormFieldModule,
   MatIconModule, MatInputModule,
-  MatListModule, MatSelectModule,
-  MatSidenavModule,
+  MatListModule, MatPaginatorModule, MatSelectModule,
+  MatSidenavModule, MatTableModule,
   MatToolbarModule
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
 import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
   declarations: [
@@ -37,13 +38,15 @@ import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
     MainBoardComponent,
     DrawerComponent,
     CardComponent,
-    EditTalkComponent
+    EditTalkComponent,
+    MemberComponent
   ],
   exports: [
     UpdateComponent,
     HomeComponent,
     BoardComponent,
-    MainBoardComponent
+    MainBoardComponent,
+    MemberComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +68,9 @@ import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
     MatFormFieldModule,
     MatSelectModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class UserModule { }

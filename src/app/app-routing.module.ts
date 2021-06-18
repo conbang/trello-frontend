@@ -7,6 +7,7 @@ import {UserModule} from './user/user.module';
 import {AuthGuard} from './helper/auth-guard';
 import {HomeComponent} from './user/home/home.component';
 import {BoardComponent} from './user/board/board.component';
+import {MemberComponent} from './user/member/member.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'board',
     component: BoardComponent
+  },
+  {
+    path: 'member',
+    component: MemberComponent
   }
 ];
 
