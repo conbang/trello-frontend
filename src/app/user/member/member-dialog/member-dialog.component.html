@@ -1,0 +1,12 @@
+<h6 mat-dialog-title>Add members {{data.username}}</h6>
+<div mat-dialog-content>
+  <p><span class="material-icons">person</span>Enter email address</p>
+  <mat-form-field>
+    <mat-label>Input email</mat-label>
+    <input matInput [(ngModel)]="data.email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.email" cdkFocusInitial>Add</button>
+</div>
