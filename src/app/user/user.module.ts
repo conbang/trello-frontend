@@ -18,7 +18,7 @@ import {DrawerComponent} from './board/drawer/drawer.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatChipsModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+    MatChipsModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridListModule,
     MatIconModule, MatInputModule,
     MatListModule, MatMenuModule, MatSelectModule,
     MatSidenavModule,
@@ -29,6 +29,7 @@ import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
 import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
 import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
 import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
+import { InviteFormComponent } from './board/invite-form/invite-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,11 @@ import { ListBoardPublicComponent } from './list-board/list-board-public/list-bo
     EditTalkComponent,
     ListBoardComponent,
     ListBoardGroupComponent,
-    ListBoardPublicComponent
+    ListBoardPublicComponent,
+    InviteFormComponent
+  ],
+  entryComponents: [
+    InviteFormComponent
   ],
   exports: [
     UpdateComponent,
@@ -73,7 +78,8 @@ import { ListBoardPublicComponent } from './list-board/list-board-public/list-bo
         MatDialogModule,
         MatInputModule,
         MatGridListModule,
-        MatMenuModule
+        MatMenuModule,
+        MatExpansionModule
     ]
 })
 export class UserModule { }

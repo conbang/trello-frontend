@@ -14,6 +14,7 @@
   <span>WORKSPACES</span><mat-icon (click)="openDialog()">add</mat-icon>
   </div>
   <mat-accordion>
-    <app-group-menu *ngFor="let group of groups" [group]="group?.groupTrello"></app-group-menu>
+    <app-group-menu *ngFor="let group of groups"
+                    [group]="group?.groupTrello"></app-group-menu>
   </mat-accordion>
 </div>

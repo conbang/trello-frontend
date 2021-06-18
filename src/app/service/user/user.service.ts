@@ -46,6 +46,6 @@ export class UserService {
   }
 
   getAllUser(): Observable<any> {
-    return this.httpClient.get(API_USER + 'list');
+    return this.httpClient.get(API_USER + 'user');
   }
 }
