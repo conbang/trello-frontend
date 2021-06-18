@@ -18,7 +18,7 @@ import {DrawerComponent} from './board/drawer/drawer.component';
 import {
   MatButtonModule,
   MatCardModule,
-  MatChipsModule, MatDialogModule, MatFormFieldModule,
+  MatChipsModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
   MatIconModule, MatInputModule,
   MatListModule, MatPaginatorModule, MatSelectModule,
   MatSidenavModule, MatTableModule,
@@ -27,6 +27,9 @@ import {
 import {CardComponent} from './board/card/card.component';
 import {EditTalkComponent} from './board/edit-talk/edit-talk.component';
 import { MemberComponent } from './member/member.component';
+import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
+import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
+import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { MemberComponent } from './member/member.component';
     DrawerComponent,
     CardComponent,
     EditTalkComponent,
-    MemberComponent
+    MemberComponent,
+    ListBoardComponent,
+    ListBoardGroupComponent,
+    ListBoardPublicComponent
   ],
   exports: [
     UpdateComponent,
@@ -70,7 +76,8 @@ import { MemberComponent } from './member/member.component';
     MatDialogModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
   ]
 })
 export class UserModule { }
