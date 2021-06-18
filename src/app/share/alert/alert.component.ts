@@ -9,10 +9,7 @@ import {DialogData} from '../../interface/dialog-data';
 })
 export class AlertComponent implements OnInit {
 
-  message = 'Create success!';
-  icon = 'check_circle_outline';
-
-  constructor(@Inject(MAT_DIALOG_DATA) public para: DialogData) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
   }
 
   ngOnInit() {

@@ -12,6 +12,7 @@ const API_BACKEND = environment.api_url;
 })
 export class GroupService {
 
+  groups: Group;
   constructor(private httpClient: HttpClient) {
   }
 

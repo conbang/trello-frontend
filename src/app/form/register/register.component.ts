@@ -3,7 +3,7 @@ import {Register} from '../../interface/register';
 import {LoginServiceService} from 'src/app/service/login/login-service.service';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
-import {DialogComponent} from './dialog/dialog.component';
+import {AlertComponent} from '../../share/alert/alert.component';
 
 @Component({
   selector: 'app-register',
@@ -30,9 +30,12 @@ export class RegisterComponent {
   }
 
   register() {
-    console.log(this.login);
     this.loginService.createAppUser(this.login).subscribe(() => {
-      const successDialog = this.dialog.open(DialogComponent);
+      const successDialog = this.dialog.open(AlertComponent,{
+        width: '420px',
+        height: '210px',
+        data: {message: 'Register success!', success: 'check_circle_outline'}
+      });
       setTimeout(() => {
         this.dialog.closeAll();
         this.router.navigate(['login']);

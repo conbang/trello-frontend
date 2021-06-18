@@ -34,10 +34,8 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.authenService.login(this.login.username, this.login.password).pipe(first()).subscribe(
       () => {
-        setTimeout(() => {
           this.authenService.currentUserValue.token;
           this.router.navigate(['/home']);
-        }, 1500);
       },
       error => {
         this.isLoginFailed = true;

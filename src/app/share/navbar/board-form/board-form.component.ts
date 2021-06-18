@@ -29,13 +29,13 @@ export class BoardFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  // createBoard() {
-  //   this.boardService.createBoard(this.data).subscribe((board) => {
-  //     this.dialog.open(AlertComponent);
-  //     setTimeout(() => {
-  //       this.dialog.closeAll();
-  //       this.router.navigate([`/board/${board.id}`]);
-  //     }, 1500);
-  //   });
-  // }
+  createBoard() {
+    this.boardService.createBoard(this.data).subscribe((board) => {
+      this.dialog.open(AlertComponent);
+      setTimeout(() => {
+        this.dialog.closeAll();
+        this.router.navigate([`/home/board/${board.id}`]);
+      }, 1500);
+    });
+  }
 }

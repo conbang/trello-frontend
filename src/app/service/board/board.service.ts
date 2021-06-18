@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Board} from '../../interface/schema.model';
+import {Board} from '../../interface/board';
 
 const API_BACKEND = environment.api_url;
 
@@ -10,11 +10,14 @@ const API_BACKEND = environment.api_url;
   providedIn: 'root'
 })
 export class BoardService {
-  private _boards: Board[] = require('data.json');
+  private boards: Board[] = require('data.json');
+
   getBoards(): Board[] {
-    return this._boards;
+    return this.boards;
   }
-  constructor(private httpClient: HttpClient) {}
+
+  constructor(private httpClient: HttpClient) {
+  }
 
   showAll(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(API_BACKEND + 'board');

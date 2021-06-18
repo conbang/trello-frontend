@@ -1,4 +1,5 @@
 export interface DialogData {
   message: string;
-  icon: string;
+  success: string;
+  error: string;
 }

@@ -47,10 +47,10 @@
             <span *ngIf="confirmPsw.errors?.required ">
               Confirm passord!
         		</span>
-              <span *ngIf="(confirmPsw?.value != password?.value) && !confirmPsw.errors?.required">
-                Password doesn't match'!
-		          </span>
             </div>
+            <span *ngIf="(confirmPsw?.value != password?.value) && !confirmPsw.errors?.required && confirmPsw.touched">
+                Password doesn't match!
+		          </span>
             <div class="input-group form-group">
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>mail</mat-icon></span>

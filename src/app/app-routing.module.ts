@@ -6,15 +6,20 @@ import {LayoutWithSidebarComponent} from './layout/layout-with-sidebar/layout-wi
 import {UserModule} from './user/user.module';
 import {AuthGuard} from './helper/auth-guard';
 import {HomeComponent} from './user/home/home.component';
-import {BoardComponent} from './user/board/board.component';
+import {LayoutNoSidebarComponent} from './layout/layout-no-sidebar/layout-no-sidebar.component';
+import {BoardModule} from './user/board/board.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: LayoutWithSidebarComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     loadChildren: () => UserModule
+  },
+  {
+    path: '',
+    component: HomeComponent,
   },
   {
     path: 'login',
@@ -26,7 +31,10 @@ const routes: Routes = [
   },
   {
     path: 'board',
-    component: BoardComponent
+    component: LayoutNoSidebarComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    loadChildren: () => BoardModule
   }
 ];
 

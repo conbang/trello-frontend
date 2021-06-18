@@ -25,12 +25,15 @@ export class GroupFormComponent {
 
   createGroup() {
     this.groupService.create(this.data).subscribe((group) => {
-      this.dialog.open(AlertComponent);
-
+      this.dialog.open(AlertComponent, {
+          width: '400px',
+          height: '200px',
+          data: {message: 'Create success!', success: 'check_circle_outline'}
+        }
+      );
       setTimeout(() => {
         this.dialog.closeAll();
       }, 1500);
-      console.log('ok');
     }, error => {
       console.log(error);
     });
