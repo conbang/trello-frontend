@@ -1,8 +1,7 @@
-<h3>Someone</h3>
-<!--<mat-accordion>-->
-<!--  <app-group-menu *ngFor="let user of users">{{user.userName}}</app-group-menu>-->
-<!--</mat-accordion>-->
-<!--<p *ngFor="let user of users">{{user.userName}}</p>-->
-<mat-accordion>
-  <p *ngFor="let user of users">{{user.userName}}</p>
-</mat-accordion>
+<span><h5>Invite Users to Board</h5>
+</span>
+<mat-selection-list>
+<mat-list-option *ngFor="let user of users">
+  <mat-icon color="primary">account_circle</mat-icon>{{user.userName}}
+</mat-list-option>
+</mat-selection-list>

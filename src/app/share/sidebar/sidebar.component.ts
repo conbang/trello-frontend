@@ -21,6 +21,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadGourps();
   }
 
   loadGourps(): void {
