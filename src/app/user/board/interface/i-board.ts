@@ -4,4 +4,5 @@ export interface IBoard {
   id?: number;
   name?: string;
   appUser?: IUser;
+  image?: string;
 }
