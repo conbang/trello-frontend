@@ -1,16 +1,32 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input matInput placeholder="Talk description" required formControlName="text">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Speaker" required formControlName="speaker">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Image URL" formControlName="image">
-  </mat-form-field>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-
-    <button mat-button type="submit" [disabled]="formGroup.invalid">Edit</button>
-  </mat-dialog-actions>
-</form>
+<button type="button" (click)="openModalWithClass(template)" style="border: none; background: honeydew">
+  <button mat-mini-fab color="primary"> <mat-icon>edit</mat-icon></button>
+</button>
+<br>
+<ng-template #template>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Edit card content</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="editCard() ">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input  class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title"
+                  [(ngModel)]="card.title" name="title">
+        </div>
+        <div class="form-group">
+          <label for="content">Content</label>
+          <input  class="form-control" id="content" aria-describedby="emailHelp" placeholder="Enter content"
+                  [(ngModel)]="card.content" name="content">
+        </div>
+        <button mat-raised-button color="primary" type="submit" (click)="modalRef.hide()" >Edit</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+    </div>
+  </div>
+</ng-template>

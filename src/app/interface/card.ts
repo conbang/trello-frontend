@@ -6,6 +6,6 @@ export interface Card {
   title?: string;
   content?: string;
   position?: number;
-  label: Label[];
-  comments: Comment[];
+  label?: Label[];
+  comments?: Comment[];
 }

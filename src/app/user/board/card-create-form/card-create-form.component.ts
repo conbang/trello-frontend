@@ -13,6 +13,7 @@ import {CardService} from '../../../service/card/card.service';
 export class CardCreateFormComponent implements OnInit {
 
   cardFormGroup: FormGroup;
+  formGroup: any;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { list: List },

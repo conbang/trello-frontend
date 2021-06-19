@@ -9,6 +9,8 @@ import {HomeComponent} from './user/home/home.component';
 import {LayoutNoSidebarComponent} from './layout/layout-no-sidebar/layout-no-sidebar.component';
 import {BoardModule} from './user/board/board.module';
 import {MemberComponent} from './user/member/member.component';
+import {CardDetailComponent} from './user/board/card-detail/card-detail.component';
+import {CardEditFormComponent} from './user/board/card-edit-form/card-edit-form.component';
 
 const routes: Routes = [
   {
@@ -38,8 +40,12 @@ const routes: Routes = [
     loadChildren: () => BoardModule
   },
   {
-    path: 'member',
-    component: MemberComponent
+    path: 'card-detail',
+    component: CardDetailComponent
+  },
+  {
+    path: 'card-edit-form',
+    component: CardEditFormComponent
   }
 ];
 

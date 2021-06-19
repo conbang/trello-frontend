@@ -1,9 +1,11 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatDialogRef} from '@angular/material/dialog';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Card} from '../../../interface/card';
 import {CardService} from '../../../service/card/card.service';
+import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -11,16 +13,21 @@ import {CardService} from '../../../service/card/card.service';
   styleUrls: ['./card-edit-form.component.css']
 })
 export class CardEditFormComponent implements OnInit {
-
+  @Input()
+    // tslint:disable-next-line:variable-name
+  card_id: any = 0;
+  card: Card = {};
   formGroup: FormGroup;
   formComment: FormGroup;
   comment: string;
+  modalRef: BsModalRef;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {card: Card},
     public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CardEditFormComponent>,
-    private cardService: CardService
+    private cardService: CardService,
+    private modalService: BsModalService,
   ) {}
 
   ngOnInit() {
@@ -50,5 +57,18 @@ export class CardEditFormComponent implements OnInit {
     }
     event.input.value = '';
   }
+  @Output()
+  isUpdate = new EventEmitter();
+  editCard() {
+    this.cardService.editCard(this.card_id, this.card).subscribe(() => {
+      this.isUpdate.emit(true);
+    });
+  }
 
+  openModalWithClass(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'center modal-lg' })
+    );
+  }
 }
