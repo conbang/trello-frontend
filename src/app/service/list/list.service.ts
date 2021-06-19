@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
+import {List} from '../../interface/list';
 
 const URL_API = environment.api_url;
 
@@ -15,5 +16,9 @@ export class ListService {
 
   getListByBoardId(id: number): Observable<any> {
     return this.httpClient.get(URL_API + `list/board/${id}`);
+  }
+
+  create(list: List): Observable<any> {
+    return this.httpClient.post(URL_API + `list`, list);
   }
 }

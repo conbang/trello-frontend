@@ -6,7 +6,6 @@ import {BoardService} from '../../../service/board/board.service';
 import {List} from '../../../interface/list';
 import {Card} from '../../../interface/card';
 import {CardCreateFormComponent} from '../card-create-form/card-create-form.component';
-import {Token} from '../../../interface/token';
 import {Board} from '../../../interface/board';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ListService} from '../../../service/list/list.service';
@@ -19,8 +18,11 @@ import {ListService} from '../../../service/list/list.service';
 export class MainBoardComponent implements OnInit {
   board: Board;
   lists: List[];
-  user: Token;
-  list: List;
+  list: List = {
+    id: 0,
+    title: '',
+    board: null,
+  };
 
   constructor(private boardService: BoardService,
               private dialog: MatDialog, private route: ActivatedRoute,
@@ -29,14 +31,8 @@ export class MainBoardComponent implements OnInit {
       .subscribe(async (params: ParamMap) => {
           // tslint:disable-next-line:radix
           const id = parseInt(params.get('id'));
-          this.board = await this.getBoardById(id);
+          this.getBoardById(id);
           this.getListByBoard(id);
-          this.list = await {
-            id: 0,
-            title: '',
-            board: this.board,
-            cards: []
-          };
         }
       );
   }
@@ -44,11 +40,6 @@ export class MainBoardComponent implements OnInit {
   ngOnInit() {
   }
 
-  getBoardById(id: number) {
-    this.boardService.getBoardById(id).subscribe(board => {
-      this.board = board;
-    });
-  }
 
   trackIds(columnIndex): number[] {
     return this.lists[columnIndex].cards.map(track => track.id);
@@ -76,11 +67,24 @@ export class MainBoardComponent implements OnInit {
   }
 
   createList() {
-    console.table(this.list);
-    this.lists.push(this.list);
+    this.list.board = this.board;
+    this.listService.create(this.list).subscribe(() => {
+      this.lists.push(this.list);
+    }, error => {
+      console.log(error);
+    });
+
+  }
+
+  getBoardById(id: number) {
+    this.boardService.getBoardById(id).subscribe(board => {
+      this.board = board;
+    });
   }
 
   private getListByBoard(id: number) {
-    return this.listService.getListByBoardId(id).toPromise();
+    return this.listService.getListByBoardId(id).subscribe((lists) => {
+      this.lists = lists;
+    });
   }
 }

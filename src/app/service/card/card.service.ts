@@ -5,7 +5,7 @@ import {Card} from '../../interface/card';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 
-const URL_API = environment;
+const URL_API = environment.api_url;
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,6 @@ export class CardService {
   }
 
   edit(card: CardCreateForm): Observable<Card> {
-    return this.httpClient.post<Card>(URL_API + 'cards/', card);
+    return this.httpClient.put<Card>(URL_API + 'cards/', card);
   }
 }
