@@ -8,6 +8,8 @@ import {Card} from '../../../interface/card';
 import {CardCreateFormComponent} from '../card-create-form/card-create-form.component';
 import {Token} from '../../../interface/token';
 import {Board} from '../../../interface/board';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ListService} from '../../../service/list/list.service';
 
 @Component({
   selector: 'app-main-board',
@@ -21,26 +23,31 @@ export class MainBoardComponent implements OnInit {
   list: List;
 
   constructor(private boardService: BoardService,
-              private dialog: MatDialog) {
-    this.lists = this.boardService.getLists();
-    console.table(this.lists[0]);
-    console.table(this.lists[1]);
-    this.board = this.lists[0].board;
-    console.table(this.board);
-    this.list = {
-      id: 0,
-      title: '',
-      board: {
-        id: this.board.id,
-        name: this.board.name,
-        type: this.board.type,
-        groupTrello: this.board.groupTrello,
-      },
-      cards: []
-    };
+              private dialog: MatDialog, private route: ActivatedRoute,
+              private listService: ListService) {
+    this.route.paramMap
+      .subscribe(async (params: ParamMap) => {
+          // tslint:disable-next-line:radix
+          const id = parseInt(params.get('id'));
+          this.board = await this.getBoardById(id);
+          this.getListByBoard(id);
+          this.list = await {
+            id: 0,
+            title: '',
+            board: this.board,
+            cards: []
+          };
+        }
+      );
   }
 
   ngOnInit() {
+  }
+
+  getBoardById(id: number) {
+    this.boardService.getBoardById(id).subscribe(board => {
+      this.board = board;
+    });
   }
 
   trackIds(columnIndex): number[] {
@@ -73,10 +80,7 @@ export class MainBoardComponent implements OnInit {
     this.lists.push(this.list);
   }
 
-  // editCard(card: Card, list: List) {
-  //   this.dialog.open(EditCardComponent, {data: {card, edit}, width: '500px'})
-  //     .afterClosed()
-  //     .subscribe(newTalkData => edit ? Object.assign(card, newTalkData) : list.cards.unshift(newTalkData));
-  // }
-
+  private getListByBoard(id: number) {
+    return this.listService.getListByBoardId(id).toPromise();
+  }
 }

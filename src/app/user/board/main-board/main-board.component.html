@@ -41,11 +41,11 @@
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
       <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
         <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle>
-          <span [textContent]="list.title" ></span>
+          <span>{{list.title}}</span>
           <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle><mat-icon>drag_indicator</mat-icon></span>
         </div>
         <div class="card-list-content" cdkDropList [id]="list.id"
-             [cdkDropListData]="list.cards" (cdkDropListDropped)="dropCard($event)">
+             [cdkDropListData]="list?.cards" (cdkDropListDropped)="dropCard($event)">
           <app-card *ngFor="let card of list.cards" cdkDrag [card]="card"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
