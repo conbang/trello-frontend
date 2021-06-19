@@ -1,14 +1,12 @@
 .navbar{
   display:flex;
   justify-content: space-between;
-}
-.avatar{
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  display: inline;
+  height: 45px;
 }
 
+.avatar{
+  cursor: pointer;
+}
 .nav_menu{
   max-width: 400px;
 }

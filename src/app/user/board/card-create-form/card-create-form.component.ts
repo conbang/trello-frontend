@@ -35,10 +35,10 @@ export class CardCreateFormComponent implements OnInit {
     });
   }
 
-  onSubmit(list: List) {
+  onSubmit() {
     this.cardService.create(this.cardFormGroup.value).subscribe(card => {
-      list.cards.push(card);
+      this.data.list.cards.push(card);
     });
-    this.dialogRef.close(this.cardFormGroup.value);
+    this.dialogRef.close();
   }
 }

@@ -1,9 +1,17 @@
 [
       {
-        "id": 1 ,
+        "id": 1,
         "title": "Track one",
+        "board": {
+          "id": 1,
+          "name": "trello",
+          "groupTrello": {
+          },
+          "image": "src/assets/background-board.jpg",
+          "type": "private"
+        },
         "position": 1,
-        "card": [
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",
@@ -28,10 +36,18 @@
         ]
       },
       {
-        "id": 2 ,
+        "id": 2,
         "title": "Track one",
         "position": 2,
-        "card": [
+        "board": {
+          "id": 1,
+          "name": "trello",
+          "groupTrello": {
+          },
+          "image": "src/assets/background-board.jpg",
+          "type": "private"
+        },
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",
@@ -56,10 +72,18 @@
         ]
       },
       {
-        "id": 3 ,
+        "id": 3,
         "title": "Track two",
+        "board": {
+          "id": 1,
+          "name": "trello",
+          "groupTrello": {
+          },
+          "image": "src/assets/background-board.jpg",
+          "type": "private"
+        },
         "position": 3,
-        "card": [
+        "cards": [
           {
             "title": "Keynote addess",
             "content": "no content",

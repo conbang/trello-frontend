@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Board} from '../../interface/board';
+import {List} from '../../interface/list';
 
 const API_BACKEND = environment.api_url;
 
@@ -10,10 +11,14 @@ const API_BACKEND = environment.api_url;
   providedIn: 'root'
 })
 export class BoardService {
-  private boards: Board[] = require('data.json');
+  private board: List[] = require('data.json');
 
-  getBoards(): Board[] {
-    return this.boards;
+  setLists(list: List) {
+    this.board.push(list);
+  }
+
+  getLists(): List[] {
+    return this.board;
   }
 
   constructor(private httpClient: HttpClient) {

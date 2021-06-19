@@ -58,7 +58,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
+    { provide: MatDialogRef, useValue: {} },
+    MemberComponent,
+    ListBoardComponent,
+    ListBoardGroupComponent,
+    ListBoardPublicComponent
   ],
   imports: [
     CommonModule,

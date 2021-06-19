@@ -1,15 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BoardRoutingModule } from './board-routing.module';
+import {BoardRoutingModule} from './board-routing.module';
 import {MainBoardComponent} from './main-board/main-board.component';
-import {MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatMenuModule, MatSelectModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatDialogModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule
+} from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {UserModule} from '../user.module';
-import { CardEditFormComponent } from './card-edit-form/card-edit-form.component';
-import { CardCreateFormComponent } from './card-create-form/card-create-form.component';
+import {CardEditFormComponent} from './card-edit-form/card-edit-form.component';
+import {CardCreateFormComponent} from './card-create-form/card-create-form.component';
+import {CardDetailComponent} from './card-detail/card-detail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { CardDetailComponent } from './card-detail/card-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,21 +26,22 @@ import { CardDetailComponent } from './card-detail/card-detail.component';
     CardCreateFormComponent,
     CardDetailComponent
   ],
-    imports: [
-        CommonModule,
-        BoardRoutingModule,
-        BoardRoutingModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatIconModule,
-        DragDropModule,
-        UserModule,
-        MatSelectModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    BoardRoutingModule,
+    BoardRoutingModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    DragDropModule,
+    UserModule,
+    MatSelectModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    FormsModule,
+    MatExpansionModule
+  ],
   entryComponents: [
     CardCreateFormComponent,
     CardEditFormComponent,
@@ -43,4 +52,5 @@ import { CardDetailComponent } from './card-detail/card-detail.component';
     CardEditFormComponent
   ]
 })
-export class BoardModule { }
+export class BoardModule {
+}
