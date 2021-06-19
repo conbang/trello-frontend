@@ -12,8 +12,11 @@ import {CardService} from '../../../service/card/card.service';
 })
 export class CardCreateFormComponent implements OnInit {
 
-  cardFormGroup: FormGroup;
-
+  card: CardCreateForm = {
+    title: '',
+    content: '',
+    listTrello: this.data.list,
+  };
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { list: List },
     private dialogRef: MatDialogRef<CardCreateFormComponent>,
@@ -23,21 +26,12 @@ export class CardCreateFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    const card: CardCreateForm = {
-      title: '',
-      content: '',
-      listTrello: this.data.list,
-    };
-    this.cardFormGroup = this.formBuilder.group({
-      title: [card.title, Validators.required],
-      content: [card.content],
-    });
   }
 
-  onSubmit(list: List) {
-    this.cardService.create(this.cardFormGroup.value).subscribe(card => {
-      list.cards.push(card);
+  onSubmit() {
+    this.cardService.create(this.card).subscribe(card => {
+      this.data.list.cards.push(card);
     });
-    this.dialogRef.close(this.cardFormGroup.value);
+    this.dialogRef.close();
   }
 }

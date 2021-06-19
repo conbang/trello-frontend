@@ -41,16 +41,15 @@
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
       <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
         <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle>
-          <span contenteditable [textContent]="list.title" (input)="list.title=$event.target.textContent"></span>
+          <span [textContent]="list.title" ></span>
           <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle><mat-icon>drag_indicator</mat-icon></span>
         </div>
-        <div *ngIf="!list['colapsed']" class="card-list-content" cdkDropList [id]="list.id"
+        <div class="card-list-content" cdkDropList [id]="list.id"
              [cdkDropListData]="list.cards" (cdkDropListDropped)="dropCard($event)">
           <app-card *ngFor="let card of list.cards" cdkDrag [card]="card"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
-          <button style="width: fit-content;" class="add-talk" (click)="create(list)" color="primary" mat-raised-button> Add card </button>
-          <span fxFlex style="text-align: right; cursor: pointer;" (click)="list['collapsed'] = !list['collapsed']">Click to {{ list['collapsed'] ? 'expand' : 'collapse'}}</span>
+          <button style="width: fit-content;" class="add-talk" (click)="createCard(list)" color="primary" mat-raised-button> Add card </button>
         </div>
       </div>
       <div class="card-list">
@@ -60,9 +59,9 @@
           </mat-expansion-panel-header>
           <mat-form-field>
             <mat-label>Type in title list</mat-label>
-            <input matInput>
+            <input matInput [(ngModel)]="list.title">
           </mat-form-field>
-          <button mat-flat-button color="primary">Add list</button>
+          <button mat-flat-button color="primary" (click)="createList()">Add list</button>
         </mat-expansion-panel>
       </div>
     </div>
