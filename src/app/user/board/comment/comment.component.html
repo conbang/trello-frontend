@@ -1,0 +1,11 @@
+<div class="form-group">
+  <textarea [(ngModel)]="comment.content" name="content" class="form-control" rows="5" id="comment"></textarea>
+  <br><br>
+  <button mat-raised-button color="primary" (click)="createComment()" type="button">Comment</button>
+  <hr>
+</div>
+<div *ngFor="let comments of listComment">
+  <p style="color: #2af598">{{comments.appUser.username}} commented! </p>
+  <p><i>{{comments.content}}</i></p>
+</div>
+

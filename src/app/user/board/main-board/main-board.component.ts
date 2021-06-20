@@ -9,6 +9,7 @@ import {CardCreateFormComponent} from '../card-create-form/card-create-form.comp
 import {Board} from '../../../interface/board';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ListService} from '../../../service/list/list.service';
+import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
 
 @Component({
   selector: 'app-main-board',
@@ -26,7 +27,8 @@ export class MainBoardComponent implements OnInit {
 
   constructor(private boardService: BoardService,
               private dialog: MatDialog, private route: ActivatedRoute,
-              private listService: ListService) {
+              private listService: ListService,
+  ) {
     this.route.paramMap
       .subscribe(async (params: ParamMap) => {
           // tslint:disable-next-line:radix
@@ -86,5 +88,15 @@ export class MainBoardComponent implements OnInit {
     return this.listService.getListByBoardId(id).subscribe((lists) => {
       this.lists = lists;
     });
+  }
+
+  edit(card) {
+    this.dialog.open(CardEditFormComponent, {
+      width: '50%',
+      data: {card: card}
+    }).afterClosed()
+      .subscribe(response => {
+        Object.assign(card, response);
+      });
   }
 }

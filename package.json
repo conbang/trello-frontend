@@ -29,6 +29,7 @@
     "igniteui-angular": "^8.2.31",
     "igniteui-angular-core": "^11.2.1",
     "jszip": "^3.3.0",
+    "ngx-bootstrap": "^6.2.0",
     "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

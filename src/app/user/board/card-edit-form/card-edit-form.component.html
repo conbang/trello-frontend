@@ -1,16 +1,28 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <mat-form-field>
-    <input matInput placeholder="Talk description" required formControlName="text">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Speaker" required formControlName="speaker">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Image URL" formControlName="image">
-  </mat-form-field>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close>Cancel</button>
-
-    <button mat-button type="submit" [disabled]="formGroup.invalid">Edit</button>
-  </mat-dialog-actions>
-</form>
+<div class="modal-header">
+  <h6 mat-dialog-title contenteditable="true" [textContent]="data.card?.title"></h6>
+  <span aria-hidden="true" matDialogClose>×</span>
+</div>
+<mat-dialog-content>
+  <div class="content">
+    <div style="display: flex; justify-content: flex-start">
+      <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary" style="cursor: pointer">edit</mat-icon></span></p>
+    </div>
+    <p [textContent]="data.card.content" *ngIf="!display"></p>
+    <div *ngIf="display">
+      <mat-form-field>
+        <textarea matInput [textContent]="data.card.content"  cols="40"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="display = !display">Save</button>
+    </div>
+    <div>
+      <p>Action</p>
+      <textarea matInput [(ngModel)]="card.comments" placeholder="comment"></textarea>
+      <button mat-flat-button color="primary" >Save</button>
+    </div>
+  </div>
+  <div>
+    <p>Attached file</p>
+    <p>Labels</p>
+    <p>Member</p>
+  </div>
+</mat-dialog-content>

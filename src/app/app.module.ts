@@ -10,27 +10,32 @@ import { FormsModule } from '@angular/forms';
 import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
+import {BoardModule} from './user/board/board.module';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    LayoutModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    ShareModule,
-    UserModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        LayoutModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ShareModule,
+        UserModule,
+        BoardModule,
+      ModalModule.forRoot()
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
   entryComponents: [
+
   ]
 })
 export class AppModule {

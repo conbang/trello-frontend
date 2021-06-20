@@ -46,7 +46,7 @@
         </div>
         <div class="card-list-content" cdkDropList [id]="list.id"
              [cdkDropListData]="list?.cardDtoList" (cdkDropListDropped)="dropCard($event)">
-          <app-card *ngFor="let card of list.cardDtoList" cdkDrag [card]="card"></app-card>
+          <app-card *ngFor="let card of list.cardDtoList" cdkDrag (edit)="edit(card)" [title]="card.title"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
           <button style="width: fit-content;" class="add-talk" (click)="createCard(list)" color="primary" mat-raised-button> Add card </button>

@@ -11,10 +11,14 @@ const API_URL = environment.api_url;
   providedIn: 'root'
 })
 export class BoardService {
-  private board: List[] = require('data.json');
+  private board: List[];
 
-  setLists(list: List) {
+  addList(list: List) {
     this.board.push(list);
+  }
+
+  setList(lists: List[]) {
+    this.board = lists;
   }
 
   getLists(): List[] {

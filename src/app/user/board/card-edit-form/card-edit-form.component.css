@@ -1,0 +1,10 @@
+.mat-dialog-content{
+  display: flex;
+  flex-flow: row wrap;
+}
+.content {
+  width: 70%;
+}
+h5,h6{
+
+}

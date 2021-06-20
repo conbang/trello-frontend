@@ -1,26 +1,17 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Card} from '../../../interface/card';
-import {MatDialog} from '@angular/material/dialog';
-import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
-  @Input() card: Card;
+  @Output() edit = new EventEmitter<void>();
+  @Input() title: string;
 
-  constructor(public dialog: MatDialog) {
+  constructor() {
   }
 
-  ngOnInit() {
-  }
-
-  edit(card: Card) {
-    this.dialog.open(CardEditFormComponent, {
-      data: {card: {card}}
-    });
-  }
 }

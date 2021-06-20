@@ -1,4 +1,5 @@
 export interface Label {
-  title: string;
-  color: string;
+  id?: number;
+  title?: string;
+  color?: string;
 }
