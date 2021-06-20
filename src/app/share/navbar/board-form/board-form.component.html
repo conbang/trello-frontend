@@ -18,7 +18,7 @@
     </div>
     <div>
       <mat-form-field appearance="legacy" class="input">
-        <mat-label>Board type</mat-label>
+        <mat-label>Privacy</mat-label>
         <mat-select  name="type" #Type="ngModel" [(ngModel)]="data.type" required>
           <mat-option value="public"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16" value="public">
             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div mat-dialog-actions>
-<!--    <button mat-raised-button color="primary" (click)="createBoard()">create</button>-->
+    <button mat-raised-button color="primary" (click)="createBoard()">create</button>
   </div>
 </div>

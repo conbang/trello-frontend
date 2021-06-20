@@ -45,8 +45,8 @@
           <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle><mat-icon>drag_indicator</mat-icon></span>
         </div>
         <div class="card-list-content" cdkDropList [id]="list.id"
-             [cdkDropListData]="list?.cards" (cdkDropListDropped)="dropCard($event)">
-          <app-card *ngFor="let card of list.cards" cdkDrag [card]="card"></app-card>
+             [cdkDropListData]="list?.cardDtoList" (cdkDropListDropped)="dropCard($event)">
+          <app-card *ngFor="let card of list.cardDtoList" cdkDrag [card]="card"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
           <button style="width: fit-content;" class="add-talk" (click)="createCard(list)" color="primary" mat-raised-button> Add card </button>

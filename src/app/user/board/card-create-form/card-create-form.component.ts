@@ -15,8 +15,9 @@ export class CardCreateFormComponent implements OnInit {
   card: CardCreateForm = {
     title: '',
     content: '',
-    listTrello: this.data.list,
+    listTrelloId: null,
   };
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { list: List },
     private dialogRef: MatDialogRef<CardCreateFormComponent>,
@@ -29,8 +30,9 @@ export class CardCreateFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.card.listTrelloId = this.data.list.id;
     this.cardService.create(this.card).subscribe(card => {
-      this.data.list.cards.push(card);
+      this.data.list.cardDtoList.push(card);
     });
     this.dialogRef.close();
   }

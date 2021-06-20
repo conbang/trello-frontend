@@ -42,7 +42,7 @@ export class MainBoardComponent implements OnInit {
 
 
   trackIds(columnIndex): number[] {
-    return this.lists[columnIndex].cards.map(track => track.id);
+    return this.lists[columnIndex].cardDtoList.map(track => track.id);
   }
 
   onTalkDrop(event: CdkDragDrop<Card[]>) {
@@ -62,14 +62,14 @@ export class MainBoardComponent implements OnInit {
 
   createCard(list: List) {
     this.dialog.open(CardCreateFormComponent, {
-      data: {list: {list}}
+      data: {list: list}
     });
   }
 
   createList() {
     this.list.board = this.board;
-    this.listService.create(this.list).subscribe(() => {
-      this.lists.push(this.list);
+    this.listService.create(this.list).subscribe((list) => {
+      this.lists.push(list);
     }, error => {
       console.log(error);
     });

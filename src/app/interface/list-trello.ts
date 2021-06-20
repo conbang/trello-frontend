@@ -1,10 +1,8 @@
 import {Board} from './board';
-import {Card} from './card';
 
-export interface List {
+export interface ListTrello {
   id?: number;
   title?: string;
   position?: number;
   board?: Board;
-  cardDtoList?: Card[];
 }
