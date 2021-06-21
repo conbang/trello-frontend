@@ -18,12 +18,33 @@
       <span>Private</span>
     </button>
   </mat-menu>
-
     <span class="divider"></span>
-    <button mat-button>
-      <mat-icon (click)="showInviteForm()">person_add</mat-icon>
+    <button mat-button (click)="showInviteForm()">
+      <mat-icon >person_add</mat-icon>
     </button>
-
   <span class="divider"></span>
-
+    <button mat-flat-button color="primary" (click)="drawer.toggle()">
+      <mat-icon>more_horiz</mat-icon>&nbsp;&nbsp;Show Menu
+    </button>
 </mat-toolbar>
+
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav position="end" #drawer class="example-sidenav" mode="side">
+    <button  mat-raised-button color="primary" (click)="showFiller = !showFiller"><mat-icon>search</mat-icon> Search cards</button>
+    <br>
+    <br>
+    <button mat-raised-button color="primary"><mat-icon>more_horiz</mat-icon> More</button>
+    <br>
+    <br>
+    <form class="example-form">
+    <mat-form-field class="example-full-width" *ngIf="showFiller" color="primary">
+      <mat-label>Search cards with name</mat-label>
+      <textarea matInput placeholder="Cards name..."></textarea>
+      <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>
+    </mat-form-field>
+    </form>
+  </mat-sidenav>
+  <div class="example-sidenav-content">
+
+  </div>
+</mat-sidenav-container>

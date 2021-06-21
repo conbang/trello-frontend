@@ -45,7 +45,7 @@ export class CardEditFormComponent implements OnInit {
 
   saveComment() {
     const user = this.authService.currentUserValue;
-    this.commentService.create(this.comment).subscribe((response) => {
+    this.commentService.create(this.comment).subscribe(response => {
       response.avatar = user.avatar;
       response.username = user.username;
       response.created_date = Date.now().toString();

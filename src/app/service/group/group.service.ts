@@ -16,7 +16,7 @@ export class GroupService {
   constructor(private httpClient: HttpClient) {  }
 
   getGroups(id: number): Observable<Group[]> {
-    return this.httpClient.get<Group[]>(API_BACKEND + `groupTagUser/listgroup/${id}`);
+    return this.httpClient.get<Group[]>(API_BACKEND + `group-tag-user/list-group/${id}`);
   }
 
   create(group: GroupForm): Observable<Group> {

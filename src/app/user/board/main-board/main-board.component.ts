@@ -64,7 +64,7 @@ export class MainBoardComponent implements OnInit {
 
   createCard(list: List) {
     this.dialog.open(CardCreateFormComponent, {
-      data: {list: list}
+      data: {list}
     });
   }
 
@@ -93,7 +93,7 @@ export class MainBoardComponent implements OnInit {
   edit(card, list) {
     this.dialog.open(CardEditFormComponent, {
       width: '50%',
-      data: {card: card, list: list}
+      data: {card, list}
     }).afterClosed()
       .subscribe(response => {
         Object.assign(card, response);

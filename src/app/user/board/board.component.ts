@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {InviteFormComponent} from '../board/invite-form/invite-form.component';
+import {ToolsComponent} from './tools/tools.component';
 
 @Component({
   selector: 'app-board',
@@ -9,7 +10,7 @@ import {InviteFormComponent} from '../board/invite-form/invite-form.component';
 })
 export class BoardComponent implements OnInit {
   privacy: `String`;
-
+  showFiller = false;
   constructor(public dialog: MatDialog) {
 
   }
@@ -21,4 +22,7 @@ export class BoardComponent implements OnInit {
     this.dialog.open(InviteFormComponent);
   }
 
+  showTools(): void {
+    this.dialog.open(ToolsComponent);
+  }
 }

@@ -11,7 +11,6 @@ import { UserModule } from './user/user.module';
 import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {BoardModule} from './user/board/board.module';
-import {ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
         FormsModule,
         ShareModule,
         UserModule,
-        BoardModule,
-      ModalModule.forRoot()
+        BoardModule
+
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

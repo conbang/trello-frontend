@@ -3,23 +3,24 @@ import {CommonModule} from '@angular/common';
 
 import {BoardRoutingModule} from './board-routing.module';
 import {MainBoardComponent} from './main-board/main-board.component';
-import {MatButtonModule,
+import {
+  MatButtonModule,
   MatDialogModule,
   MatIconModule,
   MatMenuModule,
   MatSelectModule,
   MatToolbarModule,
   MatExpansionModule, MatGridListModule,
-  MatInputModule, MatListModule,
+  MatInputModule, MatListModule, MatSidenavModule, MatChipsModule, MatAutocompleteModule,
 } from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {UserModule} from '../user.module';
 import { CardEditFormComponent } from './card-edit-form/card-edit-form.component';
 import { CardCreateFormComponent } from './card-create-form/card-create-form.component';
 import {BoardComponent} from './board.component';
-import {CardEditFormrmComponent} from './card-create-form/card-create-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IgxAvatarModule} from 'igniteui-angular';
+// import { ToolsComponent } from './tools/tools.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {IgxAvatarModule} from 'igniteui-angular';
     CardEditFormComponent,
     CardCreateFormComponent,
     CardCreateFormComponent,
-    BoardComponent
+    BoardComponent,
+    // ToolsComponent
   ],
   imports: [
     CommonModule,
@@ -47,11 +49,15 @@ import {IgxAvatarModule} from 'igniteui-angular';
     MatGridListModule,
     MatListModule,
     IgxAvatarModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatChipsModule,
+    MatAutocompleteModule
   ],
   entryComponents: [
     CardCreateFormComponent,
     CardEditFormComponent,
+    // ToolsComponent
   ],
   exports: [
     MainBoardComponent,
