@@ -26,8 +26,6 @@ import { MemberComponent } from './member/member.component';
 import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
 import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
 import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
-import {AddMemberForCardComponent} from './board/add-member-for-card/add-member-for-card.component';
-import {CommentComponent} from './board/comment/comment.component';
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
@@ -42,8 +40,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     ListBoardComponent,
     ListBoardGroupComponent,
     ListBoardPublicComponent,
-    AddMemberForCardComponent,
-    CommentComponent,
     CreateLabelComponent,
   ],
   exports: [
@@ -51,8 +47,6 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     HomeComponent,
     CardComponent,
     MemberComponent,
-    AddMemberForCardComponent,
-    CommentComponent,
     CreateLabelComponent
   ],
   providers: [

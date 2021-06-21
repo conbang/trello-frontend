@@ -1,24 +1,34 @@
 <div class="modal-header">
-  <h6 mat-dialog-title contenteditable="true" [textContent]="data.card?.title"></h6>
+  <h6 mat-dialog-title contenteditable="true" [textContent]="data.card?.title" [(ngModel)]="card.title"></h6>
   <span aria-hidden="true" matDialogClose>×</span>
 </div>
 <mat-dialog-content>
   <div class="content">
     <div style="display: flex; justify-content: flex-start">
-      <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary" style="cursor: pointer">edit</mat-icon></span></p>
+      <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary"
+                                    style="cursor: pointer">edit</mat-icon></span>
+      </p>
     </div>
     <p [textContent]="data.card.content" *ngIf="!display"></p>
     <div *ngIf="display">
       <mat-form-field>
-        <textarea matInput [textContent]="data.card.content"  cols="40"></textarea>
+        <textarea matInput [textContent]="data.card?.content" cols="40" [(ngModel)]="card.content"></textarea>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="display = !display">Save</button>
+      <button mat-raised-button color="primary" (click)="display = !display" (click)="editCard()">Save</button>
     </div>
     <div>
       <p>Action</p>
-      <textarea matInput [(ngModel)]="card.comments" placeholder="comment"></textarea>
-      <button mat-flat-button color="primary" >Save</button>
+      <textarea matInput placeholder="Comment something here" [(ngModel)]="comment.content"></textarea>
+      <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
     </div>
+    <mat-list>
+      <mat-list-item *ngFor="let comment of card.comments">
+
+        <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
+        {{comment.username}}<span>{{comment.created_date | date:"fullDate"}}</span>
+        <p>{{comment.content}}</p>
+      </mat-list-item>
+    </mat-list>
   </div>
   <div>
     <p>Attached file</p>

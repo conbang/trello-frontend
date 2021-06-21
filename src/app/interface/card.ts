@@ -1,5 +1,6 @@
 import {Label} from './Label';
-import {Comment} from './comment';
+import {CommentResponse} from './comment-response';
+import {UserResponse} from './user-response';
 
 export interface Card {
   id?: number;
@@ -7,5 +8,6 @@ export interface Card {
   content?: string;
   position?: number;
   label?: Label[];
-  comments?: Comment[];
+  comments?: CommentResponse[];
+  users?: UserResponse[];
 }

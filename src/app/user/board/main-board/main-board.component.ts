@@ -90,10 +90,10 @@ export class MainBoardComponent implements OnInit {
     });
   }
 
-  edit(card) {
+  edit(card, list) {
     this.dialog.open(CardEditFormComponent, {
       width: '50%',
-      data: {card: card}
+      data: {card: card, list: list}
     }).afterClosed()
       .subscribe(response => {
         Object.assign(card, response);

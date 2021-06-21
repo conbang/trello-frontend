@@ -8,7 +8,7 @@ import {
   MatDialogModule,
   MatExpansionModule, MatGridListModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatMenuModule,
   MatSelectModule
 } from '@angular/material';
@@ -17,6 +17,7 @@ import {UserModule} from '../user.module';
 import {CardEditFormComponent} from './card-edit-form/card-edit-form.component';
 import {CardCreateFormComponent} from './card-create-form/card-create-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {IgxAvatarModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatInputModule,
     FormsModule,
     MatExpansionModule,
-    MatGridListModule
+    MatGridListModule,
+    MatListModule,
+    IgxAvatarModule
   ],
   entryComponents: [
     CardCreateFormComponent,
