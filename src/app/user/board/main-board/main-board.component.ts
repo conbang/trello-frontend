@@ -35,6 +35,8 @@ export class MainBoardComponent implements OnInit {
           const id = parseInt(params.get('id'));
           this.getBoardById(id);
           this.getListByBoard(id);
+
+
         }
       );
   }
@@ -42,12 +44,7 @@ export class MainBoardComponent implements OnInit {
   ngOnInit() {
   }
 
-
-  trackIds(columnIndex): number[] {
-    return this.lists[columnIndex].cardDtoList.map(track => track.id);
-  }
-
-  onTalkDrop(event: CdkDragDrop<Card[]>) {
+  cardDrop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -59,7 +56,19 @@ export class MainBoardComponent implements OnInit {
   }
 
   columnDrop(event: CdkDragDrop<Card[]>) {
-    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    const listChange = [];
+    moveItemInArray(this.lists, event.previousIndex, event.currentIndex);
+    const previous = this.lists[event.previousIndex];
+    const current = this.lists[event.currentIndex];
+    previous.position = event.previousIndex;
+    current.position = event.currentIndex;
+    listChange.push(previous);
+    listChange.push(current);
+    this.listService.changePosition(listChange).subscribe(() => {
+      console.log('ok');
+    }, error => {
+      console.log(error);
+    });
   }
 
   createCard(list: List) {
@@ -86,6 +95,14 @@ export class MainBoardComponent implements OnInit {
 
   private getListByBoard(id: number) {
     return this.listService.getListByBoardId(id).subscribe((lists) => {
+      lists.sort((a, b) => {
+        return a.position - b.position;
+      });
+      lists.map((list) => {
+        list.cardDtoList.sort((card1, card2) => {
+          return card1.position - card2.position;
+        });
+      });
       this.lists = lists;
     });
   }

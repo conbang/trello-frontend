@@ -48,8 +48,8 @@
             <button mat-button mat-menu-iten color="primary">Save</button>
           </mat-menu>
         </div>
-        <div class="card-list-content" cdkDropList [id]="list.id"
-             [cdkDropListData]="list?.cardDtoList" (cdkDropListDropped)="dropCard($event)">
+        <div class="card-list-content" cdkDropList
+             [cdkDropListData]="list?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
           <app-card *ngFor="let card of list.cardDtoList" cdkDrag (edit)="edit(card, list)"
                     [title]="card.title"></app-card>
         </div>
