@@ -31,7 +31,7 @@ export class RegisterComponent {
 
   register() {
     this.loginService.createAppUser(this.login).subscribe(() => {
-      const successDialog = this.dialog.open(AlertComponent,{
+      this.dialog.open(AlertComponent, {
         width: '420px',
         height: '210px',
         data: {message: 'Register success!', success: 'check_circle_outline'}
@@ -41,8 +41,8 @@ export class RegisterComponent {
         this.router.navigate(['login']);
       }, 2000);
     }, e => {
-      this.error1 = e.error.indexOf('username') >= 0 ? true : false;
-      this.error2 = e.error.indexOf('email') >= 0 ? true : false;
+      this.error1 = e.error.indexOf('username') >= 0;
+      this.error2 = e.error.indexOf('email') >= 0;
     });
   }
 }

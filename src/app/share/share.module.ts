@@ -18,6 +18,7 @@ import {AlertComponent} from './alert/alert.component';
 import { GroupMenuComponent } from './sidebar/group-menu/group-menu.component';
 import {NoftificationComponent} from './navbar/noftification/noftification.component';
 import {BoardFormComponent} from './navbar/board-form/board-form.component';
+import {IgxAvatarModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
@@ -33,22 +34,23 @@ import {BoardFormComponent} from './navbar/board-form/board-form.component';
   entryComponents: [GroupFormComponent,
     AlertComponent,
     BoardFormComponent],
-  imports: [
-    FormModule,
-    MatListModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatIconModule,
-    CommonModule,
-    ShareRoutingModule,
-    MatInputModule,
-    MatExpansionModule,
-    MatSelectModule,
-    MatDialogModule,
-    FormsModule
-  ],
+    imports: [
+        FormModule,
+        MatListModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatButtonModule,
+        MatIconModule,
+        CommonModule,
+        ShareRoutingModule,
+        MatInputModule,
+        MatExpansionModule,
+        MatSelectModule,
+        MatDialogModule,
+        FormsModule,
+        IgxAvatarModule
+    ],
   exports: [
     NavbarComponent,
     SidebarComponent,

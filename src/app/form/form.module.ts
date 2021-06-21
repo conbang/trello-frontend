@@ -5,15 +5,14 @@ import { RegisterComponent } from './register/register.component';
 import { FormRoutingModule } from './form-routing.module';
 import {FormsModule} from '@angular/forms';
 import {MatDialogModule, MatIconModule} from '@angular/material';
-import {DialogComponent} from './register/dialog/dialog.component';
+import {AlertComponent} from '../share/alert/alert.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    DialogComponent
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [AlertComponent],
   imports: [
     FormsModule,
     CommonModule,

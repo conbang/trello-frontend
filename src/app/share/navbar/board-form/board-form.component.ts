@@ -31,10 +31,12 @@ export class BoardFormComponent implements OnInit {
 
   createBoard() {
     this.boardService.createBoard(this.data).subscribe((board) => {
-      this.dialog.open(AlertComponent);
+      this.dialog.open(AlertComponent, {
+        data: {message: 'Create success', success: 'check_circle_outline'}
+      });
       setTimeout(() => {
         this.dialog.closeAll();
-        this.router.navigate([`/home/board/${board.id}`]);
+        this.router.navigate([`/board/${board.id}`]);
       }, 1500);
     });
   }

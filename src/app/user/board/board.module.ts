@@ -1,20 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { BoardRoutingModule } from './board-routing.module';
+import {BoardRoutingModule} from './board-routing.module';
 import {MainBoardComponent} from './main-board/main-board.component';
-import {MatButtonModule, MatDialogModule, MatIconModule, MatMenuModule, MatSelectModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule,
+  MatDialogModule,
+  MatIconModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatToolbarModule,
+  MatExpansionModule, MatGridListModule,
+  MatInputModule, MatListModule,
+} from '@angular/material';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {UserModule} from '../user.module';
 import { CardEditFormComponent } from './card-edit-form/card-edit-form.component';
 import { CardCreateFormComponent } from './card-create-form/card-create-form.component';
-import {ReactiveFormsModule} from '@angular/forms';
 import {BoardComponent} from './board.component';
+import {CardEditFormrmComponent} from './card-create-form/card-create-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {IgxAvatarModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
     MainBoardComponent,
     CardEditFormComponent,
+    CardCreateFormComponent,
     CardCreateFormComponent,
     BoardComponent
   ],
@@ -30,6 +41,12 @@ import {BoardComponent} from './board.component';
     MatSelectModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatInputModule,
+    FormsModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    IgxAvatarModule,
     MatToolbarModule
   ],
   entryComponents: [
@@ -37,7 +54,10 @@ import {BoardComponent} from './board.component';
     CardEditFormComponent,
   ],
   exports: [
+    MainBoardComponent,
+    CardEditFormComponent,
     BoardComponent
   ]
 })
-export class BoardModule { }
+export class BoardModule {
+}

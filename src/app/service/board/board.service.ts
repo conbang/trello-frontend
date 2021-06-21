@@ -3,43 +3,52 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Board} from '../../interface/board';
+import {List} from '../../interface/list';
 
-const API_BACKEND = environment.api_url;
+const API_URL = environment.api_url;
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
-  private boards: Board[] = require('data.json');
+  private board: List[];
 
-  getBoards(): Board[] {
-    return this.boards;
+  addList(list: List) {
+    this.board.push(list);
+  }
+
+  setList(lists: List[]) {
+    this.board = lists;
+  }
+
+  getLists(): List[] {
+    return this.board;
   }
 
   constructor(private httpClient: HttpClient) {
   }
 
   showAll(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(API_BACKEND + 'board');
+    return this.httpClient.get<Board[]>(API_URL + 'board');
   }
 
   getBoardById(id: number): Observable<Board> {
-    return this.httpClient.get<Board>(API_BACKEND + `board/${id}`);
+    return this.httpClient.get<Board>(API_URL + `board/${id}`);
   }
 
   createBoard(board: Board): Observable<Board> {
-    return this.httpClient.post<Board>(API_BACKEND + 'board/create', board);
+    return this.httpClient.post<Board>(API_URL + 'board/create', board);
   }
 
   getBoardPrivate(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPrivate');
+    return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardPrivate');
   }
 
   getBoardGroup(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardGroup');
+    return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardGroup');
   }
 
   getBoardPublic(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(API_BACKEND + 'board/showAllBoardPublic');
+    return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardPublic');
   }
 }

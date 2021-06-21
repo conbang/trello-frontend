@@ -1,9 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MatChipInputEvent} from '@angular/material/chips';
+import {FormBuilder} from '@angular/forms';
+import {MatDialogRef} from '@angular/material/dialog';
 import {Card} from '../../../interface/card';
-import {CardService} from '../../../service/card/card.service';
+import {MAT_DIALOG_DATA} from '@angular/material';
+import {CommentResponse} from '../../../interface/comment-response';
+import {CommentService} from '../../../service/comment/comment.service';
+import {UserService} from '../../../service/user/user.service';
+import {AuthenServiceService} from '../../../service/authentication/authen-service.service';
+import {CardCreateForm} from '../../../interface/card-create-form';
+import {List} from '../../../interface/list';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -12,43 +17,49 @@ import {CardService} from '../../../service/card/card.service';
 })
 export class CardEditFormComponent implements OnInit {
 
-  formGroup: FormGroup;
-  formComment: FormGroup;
-  comment: string;
+  comment: CommentResponse;
+  display: false;
+  card: CardCreateForm;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {card: Card},
+    @Inject(MAT_DIALOG_DATA) public data: { card: Card, list: List },
     public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CardEditFormComponent>,
-    private cardService: CardService
-  ) {}
+    private commentService: CommentService,
+    private authService: AuthenServiceService,
+  ) {
+    this.card = {
+      title: this.data.card.title,
+      content: this.data.card.content,
+      listTrelloId: data.list.id,
+    };
+    this.comment = {
+      content: '',
+      cardId: this.data.card.id
+    };
+  }
+
+  editCard() {
+
+  }
+
+  saveComment() {
+    const user = this.authService.currentUserValue;
+    this.commentService.create(this.comment).subscribe((response) => {
+      response.avatar = user.avatar;
+      response.username = user.username;
+      response.created_date = Date.now().toString();
+      this.data.card.comments.push(response);
+    }, error => {
+      console.log(error);
+    });
+  }
 
   ngOnInit() {
-    const card: Card = this.data.card;
-    this.formGroup = this.formBuilder.group({
-      title: [card.title, Validators.required],
-      content: [card.content],
-      label: [card.label],
-    });
-    this.formComment = this.formBuilder.group({
-      content: [this.comment],
-      appUser: null,
-      card: this.data.card,
-    });
   }
 
   onSubmit() {
     this.dialogRef.close();
-  }
-
-  addLabel(event: MatChipInputEvent) {
-    const tagsControl = this.formGroup.get('tags');
-    if (tagsControl.value) {
-      tagsControl.value.push({name: event.value, color: '#e0e0e0'});
-    } else {
-      tagsControl.setValue([event.value]);
-    }
-    event.input.value = '';
   }
 
 }
