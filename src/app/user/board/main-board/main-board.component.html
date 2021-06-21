@@ -1,42 +1,95 @@
-<div class="body">
-  <section>
-    <button mat-button [routerLink]="'/home'">
-      <mat-icon>home</mat-icon>
+
+<!--  <section>-->
+<!--    <button mat-button [routerLink]="'/home'">-->
+<!--      <mat-icon>home</mat-icon>-->
+<!--    </button>-->
+<!--    <span class="divider"></span>-->
+<!--    <button mat-button>trello 1</button>-->
+<!--    <span class="divider"></span>-->
+<!--    <button mat-button>group c1220g1</button>-->
+<!--    <span class="divider"></span>-->
+<!--    <button mat-button [matMenuTriggerFor]="privary">Change privacy</button>-->
+<!--    <span class="divider"></span>-->
+<!--    <button mat-button>-->
+<!--      <mat-icon>person_add</mat-icon>-->
+<!--    </button>-->
+<!--    <mat-menu #privary="matMenu">-->
+<!--      <mat-form-field appearance="legacy">-->
+<!--        <mat-label>Workspace type</mat-label>-->
+<!--        <mat-select name="type" required>-->
+<!--          <mat-option value="public">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"-->
+<!--                 viewBox="0 0 16 16">-->
+<!--              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>-->
+<!--              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>-->
+<!--            </svg>-->
+<!--            <span>Public</span>-->
+<!--          </mat-option>-->
+<!--          <mat-option value="private">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill"-->
+<!--                 viewBox="0 0 16 16">-->
+<!--              <path-->
+<!--                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>-->
+<!--            </svg>-->
+<!--            Private-->
+<!--          </mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </mat-menu>-->
+<!--  </section>-->
+  <mat-toolbar class="spacer" color="primary">
+    <button mat-button>NO EXCEPTION TRELLO</button>
+    <span class="divider"></span>
+    <button mat-button>YOUR WORKSPACE</button>
+    <span class="divider"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>security</mat-icon>
     </button>
-    <span class="divider"></span>
-    <button mat-button>trello 1</button>
-    <span class="divider"></span>
-    <button mat-button>group c1220g1</button>
-    <span class="divider"></span>
-    <button mat-button [matMenuTriggerFor]="privary">Change privacy</button>
-    <span class="divider"></span>
-    <button mat-button>
-      <mat-icon>person_add</mat-icon>
-    </button>
-    <mat-menu #privary="matMenu">
-      <mat-form-field appearance="legacy">
-        <mat-label>Workspace type</mat-label>
-        <mat-select name="type" required>
-          <mat-option value="public">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill"
-                 viewBox="0 0 16 16">
-              <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
-              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
-            </svg>
-            <span>Public</span>
-          </mat-option>
-          <mat-option value="private">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill"
-                 viewBox="0 0 16 16">
-              <path
-                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
-            </svg>
-            Private
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>public</mat-icon>
+        <span>Public</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>lock</mat-icon>
+        <span>Private</span>
+      </button>
     </mat-menu>
-  </section>
+    <span class="divider"></span>
+    <button mat-button (click)="showInviteForm()">
+      <mat-icon >person_add</mat-icon>
+    </button>
+    <span class="divider"></span>
+    <button mat-flat-button color="primary" (click)="drawer.toggle()">
+      <mat-icon>more_horiz</mat-icon>&nbsp;&nbsp;Show Menu
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-container" autosize>
+    <mat-sidenav position="end" #drawer class="example-sidenav" mode="side">
+      <button  mat-raised-button color="primary" (click)="showFiller = !showFiller"><mat-icon>search</mat-icon> Search cards</button>
+      <br>
+      <br>
+      <button mat-raised-button color="primary"><mat-icon>more_horiz</mat-icon> More</button>
+      <br>
+      <br>
+      <form class="example-form" *ngIf="showFiller">
+        <mat-form-field class="example-full-width"  color="primary">
+          <mat-label>Search cards with name</mat-label>
+          <textarea matInput placeholder="Cards name..."></textarea>
+          <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>
+          <br><br>
+          <button mat-flat-button color="primary" (click)="showBoardMembers()"><mat-icon>person</mat-icon>Search members</button>
+        </mat-form-field>
+        <!--      <mat-form-field class="example-full-width"  color="primary">-->
+        <!--        <mat-label>Search cards with members</mat-label>-->
+        <!--        <textarea matInput placeholder="Members name..."></textarea>-->
+        <!--        <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>-->
+        <!--      </mat-form-field>-->
+      </form>
+    </mat-sidenav>
+
+    <div class="body">
   <div cdkDropListGroup>
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
       <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
@@ -77,3 +130,8 @@
     </div>
   </div>
 </div>
+    <div class="example-sidenav-content">
+
+    </div>
+</mat-sidenav-container>
+

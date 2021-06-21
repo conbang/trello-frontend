@@ -10,6 +10,8 @@ import {Board} from '../../../interface/board';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ListService} from '../../../service/list/list.service';
 import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
+import {InviteFormComponent} from '../invite-form/invite-form.component';
+import {CardSearchByMemberComponent} from '../card-search-by-member/card-search-by-member.component';
 
 @Component({
   selector: 'app-main-board',
@@ -19,6 +21,7 @@ import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component'
 export class MainBoardComponent implements OnInit {
   board: Board;
   lists: List[];
+  showFiller = false;
   list: List = {
     id: 0,
     title: '',
@@ -115,5 +118,13 @@ export class MainBoardComponent implements OnInit {
       .subscribe(response => {
         Object.assign(card, response);
       });
+  }
+
+  showInviteForm(): void {
+    this.dialog.open(InviteFormComponent);
+  }
+
+  showBoardMembers(): void {
+    this.dialog.open(CardSearchByMemberComponent);
   }
 }

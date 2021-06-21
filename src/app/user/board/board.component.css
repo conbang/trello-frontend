@@ -10,6 +10,7 @@
 .example-container {
   width: 100%;
   height: 100%;
+  background-color: #bd7b09;
 }
 
 .example-sidenav-content {
@@ -18,7 +19,7 @@
 
 .example-sidenav {
   padding: 3%;
-  /*background-color: #0d47a1;*/
+  background-color: #bd7b09;
 }
 
 .example-full-width {
