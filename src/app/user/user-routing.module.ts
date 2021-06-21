@@ -12,7 +12,7 @@ const routes: Routes = [
     component: HomepageComponent,
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: UpdateComponent
   },
   {

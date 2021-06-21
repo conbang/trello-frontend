@@ -5,6 +5,7 @@ import {Register} from 'src/app/interface/register';
 import {Observable} from 'rxjs';
 import {User} from 'src/app/interface/user';
 import {CardUser} from 'src/app/interface/card-user';
+import {UserUpdate} from '../../interface/user-update';
 
 const API_USER = environment.api_url;
 
@@ -12,25 +13,28 @@ const API_USER = environment.api_url;
   providedIn: 'root'
 })
 export class UserService {
-  log: Register = {
+  userUpdateDto: UserUpdate = {
     id: 0,
-    username: '',
-    password: '',
+    userName: '',
+    passWord: '',
     email: '',
     confirmPassword: '',
-    phone: '',
+    phone: null,
     role: [],
+    avatar: '',
+    oldPassWord: '',
+    newPassWord: '',
   };
 
   constructor(private httpClient: HttpClient) {
   }
 
-  editAppUser(log: Register, id: number): Observable<any> {
-    return this.httpClient.put<Register>(API_USER + 'list/edit/' + id, log);
+  editAppUser(userUpdateDto: UserUpdate, id: number): Observable<any> {
+    return this.httpClient.put<UserUpdate>(API_USER + 'user/' + id, userUpdateDto);
   }
 
-  findUserById(id: number): Observable<Register> {
-    return this.httpClient.get<Register>(API_USER + 'list/' + id);
+  findUserById(id: number): Observable<UserUpdate> {
+    return this.httpClient.get<UserUpdate>(API_USER + 'user/' + id);
   }
 
   getListSelected(card_id: number): Observable<User[]> {

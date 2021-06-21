@@ -32,6 +32,7 @@ export class NavbarComponent implements OnInit {
   @Input() avatar = '';
   title: string;
   user: Token;
+  userId: number;
 
   constructor(private router: Router,
               private authenService: AuthenServiceService,
@@ -46,6 +47,7 @@ export class NavbarComponent implements OnInit {
     const user = this.authenService.currentUserValue;
     this.avatar = user.avatar;
     this.username = user.username;
+    this.userId = user.id;
   }
 
   logout() {
