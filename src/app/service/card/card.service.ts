@@ -31,4 +31,8 @@ export class CardService {
   findCardById(id: number): Observable<Card> {
     return this.httpClient.get<Card>(URL_API + 'card' + id);
   }
+
+  changePosition(cards: Card[]): Observable<any> {
+    return this.httpClient.put<any>(URL_API + `cards/changePosition`, cards);
+  }
 }

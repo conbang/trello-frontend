@@ -10,4 +10,5 @@ export interface Card {
   label?: Label[];
   comments?: CommentResponse[];
   users?: UserResponse[];
+  listTrelloId?: number;
 }

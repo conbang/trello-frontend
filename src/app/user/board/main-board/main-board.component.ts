@@ -10,6 +10,8 @@ import {Board} from '../../../interface/board';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ListService} from '../../../service/list/list.service';
 import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
+import {CardService} from '../../../service/card/card.service';
+import {error} from 'util';
 
 @Component({
   selector: 'app-main-board',
@@ -28,6 +30,7 @@ export class MainBoardComponent implements OnInit {
   constructor(private boardService: BoardService,
               private dialog: MatDialog, private route: ActivatedRoute,
               private listService: ListService,
+              private cardService: CardService,
   ) {
     this.route.paramMap
       .subscribe(async (params: ParamMap) => {
@@ -46,7 +49,18 @@ export class MainBoardComponent implements OnInit {
 
   cardDrop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      const previous = event.container.data[event.previousIndex];
+      previous.position = event.previousIndex;
+      const current = event.container.data[event.currentIndex];
+      current.position = event.currentIndex;
+      const cards = [];
+      cards.push(previous);
+      cards.push(current);
+      this.cardService.changePosition(cards).subscribe(() => {
+        moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      }, error => {
+        console.log(error);
+      });
     } else {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
