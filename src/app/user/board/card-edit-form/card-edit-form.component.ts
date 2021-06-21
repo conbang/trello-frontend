@@ -5,7 +5,6 @@ import {Card} from '../../../interface/card';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {CommentResponse} from '../../../interface/comment-response';
 import {CommentService} from '../../../service/comment/comment.service';
-import {UserService} from '../../../service/user/user.service';
 import {AuthenServiceService} from '../../../service/authentication/authen-service.service';
 import {CardCreateForm} from '../../../interface/card-create-form';
 import {List} from '../../../interface/list';

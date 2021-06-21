@@ -22,7 +22,7 @@
       <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
     </div>
     <mat-list>
-      <mat-list-item *ngFor="let comment of card.comments">
+      <mat-list-item *ngFor="let comment of data.card.comments">
 
         <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
         {{comment.username}}<span>{{comment.created_date | date:"fullDate"}}</span>
