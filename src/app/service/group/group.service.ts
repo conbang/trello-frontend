@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Group} from '../../interface/group';
 import {GroupForm} from '../../interface/groupForm';
-import {Board} from '../../interface/schema.model';
 
 const API_BACKEND = environment.api_url;
 

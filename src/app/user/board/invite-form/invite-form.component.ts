@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {User} from '../../../interface/user';
 import {UserService} from '../../../service/user/user.service';
 
@@ -8,7 +8,11 @@ import {UserService} from '../../../service/user/user.service';
   styleUrls: ['./invite-form.component.css']
 })
 export class InviteFormComponent implements OnInit {
+
+  @Output()
+  boardId: any = 0;
   users: User[] = [];
+
   constructor(private userService: UserService) {
     this.loadUsers();
 }
@@ -21,5 +25,10 @@ export class InviteFormComponent implements OnInit {
       this.users = users;
     });
     // console.log('loadUser');
+  }
+
+  tagUsers(){
+
+
   }
 }

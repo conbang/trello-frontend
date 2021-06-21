@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
 import {MatDialog} from '@angular/material/dialog';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {BoardService} from '../../../service/board/board.service';
@@ -45,11 +44,5 @@ export class MainBoardComponent implements OnInit {
   create(list: List) {
     this.dialog.open(CardCreateFormComponent);
   }
-
-  // editCard(card: Card, list: List) {
-  //   this.dialog.open(EditCardComponent, {data: {card, edit}, width: '500px'})
-  //     .afterClosed()
-  //     .subscribe(newTalkData => edit ? Object.assign(card, newTalkData) : list.cards.unshift(newTalkData));
-  // }
 
 }
