@@ -37,24 +37,22 @@
       </mat-form-field>
     </mat-menu>
   </section>
-  <div cdkDropListGroup>
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
-      <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
-        <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle>
-          <span contenteditable="true" [textContent]="list.title"></span>
-          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" [matMenuTriggerFor]="title"><mat-icon>edit</mat-icon></span>
-          <mat-menu #title="matMenu">
-            <input matInput [(ngModel)]="list.title" placeholder="Edit title" mat-menu-item>
-            <button mat-button mat-menu-iten color="primary">Save</button>
-          </mat-menu>
+      <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let column of lists; let trackIndex = index " >
+        <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle >
+          <span contenteditable="true" [textContent]="column.title"></span>
+          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" ><mat-icon>edit</mat-icon></span>
+<!--          <mat-menu #title="matMenu">-->
+<!--            <input matInput [(ngModel)]="column.title" placeholder="Edit title" mat-menu-item>-->
+<!--            <button mat-button mat-menu-iten color="primary">Save</button>-->
+<!--          </mat-menu>-->
         </div>
-        <div class="card-list-content" cdkDropList
-             [cdkDropListData]="list?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
-          <app-card *ngFor="let card of list.cardDtoList" cdkDrag (edit)="edit(card, list)"
-                    [title]="card.title"></app-card>
+        <div class="card-list-content" cdkDropList id="{{column.id}}" [cdkDropListConnectedTo]="listIds()"
+             [cdkDropListData]="column?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
+          <app-card *ngFor="let card of column.cardDtoList" cdkDrag (edit)="edit(card, column)" [title]="card.title"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
-          <button style="width: fit-content;" class="add-talk" (click)="createCard(list)" color="primary"
+          <button style="width: fit-content;" class="add-talk" (click)="createCard(column)" color="primary"
                   mat-raised-button> Add card
           </button>
         </div>
@@ -75,5 +73,4 @@
         </mat-expansion-panel>
       </div>
     </div>
-  </div>
 </div>

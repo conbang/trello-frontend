@@ -12,6 +12,7 @@ import {ListService} from '../../../service/list/list.service';
 import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
 import {CardService} from '../../../service/card/card.service';
 import {error} from 'util';
+import {element} from 'protractor';
 
 @Component({
   selector: 'app-main-board',
@@ -38,8 +39,6 @@ export class MainBoardComponent implements OnInit {
           const id = parseInt(params.get('id'));
           this.getBoardById(id);
           this.getListByBoard(id);
-
-
         }
       );
   }
@@ -49,10 +48,16 @@ export class MainBoardComponent implements OnInit {
 
   cardDrop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {
+      const container = event.container.element.nativeElement;
+      const containerIndex = container.getAttribute('id');
       const previous = event.container.data[event.previousIndex];
       previous.position = event.previousIndex;
+      previous.listTrelloId = parseInt(containerIndex);
+      previous.cardId = previous.id;
       const current = event.container.data[event.currentIndex];
       current.position = event.currentIndex;
+      current.listTrelloId = parseInt(containerIndex);
+      current.cardId = current.id;
       const cards = [];
       cards.push(previous);
       cards.push(current);
@@ -62,11 +67,34 @@ export class MainBoardComponent implements OnInit {
         console.log(error);
       });
     } else {
+      const container = event.container.element.nativeElement;
+      const currentIndex = container.getAttribute('id');
+      const previousContainer = event.previousContainer.element.nativeElement;
+      const previousIndex = previousContainer.getAttribute('id');
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex);
+      const current = event.container.data;
+      this.updateContainer(current, currentIndex);
+      const previous = event.previousContainer.data;
+      const sizePreviousContiner = previous.length;
+      if (sizePreviousContiner !== 0) {
+        this.updateContainer(previous, previousIndex);
+      }
     }
+  }
+
+  updateContainer(container: Card[], index) {
+    const sizeContainer = container.length;
+      for (let i = 0; i < sizeContainer; i++) {
+        container[i].position = i;
+        container[i].cardId = container[i].id;
+        container[i].listTrelloId = parseInt(index);
+      }
+      this.cardService.changePosition(container).subscribe(() => {
+        console.log('ok');
+      });
   }
 
   columnDrop(event: CdkDragDrop<Card[]>) {
@@ -83,6 +111,11 @@ export class MainBoardComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  listIds() {
+    let map = this.lists.map(list => list.id.toString());
+    return map;
   }
 
   createCard(list: List) {
