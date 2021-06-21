@@ -1,0 +1,7 @@
+<h5>Members</h5>
+<mat-selection-list class="dialog">
+  <mat-list-option *ngFor="let user of users">
+    <mat-icon color="primary">account_circle</mat-icon>{{user.userName}}
+  </mat-list-option>
+</mat-selection-list><br>
+<button mat-flat-button><mat-icon color="primary">done</mat-icon></button>

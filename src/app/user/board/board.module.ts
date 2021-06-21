@@ -20,7 +20,7 @@ import { CardCreateFormComponent } from './card-create-form/card-create-form.com
 import {BoardComponent} from './board.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {IgxAvatarModule} from 'igniteui-angular';
-// import { ToolsComponent } from './tools/tools.component';
+import { CardSearchByMemberComponent } from './card-search-by-member/card-search-by-member.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import {IgxAvatarModule} from 'igniteui-angular';
     CardCreateFormComponent,
     CardCreateFormComponent,
     BoardComponent,
-    // ToolsComponent
+    CardSearchByMemberComponent,
   ],
   imports: [
     CommonModule,
@@ -57,7 +57,7 @@ import {IgxAvatarModule} from 'igniteui-angular';
   entryComponents: [
     CardCreateFormComponent,
     CardEditFormComponent,
-    // ToolsComponent
+    CardSearchByMemberComponent
   ],
   exports: [
     MainBoardComponent,

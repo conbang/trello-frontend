@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material';
-import {InviteFormComponent} from '../board/invite-form/invite-form.component';
-import {ToolsComponent} from './tools/tools.component';
+import {InviteFormComponent} from './invite-form/invite-form.component';
+import {CardSearchByMemberComponent} from './card-search-by-member/card-search-by-member.component';
 
 @Component({
   selector: 'app-board',
@@ -22,7 +22,7 @@ export class BoardComponent implements OnInit {
     this.dialog.open(InviteFormComponent);
   }
 
-  showTools(): void {
-    this.dialog.open(ToolsComponent);
+  showBoardMembers(): void {
+    this.dialog.open(CardSearchByMemberComponent);
   }
 }

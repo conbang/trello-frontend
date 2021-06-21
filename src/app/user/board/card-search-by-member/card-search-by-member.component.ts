@@ -1,13 +1,13 @@
-import {Component, Input, OnInit, Output} from '@angular/core';
-import {User} from '../../../interface/user';
+import {Component, OnInit, Output} from '@angular/core';
 import {UserService} from '../../../service/user/user.service';
+import {User} from '../../../interface/user';
 
 @Component({
-  selector: 'app-invite-form',
-  templateUrl: './invite-form.component.html',
-  styleUrls: ['./invite-form.component.css']
+  selector: 'app-card-search-by-member',
+  templateUrl: './card-search-by-member.component.html',
+  styleUrls: ['./card-search-by-member.component.css']
 })
-export class InviteFormComponent implements OnInit {
+export class CardSearchByMemberComponent implements OnInit {
 
   @Output()
   boardId: any = 0;
@@ -15,7 +15,7 @@ export class InviteFormComponent implements OnInit {
 
   constructor(private userService: UserService) {
     this.loadUsers();
-}
+  }
 
   ngOnInit() {
   }
@@ -24,6 +24,4 @@ export class InviteFormComponent implements OnInit {
     this.userService.getAllUser().subscribe(users => {
       this.users = users;
     });
-  }
-
-}
+}}

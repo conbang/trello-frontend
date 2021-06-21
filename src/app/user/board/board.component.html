@@ -36,12 +36,19 @@
     <button mat-raised-button color="primary"><mat-icon>more_horiz</mat-icon> More</button>
     <br>
     <br>
-    <form class="example-form">
-    <mat-form-field class="example-full-width" *ngIf="showFiller" color="primary">
+    <form class="example-form" *ngIf="showFiller">
+    <mat-form-field class="example-full-width"  color="primary">
       <mat-label>Search cards with name</mat-label>
       <textarea matInput placeholder="Cards name..."></textarea>
       <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>
+      <br><br>
+      <button mat-flat-button color="primary" (click)="showBoardMembers()"><mat-icon>person</mat-icon>Search members</button>
     </mat-form-field>
+<!--      <mat-form-field class="example-full-width"  color="primary">-->
+<!--        <mat-label>Search cards with members</mat-label>-->
+<!--        <textarea matInput placeholder="Members name..."></textarea>-->
+<!--        <button mat-flat-button color="primary"><mat-icon>search</mat-icon></button>-->
+<!--      </mat-form-field>-->
     </form>
   </mat-sidenav>
   <div class="example-sidenav-content">
