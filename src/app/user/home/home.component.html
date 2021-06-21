@@ -6,8 +6,8 @@
     Trello
   </a>
   <form class="form-inline my-2 my-lg-0">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit" ><a [routerLink]="'/register'" style="text-decoration: none">Sign up</a></button>
-    <button class="btn btn-primary my-2 my-sm-0" type="submit"><a [routerLink]="'/login'" style="color: whitesmoke; text-decoration: none">Log in</a></button>
+    <button mat-stroked-button color="primary" type="submit" ><a [routerLink]="'/register'" >Sign up</a></button>
+    <button mat-raised-button color="primary" type="submit"><a [routerLink]="'/login'" style="color: whitesmoke; text-decoration: none">Log in</a></button>
   </form>
 </nav>
 
@@ -15,12 +15,11 @@
   <br>
   <div class="col-12">
     <div class="text-center">
-      <h1 class="display-4">Trello xin chào!</h1>
-      <p class="lead">Trello giúp các nhóm phát triển công việc về phía trước.</p>
+      <h3 class="lead">Trello helps teams move work forward.</h3>
       <hr class="my-4">
-      <p>Cộng tác, quản lý dự án và đạt đến đỉnh cao năng suất mới. Từ các tòa nhà cao tầng đến văn phòng tại nhà,
-        cách nhóm của bạn làm việc là duy nhất—hoàn thành tất cả với Trello..</p>
-      <a class="btn btn-primary btn-lg" href="#" role="button">Tìm hiểu thêm</a>
+      <p>Collaborate, manage projects, and reach new productivity peaks.
+        From high rises to the home office, the way your team works is unique—accomplish it all with Trello.</p>
+      <button mat-raised-button color="primary" href="#" role="button">More details</button>
 
     </div>
   </div>
@@ -31,15 +30,16 @@
   <img src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2Fslide2.png?alt=media&token=e85ff44c-7452-4937-82de-b66a4c730655" class="card-img-top" alt="...">
   <br>
   <div class="text-center">
-    <h5 class="card-title">Đó không chỉ là công việc. Đó là cách làm việc cùng nhau.</h5>
-    <p class="card-text">Bắt đầu với bảng Trello, danh sách và thẻ. Tùy chỉnh và mở rộng với nhiều tính năng hơn khi tinh thần làm việc nhóm của bạn phát triển. Quản lý các dự án, sắp xếp nhiệm vụ và xây dựng tinh thần làm việc nhóm—tất cả ở cùng một nơi.</p>
-    <a href="#" class="btn btn-outline-primary">Bắt đầu làm việc</a>
+    <h3 class="card-title">It’s more than work. It’s a way of working together.</h3>
+    <p class="card-text">Start with a Trello board, lists, and cards. Customize and expand with more features as your teamwork grows.
+      Manage projects, organize tasks, and build team spirit—all in one place.</p>
+    <button href="#" mat-stroked-button color="primary">Start doing</button>
   </div>
   <br>
   <div class="jumbotron jumbotron-fluid">
     <div class="text-center">
-      <h1 class="display-4">Teamwork</h1>
-      <p class="lead">Tham gia cùng hơn 1.000.000 nhóm trên toàn thế giới đang sử dụng Trello để hoàn thành nhiều việc hơn.</p>
+      <h3 class="display-4">Teamwork</h3>
+      <p class="lead">Join over 1,000,000 teams worldwide that are using Trello to get more done.</p>
       <p>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2FCostco-logo.png?alt=media&token=a42eddd8-6009-4361-87d8-c903550b1439"
@@ -61,9 +61,9 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="text-center">
-        <h5 class="card-title">Xem báo giá của chúng tôi</h5>
-        <p class="card-text">Cho dù bạn là một nhóm gồm 2 hay 2.000 người, luôn có Trello được thiết kế riêng phù hợp cho tổ chức của bạn.</p>
-        <a href="#" class="btn btn-primary">Báo giá Trello</a>
+        <h5 class="card-title">See our pricing</h5>
+        <p class="card-text">Whether you’re a team of 2 or 2,000, there’s a Trello tailor-made for your organization.</p>
+        <button href="#" mat-raised-button color="primary">Trello pricing</button>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2Ftags.jpg?alt=media&token=49f2b06f-a64a-4bd0-8743-3a434476128b"
           width="200" height="200" alt="">
@@ -73,9 +73,9 @@
   <div class="col-sm-6">
     <div class="card">
       <div class="text-center">
-        <h5 class="card-title">Tham quan Trello</h5>
-        <p class="card-text">Khám phá thế giới các bảng và hơn thế nữa trong Trello. Tìm hiểu sâu hơn về các tính năng phổ biến nhất của chúng tôi.</p>
-        <a href="#" class="btn btn-primary">Vòng quanh Trello</a>
+        <h5 class="card-title">Take a Trello tour</h5>
+        <p class="card-text">Explore the world of boards and beyond in Trello. Dive deeper into our most popular features.</p>
+        <button href="#" mat-raised-button color="primary">Tour Trello</button>
         <img
           src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2Fcompass.jpg?alt=media&token=35dccbe1-6647-4d07-8872-d3b8ec5edfa8"
           width="200" height="200" alt="">
@@ -93,7 +93,7 @@
 
   <div class="card text-center">
     <div class="card-header">
-      Trello cũng hoạt động tốt trên màn hình nhỏ hơn của bạn.
+      Trello also works great on your smaller screen.
       <img
         src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2FApp-Store-Logo.png?alt=media&token=97c2b70a-3c65-405f-a1ee-41c637a9ca08"
         width="100" height="40" alt="">
@@ -106,11 +106,11 @@
         src="https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/RoomsImages%2Ftrello-logo3.png?alt=media&token=78c8b8cb-d631-428e-a99a-6a18b2586499"
         width="40" height="40" alt="">
         Trello</h5>
-      <p class="card-text">Đăng ký và bắt đầu với Trello ngay hôm nay. Một thế giới làm việc nhóm hiệu quả đang chờ đợi!</p>
-      <a href="#" class="btn btn-primary">Sign up</a>
+      <p class="card-text">Sign up and get started with Trello today. A world of productive teamwork awaits!</p>
+      <button href="#" mat-raised-button color="primary">Sign up</button>
     </div>
     <div class="card-footer text-muted">
-      © Bản quyền 2021. Bảo lưu toàn quyền.
+      © Copyright 2021. All rights reserved.
     </div>
   </div>
 </div>

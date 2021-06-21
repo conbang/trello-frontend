@@ -31,6 +31,8 @@ import {CardDetailComponent} from './board/card-detail/card-detail.component';
 import {CommentComponent} from './board/comment/comment.component';
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MemberDialogComponent} from './member/member-dialog/member-dialog.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     AddMemberForCardComponent,
     CommentComponent,
     CreateLabelComponent,
+    MemberDialogComponent
   ],
   exports: [
     UpdateComponent,
@@ -88,6 +91,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     MatInputModule,
     MatTableModule,
     MatGridListModule,
-  ]
+    MDBBootstrapModule,
+  ],
+  entryComponents: [MemberDialogComponent]
 })
 export class UserModule { }

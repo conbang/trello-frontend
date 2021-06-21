@@ -6,7 +6,7 @@
         <mat-label>Title</mat-label>
         <input matInput type="text"  name="title" #title="ngModel" [(ngModel)]="data.name" required maxlength="60">
         <mat-error *ngIf="title.invalid && title.touched">
-          <span *ngIf="title?.errors.required">this field is required</span>
+          <span *ngIf="title?.errors.required">This field is required</span>
         </mat-error>
       </mat-form-field>
     </div>
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="createGroup()">create</button>
+    <button mat-raised-button color="primary" (click)="createGroup()">Create</button>
   </div>
 </div>

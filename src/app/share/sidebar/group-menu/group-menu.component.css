@@ -1,0 +1,21 @@
+.material-icons.board{
+  color: dimgray; font-size: 15px
+}
+.material-icons.member{
+  color: dimgray; font-size: 15px
+}
+.material-icons.setting{
+  color: dimgray; font-size: 15px
+}
+div{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.board.name{
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.avatar-sample.initials .igx-avatar{
+  background: cornflowerblue;
+
+}

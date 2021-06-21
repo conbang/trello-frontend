@@ -13,6 +13,8 @@ import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {BoardModule} from './user/board/board.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {MDBBootstrapModule} from 'angular-bootstrap-md';
+import {MatBottomSheetContainer} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
         ShareModule,
         UserModule,
         BoardModule,
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      MDBBootstrapModule.forRoot()
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
@@ -36,7 +39,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-
+    MatBottomSheetContainer
   ]
 })
 export class AppModule {

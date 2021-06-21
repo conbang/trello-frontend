@@ -11,6 +11,7 @@ import {BoardModule} from './user/board/board.module';
 import {MemberComponent} from './user/member/member.component';
 import {CardDetailComponent} from './user/board/card-detail/card-detail.component';
 import {CardEditFormComponent} from './user/board/card-edit-form/card-edit-form.component';
+import {SettingComponent} from './share/sidebar/setting/setting.component';
 
 const routes: Routes = [
   {
@@ -40,13 +41,13 @@ const routes: Routes = [
     loadChildren: () => BoardModule
   },
   {
-    path: 'card-detail',
-    component: CardDetailComponent
+    path: 'setting',
+    component: SettingComponent
   },
   {
-    path: 'card-edit-form',
-    component: CardEditFormComponent
-  }
+    path: 'member',
+    component: MemberComponent
+  },
 ];
 
 @NgModule({

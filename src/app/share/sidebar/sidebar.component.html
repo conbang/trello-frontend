@@ -1,19 +1,26 @@
 <div class="sidebar" xmlns="http://www.w3.org/1999/html">
-  <button mat-flat-button><mat-icon color="primary">table_chart</mat-icon>Table</button>
-  <div style="margin-left: 50px">
-    <span [routerLink]="'/boards/private'">Private</span>
+  <div class="board">
+    BOARDS
   </div>
-  <div style="margin-left: 50px">
-    <span [routerLink]="'/boards/groups'">Group</span>
+  <div style="margin-left: 35px">
+    <span class="material-icons private" [routerLink]="'/boards/private'">vpn_key</span>   Private
   </div>
-  <div style="margin-left: 50px">
-    <span [routerLink]="'/boards/public'">Public</span>
+  <div style="margin-left: 35px">
+    <span class="material-icons group" [routerLink]="'/boards/groups'">groups</span>   Group
   </div>
-  <button mat-flat-button><mat-icon color="primary" [routerLink]="'/home'">home</mat-icon>Homepage</button>
+  <div style="margin-left: 35px">
+    <span class="material-icons public" [routerLink]="'/boards/public'">public</span>   Public
+  </div>
   <div class="workspace">
-  <span>Workspaces </span><mat-icon (click)="openDialog()">add</mat-icon>
+ WORKSPACES
+    <mat-icon (click)="openDialog()">add</mat-icon>
   </div>
   <mat-accordion>
-    <app-group-menu *ngFor="let group of groups" [group]="group?.groupTrello"></app-group-menu>
+
+      <app-group-menu *ngFor="let group of groups" [group]="group?.groupTrello">
+
+      </app-group-menu>
+      <span class="material-icons-outlined"></span>
+
   </mat-accordion>
 </div>
