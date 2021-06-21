@@ -6,7 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import {SidebarComponent } from './sidebar/sidebar.component';
 import {FormModule} from '../form/form.module';
 import {
-  MatBottomSheet, MatBottomSheetContainer, MatBottomSheetRef,
+  MatBottomSheet, MatBottomSheetRef,
   MatButtonModule, MatCardModule,
   MatDialogModule, MatExpansionModule,
   MatIconModule, MatInputModule,
@@ -23,6 +23,7 @@ import {IgxAvatarModule} from 'igniteui-angular';
 import { SettingComponent } from './sidebar/setting/setting.component';
 import { SettingDialogComponent } from './sidebar/setting-dialog/setting-dialog.component';
 import { SearchComponent } from './navbar/search/search.component';
+import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
 
 @NgModule({
   providers: [MatBottomSheet, ],

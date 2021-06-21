@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+// import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {SettingDialogComponent} from '../setting-dialog/setting-dialog.component';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'app-setting',

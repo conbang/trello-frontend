@@ -11,6 +11,7 @@ const URL_API = environment;
   providedIn: 'root'
 })
 export class CardService {
+  private search: string;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -27,5 +28,9 @@ export class CardService {
   }
   findCardById(id: number): Observable<Card> {
     return this.httpClient.get<Card>(URL_API + 'card' + id);
+  }
+
+  showAllCard(): Observable <any> {
+    return this.httpClient.get(URL_API + this.search);
   }
 }

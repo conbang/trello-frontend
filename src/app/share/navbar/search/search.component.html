@@ -1,1 +1,26 @@
-<p>search works!</p>
+
+  <input type="text" name="input" [(ngModel)]="input"
+         placeholder="Enter content or title"
+         (ngModelChange)="searchCardByContentOrTitle()" aria-label="Search">
+
+<button mat-stroked-button aria-label="Example icon button with a menu icon" type="submit"
+        (click)="openModalWithClass(template)">Search</button>
+<ng-template #template>
+  <form (ngSubmit)="searchCardByContentOrTitle()">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Content</th>
+        <th scope="col">Title</th>
+        <th scope="col">Board</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let card of list, index as i">
+      <td>{{i + 1}}</td>
+      <td>{{card.content}}</td>
+      <td>{{card.title}}</td>
+      </tbody>
+    </table>
+  </form>
+</ng-template>
