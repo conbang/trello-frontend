@@ -57,7 +57,8 @@ import { CardSearchByMemberComponent } from './card-search-by-member/card-search
   entryComponents: [
     CardCreateFormComponent,
     CardEditFormComponent,
-    CardSearchByMemberComponent
+    CardSearchByMemberComponent,
+    BoardComponent
   ],
   exports: [
     MainBoardComponent,
