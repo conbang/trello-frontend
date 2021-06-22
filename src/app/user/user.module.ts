@@ -28,6 +28,10 @@ import { ListBoardGroupComponent } from './list-board/list-board-group/list-boar
 import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MainBoardComponent} from './board/main-board/main-board.component';
+import {CardEditFormComponent} from './board/card-edit-form/card-edit-form.component';
+import {MemberDialogComponent} from './member/member-dialog/member-dialog.component';
+import {CardCreateFormComponent} from './board/card-create-form/card-create-form.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +72,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     DragDropModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
@@ -81,6 +86,9 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
     MatInputModule,
     MatTableModule,
     MatGridListModule,
-  ]
+  ],
+  // entryComponents: [
+  //  MemberDialogComponent,
+  // ],
 })
 export class UserModule { }
