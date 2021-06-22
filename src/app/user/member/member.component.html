@@ -79,7 +79,7 @@
       <mat-form-field appearance="fill">
 <!--        <mat-label>Choose role</mat-label>-->
         <mat-label>{{element.roleUser}}</mat-label>
-        <mat-select>
+        <mat-select [disabled]="(!isAdmin) || (element.user.id == userCurrentId)">
           <mat-option value="1" (click)="setRoleUser(element.user.id, 'ROLE_ADMIN')">ROLE_ADMIN</mat-option>
           <mat-option value="2" (click)="setRoleUser(element.user.id, 'ROLE_VIEW')">ROLE_VIEW</mat-option>
           <mat-option value="3" (click)="setRoleUser(element.user.id, 'ROLE_EDIT')">ROLE_EDIT</mat-option>
@@ -93,7 +93,7 @@
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let element">
       <button mat-mini-fab color="primary" aria-label="Example icon button with a delete icon"
-              (click)="deleteUser(element.user.id)">
+              (click)="deleteUser(element.user.id)" [disabled]="(!isAdmin) || (element.user.id == userCurrentId)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

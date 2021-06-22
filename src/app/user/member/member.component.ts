@@ -5,6 +5,8 @@ import {GroupService} from '../../service/group/group.service';
 import {GroupTagUser} from '../../interface/group-tag-user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoleUserGroup} from '../../interface/RoleUserGroup';
+import {AlertComponent} from '../../share/alert/alert.component';
+import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 
 export interface PeriodicElement {
   name: string;
@@ -34,13 +36,16 @@ export class MemberComponent {
     userId: null,
     roleUser: '',
   };
+  isAdmin = false;
+  userCurrentId = 0;
 
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;
   constructor(public dialog: MatDialog,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private groupService: GroupService) {}
+              private groupService: GroupService,
+              private authenService: AuthenServiceService) {}
 
   member: string;
   name: string;
@@ -59,6 +64,14 @@ export class MemberComponent {
   getAllUserGroup(id: number) {
     this.groupService.getAllUserByGroupId(id).subscribe(groupTagUser => {
       this.groupTagUser = groupTagUser;
+      for (let i=0; i<groupTagUser.length; i++) {
+        if (groupTagUser[i].user.id == this.authenService.currentUserValue.id) {
+          this.userCurrentId = this.authenService.currentUserValue.id;
+          if (groupTagUser[i].roleUser == 'ROLE_ADMIN') {
+            this.isAdmin = true;
+          }
+        }
+      }
     });
   }
 
@@ -74,15 +87,40 @@ export class MemberComponent {
     this.roleUserGroup.groupId = this.id;
     this.roleUserGroup.userId = userId;
     this.roleUserGroup.roleUser = roleUser;
-    this.groupService.setRoleUser(this.roleUserGroup).subscribe();
+    this.groupService.setRoleUser(this.roleUserGroup).subscribe(() => {
+      this.dialog.open(AlertComponent, {
+        width: '420px',
+        height: '210px',
+        data: {message: 'Update success!', success: 'check_circle_outline'}
+      });
+      setTimeout(() => {
+        this.dialog.closeAll();
+        // this.router.navigate(['/home']);
+      }, 1000);
+    }, error => {
+      console.log(error.error);
+    });
   }
 
   deleteUser(userId: number) {
     this.groupService.deleteUser(this.id, userId).subscribe(() => {
-      // this.router.navigateByUrl('/home/groups/'+6+'/members');
-      this.router.navigateByUrl('/home');
+      this.dialog.open(AlertComponent, {
+        width: '420px',
+        height: '210px',
+        data: {message: 'Delete success!', success: 'check_circle_outline'}
+      });
+      setTimeout(() => {
+        this.dialog.closeAll();
+        this.router.navigate(['/home']);
+      }, 2000);
     }, error => {
       console.log(error.error);
     });
+    // (() => {
+    //   // this.router.navigateByUrl('/home/groups/'+6+'/members');
+    //   this.router.navigateByUrl('/home');
+    // }, error => {
+    //   console.log(error.error);
+    // });
   }
 }
