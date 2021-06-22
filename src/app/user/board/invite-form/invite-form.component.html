@@ -1,0 +1,7 @@
+<h5>Invite Users to Board</h5>
+<mat-selection-list [(ngModel)]="listId">
+  <mat-list-option *ngFor="let user of users" value="{{user.id}}">
+    <mat-icon color="primary">account_circle</mat-icon>{{user.username}}
+  </mat-list-option>
+</mat-selection-list>
+<button mat-raised-button (click)="tagUser()"><mat-icon color="primary">save</mat-icon></button>

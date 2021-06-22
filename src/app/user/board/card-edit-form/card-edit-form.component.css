@@ -1,11 +1,16 @@
 .mat-dialog-content{
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row ;
 }
 .content {
   width: 70%;
 }
 
+.avatar{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
 .mat-icon{
   cursor: pointer;
 }

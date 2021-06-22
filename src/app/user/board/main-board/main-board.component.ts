@@ -13,6 +13,7 @@ import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component'
 import {CardService} from '../../../service/card/card.service';
 import {UserService} from '../../../service/user/user.service';
 import {User} from '../../../interface/user';
+import {InviteFormComponent} from '../invite-form/invite-form.component';
 
 @Component({
   selector: 'app-main-board',
@@ -44,10 +45,19 @@ export class MainBoardComponent implements OnInit {
           this.getTagUsersByBoardId(id);
         }
       );
+    console.table(this.tagUsers);
   }
 
   ngOnInit() {
   }
+
+  showInviteForm(): void {
+    this.dialog.open(InviteFormComponent, {
+      data: {user: this.tagUsers, boardId: this.board.id}
+    });
+  }
+
+
 
   cardDrop(event: CdkDragDrop<Card[]>) {
     if (event.previousContainer === event.container) {

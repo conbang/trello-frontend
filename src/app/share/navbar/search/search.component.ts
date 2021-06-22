@@ -17,10 +17,10 @@ export class SearchComponent implements OnInit {
               private cardService: CardService) { }
 
   ngOnInit(): void {
-    this.cardService.showAllCard().subscribe(result => {
-      this.list = result;
-      console.log(this.list);
-    });
+    // this.cardService.showAllCard().subscribe(result => {
+    //   this.list = result;
+    //   console.log(this.list);
+    // });
   }
 
   searchCardByContentOrTitle() {
