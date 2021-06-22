@@ -1,13 +1,15 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormControl} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 import {Card} from '../../../interface/card';
 import {MAT_DIALOG_DATA} from '@angular/material';
 import {CommentResponse} from '../../../interface/comment-response';
 import {CommentService} from '../../../service/comment/comment.service';
 import {AuthenServiceService} from '../../../service/authentication/authen-service.service';
-import {CardCreateForm} from '../../../interface/card-create-form';
 import {List} from '../../../interface/list';
+import {CardService} from '../../../service/card/card.service';
+import {User} from '../../../interface/user';
+import {UserService} from '../../../service/user/user.service';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -18,28 +20,41 @@ export class CardEditFormComponent implements OnInit {
 
   comment: CommentResponse;
   display: false;
-  card: CardCreateForm;
+  card: Card;
+  cardTagUsers = new FormControl();
+  user: User;
+  boardUsers: User[];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { card: Card, list: List },
+    @Inject(MAT_DIALOG_DATA) public data: { card: Card, list: List, },
     public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CardEditFormComponent>,
     private commentService: CommentService,
     private authService: AuthenServiceService,
+    private cardService: CardService,
+    private userService: UserService
   ) {
     this.card = {
-      title: this.data.card.title,
+      cardId: this.data.card.id,
       content: this.data.card.content,
-      listTrelloId: data.list.id,
     };
     this.comment = {
       content: '',
-      cardId: this.data.card.id
+      cardId: this.data.card.id,
     };
+    this.boardUsers = this.userService.getTagUsers();
+  }
+
+  ngOnInit() {
   }
 
   editCard() {
-
+    if (this.card.content.trim()) {
+      this.cardService.edit(this.card).subscribe(() => {
+        this.data.card.content = this.card.content;
+        this.card.content = '';
+      });
+    }
   }
 
   saveComment() {
@@ -52,9 +67,6 @@ export class CardEditFormComponent implements OnInit {
     }, error => {
       console.log(error);
     });
-  }
-
-  ngOnInit() {
   }
 
   onSubmit() {

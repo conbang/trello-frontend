@@ -11,8 +11,8 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 import {ListService} from '../../../service/list/list.service';
 import {CardEditFormComponent} from '../card-edit-form/card-edit-form.component';
 import {CardService} from '../../../service/card/card.service';
-import {error} from 'util';
-import {element} from 'protractor';
+import {UserService} from '../../../service/user/user.service';
+import {User} from '../../../interface/user';
 
 @Component({
   selector: 'app-main-board',
@@ -27,11 +27,13 @@ export class MainBoardComponent implements OnInit {
     title: '',
     board: null,
   };
+  tagUsers: User[];
 
   constructor(private boardService: BoardService,
               private dialog: MatDialog, private route: ActivatedRoute,
               private listService: ListService,
               private cardService: CardService,
+              private userService: UserService
   ) {
     this.route.paramMap
       .subscribe(async (params: ParamMap) => {
@@ -39,6 +41,7 @@ export class MainBoardComponent implements OnInit {
           const id = parseInt(params.get('id'));
           this.getBoardById(id);
           this.getListByBoard(id);
+          this.getTagUsersByBoardId(id);
         }
       );
   }
@@ -87,14 +90,14 @@ export class MainBoardComponent implements OnInit {
 
   updateContainer(container: Card[], index) {
     const sizeContainer = container.length;
-      for (let i = 0; i < sizeContainer; i++) {
-        container[i].position = i;
-        container[i].cardId = container[i].id;
-        container[i].listTrelloId = parseInt(index);
-      }
-      this.cardService.changePosition(container).subscribe(() => {
-        console.log('ok');
-      });
+    for (let i = 0; i < sizeContainer; i++) {
+      container[i].position = i;
+      container[i].cardId = container[i].id;
+      container[i].listTrelloId = parseInt(index);
+    }
+    this.cardService.changePosition(container).subscribe(() => {
+      console.log('ok');
+    });
   }
 
   columnDrop(event: CdkDragDrop<Card[]>) {
@@ -114,7 +117,7 @@ export class MainBoardComponent implements OnInit {
   }
 
   listIds() {
-    let map = this.lists.map(list => list.id.toString());
+    const map = this.lists.map(list => list.id.toString());
     return map;
   }
 
@@ -157,10 +160,17 @@ export class MainBoardComponent implements OnInit {
   edit(card, list) {
     this.dialog.open(CardEditFormComponent, {
       width: '50%',
-      data: {card: card, list: list}
+      data: {card: card, list: list, tagUser: this.tagUsers}
     }).afterClosed()
       .subscribe(response => {
         Object.assign(card, response);
       });
+  }
+
+  getTagUsersByBoardId(id) {
+    this.userService.getUserByBoardId(id).subscribe((tagUsers) => {
+      this.tagUsers = tagUsers;
+      this.userService.setTagUsers(this.tagUsers);
+    });
   }
 }

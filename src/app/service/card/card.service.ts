@@ -20,8 +20,8 @@ export class CardService {
     return this.httpClient.post<Card>(URL_API + 'cards', card);
   }
 
-  edit(card: CardCreateForm): Observable<Card> {
-    return this.httpClient.put<Card>(URL_API + 'cards/', card);
+  edit(card: Card): Observable<Card> {
+    return this.httpClient.put<Card>(URL_API + 'cards/edit', card);
   }
 
   editCard(id: number, card: Card): Observable<any> {

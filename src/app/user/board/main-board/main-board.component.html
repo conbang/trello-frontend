@@ -40,12 +40,7 @@
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
       <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let column of lists; let trackIndex = index " >
         <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle >
-          <span contenteditable="true" [textContent]="column.title"></span>
-          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" ><mat-icon>edit</mat-icon></span>
-<!--          <mat-menu #title="matMenu">-->
-<!--            <input matInput [(ngModel)]="column.title" placeholder="Edit title" mat-menu-item>-->
-<!--            <button mat-button mat-menu-iten color="primary">Save</button>-->
-<!--          </mat-menu>-->
+          <h6 contenteditable="true" [textContent]="column.title"></h6>
         </div>
         <div class="card-list-content" cdkDropList id="{{column.id}}" [cdkDropListConnectedTo]="listIds()"
              [cdkDropListData]="column?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
