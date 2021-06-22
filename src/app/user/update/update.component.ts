@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
+import {UserUpdate} from '../../interface/user-update';
 
 @Component({
   selector: 'app-update',
@@ -14,17 +15,22 @@ import {finalize} from 'rxjs/operators';
 export class UpdateComponent implements OnInit {
   selectedFile: File = null;
   downloadURL: Observable<string>;
-  appUser: Register = {
+  appUser: UserUpdate = {
     id: 0,
-    username: '',
-    password: '',
+    userName: '',
+    passWord: '',
     email: '',
     confirmPassword: '',
-    phone: '',
+    phone: null,
     role: [],
+    avatar: '',
+    oldPassWord: '',
+    newPassWord: '',
   };
   message = 'Old password incorrect, please try again';
+  messagePhone = 'Phone number incorrect, please try again';
   isPasswordCorrect = false;
+  isPhoneCorrect = false;
   id = 0;
 
   constructor(private userService: UserService,
@@ -38,6 +44,9 @@ export class UpdateComponent implements OnInit {
         this.id = Number(paraMap.get('id'));
         this.userService.findUserById(this.id).subscribe(data => {
           this.appUser = data;
+          this.appUser.oldPassWord = '';
+          this.appUser.newPassWord = '';
+          console.log(this.appUser);
         });
       }
     );
@@ -62,6 +71,8 @@ export class UpdateComponent implements OnInit {
         })
       ).subscribe(url => {
       if (url) {
+        // @ts-ignore
+        this.appUser.avatar = url;
         console.log('Upload success');
       }
     });
@@ -69,10 +80,12 @@ export class UpdateComponent implements OnInit {
 
   editUser() {
     this.userService.editAppUser(this.appUser, this.id).subscribe(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
       this.isPasswordCorrect = false;
+      this.isPhoneCorrect = false;
     }, error => {
       this.isPasswordCorrect = true;
+      this.isPhoneCorrect = true;
     });
   }
 

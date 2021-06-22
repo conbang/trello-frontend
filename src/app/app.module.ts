@@ -28,7 +28,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
         ShareModule,
         UserModule,
         BoardModule,
-      ModalModule.forRoot()],
+      ModalModule.forRoot(),
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

@@ -5,6 +5,7 @@ import {UpdateComponent} from './update/update.component';
 import {ListBoardComponent} from './list-board/list-board-private/list-board.component';
 import {ListBoardGroupComponent} from './list-board/list-board-group/list-board-group.component';
 import {ListBoardPublicComponent} from './list-board/list-board-public/list-board-public.component';
+import {MemberComponent} from './member/member.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
     component: HomepageComponent,
   },
   {
-    path: 'update',
+    path: 'update/:id',
     component: UpdateComponent
   },
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'boards/public',
     component: ListBoardPublicComponent
   },
+  {
+    path:'groups/:id/members',
+    component: MemberComponent
+  }
 
 ];
 

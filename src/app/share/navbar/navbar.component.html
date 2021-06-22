@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z6 navbar">
   <!--  <mat-icon style="cursor:pointer;">menu</mat-icon>-->
   <div>
-  <button mat-stroked-button aria-label="Example icon button with a menu icon">
+  <button mat-stroked-button aria-label="Example icon button with a menu icon" [routerLink]="'/home'">
     <span class="material-icons">home</span>
   </button>
   <button mat-stroked-button aria-label="Example icon button with a menu icon">
@@ -15,7 +15,7 @@
 <app-search></app-search>
   </div>
 
-  <button mat-stroked-button class="trello"> <span class="material-icons trello">dashboard</span>Trello</button>
+  <button mat-stroked-button class="trello" [routerLink]="'/home'"> <span class="material-icons trello">dashboard</span>Trello</button>
   <div>
     <button mat-stroked-button aria-label="Example icon button with a menu icon" [matMenuTriggerFor]="add">
       <span class="material-icons">add</span>
@@ -38,7 +38,7 @@
       <span mat-menu-item> <mat-icon>person_pin</mat-icon>Create Workspace </span>
     </mat-menu>
     <mat-menu #user="matMenu">
-      <a mat-menu-item [routerLink]="'/update'">
+      <a mat-menu-item [routerLink]="'/update/'+userId">
         <mat-icon>info</mat-icon>
         Information
       </a>

@@ -1,11 +1,12 @@
 <br>
 <div class="card-header">
   <div class="text-center">
-    <igx-avatar src="https://randomuser.me/api/portraits/men/1.jpg"
+<!--    <igx-avatar src="https://randomuser.me/api/portraits/men/1.jpg"-->
+    <igx-avatar src="{{appUser.avatar}}"
                 [roundShape]="true"
                 size="large">
     </igx-avatar>
-    Karey Nguyen
+    {{appUser.userName}}
   </div>
   <div class="text-center">
     <ul class="nav nav-tabs justify-content-center">
@@ -30,18 +31,25 @@
 
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="oldPassword">Old password</label>
-        <input type="password" class="form-control" id="oldPassword" placeholder="Old password" [(ngModel)]="appUser.oldPassWord">
-        <div><span *ngIf="isPasswordCorrect">{{message}}</span></div>
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" name="userName"
+               placeholder="Old password" [(ngModel)]="appUser.userName" readonly>
+<!--        <div><span *ngIf="isPasswordCorrect">{{message}}</span></div>-->
       </div>
       <div class="form-group col-md-6">
-        <label for="newPassword">New password</label>
-        <input type="password" class="form-control" id="newPassword" placeholder="New password" [(ngModel)]="appUser.newPassWord">
+        <label for="newPassword">Email</label>
+        <input type="text" class="form-control" id="newPassword" name="Email"
+               placeholder="New password" [(ngModel)]="appUser.email" readonly>
       </div>
     </div>
+<!--    <div class="form-group">-->
+<!--      <label for="email">Email</label>-->
+<!--      <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="appUser.email">-->
+<!--    </div>-->
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="appUser.email">
+      <label for="phone">Phone</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" [(ngModel)]="appUser.phone">
+      <div><span *ngIf="isPhoneCorrect" style="color: red">{{messagePhone}}</span></div>
     </div>
     <div class="form-group">
       <label for="avatar">Change your avatar</label>

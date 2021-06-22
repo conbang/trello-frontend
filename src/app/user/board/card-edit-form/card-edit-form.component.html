@@ -4,6 +4,9 @@
 </div>
 <mat-dialog-content>
   <div class="content">
+    <div style="display: flex; flex-flow: row">
+      <img *ngFor="let u of data.card.users" src="{{u.avatar}}" class="avatar">
+    </div>
     <div style="display: flex; justify-content: flex-start">
       <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary"
                                                                                   style="cursor: pointer">edit</mat-icon></span>
@@ -32,14 +35,16 @@
     </mat-list>
   </div>
   <div>
-    <p>Member</p>
-    <mat-form-field appearance="fill">
-      <mat-label>Toppings</mat-label>
-      <mat-select [formControl]="cardTagUsers" multiple>
-        <mat-option *ngFor="let user of boardUsers" [value]="user.id">
-          <img class="avatar" src="{{user.avatar}}" alt="avatar"/>{{user.username}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <button mat-button (click)="hidden = !hidden" color="primary"><mat-icon>person</mat-icon>Member</button>
+    <mat-card *ngIf="!hidden">
+      <mat-card-content>
+        <mat-selection-list [(ngModel)]="cardTagUsers">
+          <mat-list-option *ngFor="let user of boardUsers" value="{{user.username}}">
+            <img src="{{user.avatar}}" alt="avatar" class="avatar"> {{user.username}}
+          </mat-list-option>
+        </mat-selection-list>
+      <button mat-button (click)="tagUser()" color="primary">Save </button>
+      </mat-card-content>
+    </mat-card>
   </div>
 </mat-dialog-content>
