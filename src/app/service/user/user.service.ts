@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {User} from 'src/app/interface/user';
 import {CardUser} from 'src/app/interface/card-user';
 
-const API_USER = environment.api_url;
+const API_URL = environment.api_url;
 
 @Injectable({
   providedIn: 'root'
@@ -21,31 +21,33 @@ export class UserService {
     phone: '',
     role: [],
   };
+  private tagUsers: User[];
 
   constructor(private httpClient: HttpClient) {
   }
 
+  public setTagUsers(tagUsers: User[]) {
+    this.tagUsers = tagUsers;
+  }
+
+  public getTagUsers() {
+    return this.tagUsers;
+  }
+
   editAppUser(log: Register, id: number): Observable<any> {
-    return this.httpClient.put<Register>(API_USER + 'list/edit/' + id, log);
+    return this.httpClient.put<Register>(API_URL + 'list/edit/' + id, log);
   }
 
   findUserById(id: number): Observable<Register> {
-    return this.httpClient.get<Register>(API_USER + 'list/' + id);
+    return this.httpClient.get<Register>(API_URL + 'list/' + id);
   }
 
-  getListSelected(card_id: number): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_USER + 'card/tagUser/selected/' + card_id);
+  getUserByBoardId(boardId: number): Observable<any> {
+    return this.httpClient.get<any>(API_URL + `boardTagUser/${boardId}/users`);
   }
 
-  getAppUserByCard(card_id: number): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_USER + 'card/tagUser/' + card_id);
-  }
-
-  addAppUserToCard(iCardUser: CardUser): Observable<any> {
-    return this.httpClient.post(API_USER + 'card/tagUser/addAppUserToCard', iCardUser);
-  }
 
   getAllUser(): Observable<any> {
-    return this.httpClient.get(API_USER + 'user');
+    return this.httpClient.get(API_URL + 'list');
   }
 }

@@ -20,8 +20,8 @@ export class CardService {
     return this.httpClient.post<Card>(URL_API + 'cards', card);
   }
 
-  edit(card: CardCreateForm): Observable<Card> {
-    return this.httpClient.put<Card>(URL_API + 'cards/', card);
+  edit(card: Card): Observable<Card> {
+    return this.httpClient.put<Card>(URL_API + 'cards/edit', card);
   }
 
   editCard(id: number, card: Card): Observable<any> {
@@ -30,5 +30,9 @@ export class CardService {
 
   findCardById(id: number): Observable<Card> {
     return this.httpClient.get<Card>(URL_API + 'card' + id);
+  }
+
+  changePosition(cards: Card[]): Observable<any> {
+    return this.httpClient.put<any>(URL_API + `cards/changePosition`, cards);
   }
 }
