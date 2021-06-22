@@ -21,7 +21,6 @@ import {NoftificationComponent} from './navbar/noftification/noftification.compo
 import {BoardFormComponent} from './navbar/board-form/board-form.component';
 import {IgxAvatarModule} from 'igniteui-angular';
 import { SettingComponent } from './sidebar/setting/setting.component';
-import { SettingDialogComponent } from './sidebar/setting-dialog/setting-dialog.component';
 import { SearchComponent } from './navbar/search/search.component';
 import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
 
@@ -37,14 +36,12 @@ import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
     BoardFormComponent,
     GroupMenuComponent,
     SettingComponent,
-    SettingDialogComponent,
     MatBottomSheetContainer,
     SearchComponent
   ],
   entryComponents: [GroupFormComponent,
     AlertComponent,
     BoardFormComponent,
-    SettingDialogComponent
     ],
     imports: [
         FormModule,
