@@ -51,4 +51,8 @@ export class BoardService {
   getBoardPublic(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardPublic');
   }
+
+  tagUser(listId: number[], boardId: number): Observable<any> {
+    return this.httpClient.post<any>(API_URL + `board/${boardId}/tagUser`, listId);
+  }
 }

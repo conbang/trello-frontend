@@ -13,7 +13,6 @@ import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {BoardModule} from './user/board/board.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
-// import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import {ModalModule} from 'ngx-bootstrap/modal';
         UserModule,
         BoardModule,
       ModalModule.forRoot(),
-      // MDBBootstrapModule.forRoot()
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

@@ -18,10 +18,11 @@ import {UserService} from '../../../service/user/user.service';
 })
 export class CardEditFormComponent implements OnInit {
 
+  hidden = true;
   comment: CommentResponse;
   display: false;
   card: Card;
-  cardTagUsers = new FormControl();
+  cardTagUsers = [];
   user: User;
   boardUsers: User[];
 
@@ -32,7 +33,7 @@ export class CardEditFormComponent implements OnInit {
     private commentService: CommentService,
     private authService: AuthenServiceService,
     private cardService: CardService,
-    private userService: UserService
+    private userService: UserService,
   ) {
     this.card = {
       cardId: this.data.card.id,
@@ -64,6 +65,7 @@ export class CardEditFormComponent implements OnInit {
       response.username = user.username;
       response.created_date = Date.now().toString();
       this.data.card.comments.push(response);
+      this.comment.content = '';
     }, error => {
       console.log(error);
     });
@@ -73,4 +75,16 @@ export class CardEditFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  tagUser() {
+    const oldUsers = this.data.card.users.map(user => user.username);
+    this.cardTagUsers = this.cardTagUsers.filter((el) => {
+      return oldUsers.indexOf(el) < 0;
+    });
+    if (this.cardTagUsers.length) {
+      this.cardService.tagUser(this.cardTagUsers, this.data.card.id).subscribe((response) => {
+        this.data.card.users.push(...response);
+        this.cardTagUsers = [];
+      });
+    }
+  }
 }
