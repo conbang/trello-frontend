@@ -25,6 +25,8 @@ export class GroupFormComponent {
 
   createGroup() {
     this.groupService.create(this.data).subscribe((group) => {
+      console.table(group)
+      this.groupService.getListGroup().push(group);
       this.dialog.open(AlertComponent, {
           width: '400px',
           height: '200px',

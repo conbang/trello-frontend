@@ -22,7 +22,7 @@ export class ListBoardGroupComponent implements OnInit {
   ];
 
   constructor(private boardService: BoardService,
-              private router: Router,private route: ActivatedRoute) {
+              private router: Router, private route: ActivatedRoute) {
     this.route.paramMap
       .subscribe(async (params: ParamMap) => {
           // tslint:disable-next-line:radix
@@ -33,7 +33,7 @@ export class ListBoardGroupComponent implements OnInit {
 
   }
 
-  findBoardGroup(id:number) {
+  findBoardGroup(id: number) {
     this.boardService.getBoardByGroupId(id).subscribe(boards => {
       this.boards = boards;
       let j = 0;

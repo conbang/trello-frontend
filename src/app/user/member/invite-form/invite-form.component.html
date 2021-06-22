@@ -1,0 +1,59 @@
+<!--<h6 mat-dialog-title>Add members {{user.name}}</h6>-->
+<!--<div mat-dialog-content>-->
+<!--  <p><span class="material-icons">person</span>Enter email address</p>-->
+<!--  <mat-form-field>-->
+<!--    <mat-label>Input email</mat-label>-->
+<!--    <input matInput [(ngModel)]="user.email">-->
+<!--  </mat-form-field>-->
+<!--</div>-->
+<!--<div mat-dialog-actions>-->
+<!--  <button mat-button >Cancel</button>-->
+<!--  <button mat-button [mat-dialog-close]="user.email" cdkFocusInitial>Add</button>-->
+<!--</div>-->
+
+
+
+
+<div class="group_form">
+  <div>
+    <span mat-dialog-close style="margin-left: 0px"><mat-icon>close</mat-icon></span>
+  </div>
+  <div>
+    <p mat-dialog-title class="title">Enter email address</p>
+  </div>
+
+  <div mat-dialog-content>
+    <div>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>Email</mat-label>
+        <input matInput type="text"  name="email" #title="ngModel" [(ngModel)]="groupTagUserDto.email" required maxlength="60">
+        <span class="error" *ngIf="error1" style="color: red"> Email does not exist! </span>
+        <span class="error" *ngIf="error2" style="color: red"> User is already a member </span>
+        <mat-error *ngIf="title.invalid && title.touched">
+          <span *ngIf="title?.errors.required">This field is required</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="legacy" class="input">
+        <mat-label>Role</mat-label>
+        <mat-select  name="roleUser" #Type="ngModel" [(ngModel)]="groupTagUserDto.roleUser" required>
+          <mat-option value="ROLE_VEW"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16" value="public"> <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/> <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+          </svg>ROLE_VEW</mat-option>
+          <mat-option value="ROLE_EDIT"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+          </svg>ROLE_EDIT</mat-option>
+          <mat-option value="ROLE_ADMIN"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-person-fill" viewBox="0 0 16 16">
+            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
+          </svg>ROLE_ADMIN</mat-option>
+        </mat-select>
+<!--        <mat-error *ngIf="title.invalid && title.touched">-->
+<!--          <span *ngIf="Type?.errors.required">This field is required</span>-->
+<!--        </mat-error>-->
+      </mat-form-field>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" (click)="tagUser()">Invite</button>
+  </div>
+</div>

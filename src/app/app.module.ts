@@ -35,9 +35,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
 
-  ]
 })
 export class AppModule {
 }

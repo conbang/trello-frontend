@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MemberDialogComponent} from './member-dialog/member-dialog.component';
 import {GroupService} from '../../service/group/group.service';
 import {GroupTagUser} from '../../interface/group-tag-user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {RoleUserGroup} from '../../interface/RoleUserGroup';
 import {AlertComponent} from '../../share/alert/alert.component';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
+import {InviteFormComponent} from './invite-form/invite-form.component';
 
 export interface PeriodicElement {
   name: string;
@@ -49,10 +49,9 @@ export class MemberComponent {
 
   member: string;
   name: string;
-  openDialog(): void {
-    const dialogRef = this.dialog.open(MemberDialogComponent, {
-      width: '250px',
-      data: {name: this.name, member: this.member}
+  openDialog(groupTagUser: GroupTagUser): void {
+    const dialogRef = this.dialog.open(InviteFormComponent, {
+      data: {groupTagUser: groupTagUser}
     });
 
     dialogRef.afterClosed().subscribe(result => {
