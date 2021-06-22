@@ -1,32 +1,45 @@
-<button type="button" (click)="openModalWithClass(template)" style="border: none; background: honeydew">
-  <button mat-mini-fab color="primary"> <mat-icon>edit</mat-icon></button>
-</button>
-<br>
-<ng-template #template>
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title pull-left">Edit card content</h4>
-      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-        <span aria-hidden="true">×</span>
-      </button>
+<div class="modal-header">
+  <h6 mat-dialog-title [textContent]="data.card?.title"></h6>
+  <span aria-hidden="true" matDialogClose><mat-icon>close</mat-icon></span>
+</div>
+<mat-dialog-content>
+  <div class="content">
+    <div style="display: flex; justify-content: flex-start">
+      <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary"
+                                                                                  style="cursor: pointer">edit</mat-icon></span>
+      </p>
     </div>
-    <div class="modal-body">
-      <form (ngSubmit)="editCard() ">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input  class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter title"
-                  [(ngModel)]="card.title" name="title">
+    <p [textContent]="data.card.content" *ngIf="!display"></p>
+    <div *ngIf="display">
+      <mat-form-field>
+        <textarea matInput [textContent]="data.card?.content" cols="40" [(ngModel)]="card.content"></textarea>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="display = !display" (click)="editCard()">Save</button>
+    </div>
+    <div>
+      <p>Action</p>
+      <textarea matInput placeholder="Comment something here" [(ngModel)]="comment.content"></textarea>
+      <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
+    </div>
+    <mat-list>
+      <mat-list-item *ngFor="let comment of data.card.comments">
+        <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
+        <div>
+          <p><strong>{{comment.username}} </strong><small>{{comment.created_date | date:"fullDate"}}</small></p>
+          <p>{{comment.content}}</p>
         </div>
-        <div class="form-group">
-          <label for="content">Content</label>
-          <input  class="form-control" id="content" aria-describedby="emailHelp" placeholder="Enter content"
-                  [(ngModel)]="card.content" name="content">
-        </div>
-        <button mat-raised-button color="primary" type="submit" (click)="modalRef.hide()" >Edit</button>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button mat-raised-button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-    </div>
+      </mat-list-item>
+    </mat-list>
   </div>
-</ng-template>
+  <div>
+    <p>Member</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Toppings</mat-label>
+      <mat-select [formControl]="cardTagUsers" multiple>
+        <mat-option *ngFor="let user of boardUsers" [value]="user.id">
+          <img class="avatar" src="{{user.avatar}}" alt="avatar"/>{{user.username}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</mat-dialog-content>

@@ -6,9 +6,9 @@ import {MainBoardComponent} from './main-board/main-board.component';
 import {
   MatButtonModule,
   MatDialogModule,
-  MatExpansionModule,
+  MatExpansionModule, MatGridListModule,
   MatIconModule,
-  MatInputModule,
+  MatInputModule, MatListModule,
   MatMenuModule,
   MatSelectModule
 } from '@angular/material';
@@ -16,15 +16,14 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {UserModule} from '../user.module';
 import {CardEditFormComponent} from './card-edit-form/card-edit-form.component';
 import {CardCreateFormComponent} from './card-create-form/card-create-form.component';
-import {CardDetailComponent} from './card-detail/card-detail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {IgxAvatarModule} from 'igniteui-angular';
 
 @NgModule({
   declarations: [
     MainBoardComponent,
     CardEditFormComponent,
     CardCreateFormComponent,
-    CardDetailComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +39,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule,
     MatInputModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    IgxAvatarModule
   ],
   entryComponents: [
     CardCreateFormComponent,
@@ -48,7 +50,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   ],
   exports: [
     MainBoardComponent,
-    CardDetailComponent,
     CardEditFormComponent
   ]
 })

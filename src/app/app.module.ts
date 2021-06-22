@@ -14,7 +14,6 @@ import {ErrorInterceptor} from './helper/error-interceptor';
 import {BoardModule} from './user/board/board.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
-import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [
@@ -39,7 +38,7 @@ import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
   ],
   bootstrap: [AppComponent],
   entryComponents: [
-    MatBottomSheetContainer
+
   ]
 })
 export class AppModule {

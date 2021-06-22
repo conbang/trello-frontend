@@ -37,25 +37,28 @@
       </mat-form-field>
     </mat-menu>
   </section>
-  <div cdkDropListGroup>
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
-      <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let list of lists; let trackIndex = index ">
-        <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle>
-          <span [textContent]="list.title" ></span>
-          <span fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle><mat-icon>drag_indicator</mat-icon></span>
+      <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let column of lists; let trackIndex = index " >
+        <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle >
+          <h6 contenteditable="true" [textContent]="column.title"></h6>
         </div>
-        <div class="card-list-content" cdkDropList [id]="list.id"
-             [cdkDropListData]="list.cards" (cdkDropListDropped)="dropCard($event)">
-          <app-card *ngFor="let card of list.cards" cdkDrag [card]="card"></app-card>
+        <div class="card-list-content" cdkDropList id="{{column.id}}" [cdkDropListConnectedTo]="listIds()"
+             [cdkDropListData]="column?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
+          <app-card *ngFor="let card of column.cardDtoList" cdkDrag (edit)="edit(card, column)" [title]="card.title"></app-card>
         </div>
         <div fxLayout="row" fxLayoutAlign="baseline baseline">
-          <button style="width: fit-content;" class="add-talk" (click)="createCard(list)" color="primary" mat-raised-button> Add card </button>
+          <button style="width: fit-content;" class="add-talk" (click)="createCard(column)" color="primary"
+                  mat-raised-button> Add card
+          </button>
         </div>
       </div>
       <div class="card-list">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title><mat-icon>add</mat-icon>Add list </mat-panel-title>
+            <mat-panel-title>
+              <mat-icon>add</mat-icon>
+              Add list
+            </mat-panel-title>
           </mat-expansion-panel-header>
           <mat-form-field>
             <mat-label>Type in title list</mat-label>
@@ -65,5 +68,4 @@
         </mat-expansion-panel>
       </div>
     </div>
-  </div>
 </div>

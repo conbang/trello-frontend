@@ -1,11 +1,15 @@
 import {Label} from './Label';
-import {Comment} from './comment';
+import {CommentResponse} from './comment-response';
+import {UserResponse} from './user-response';
 
 export interface Card {
   id?: number;
+  cardId?: number;
   title?: string;
   content?: string;
   position?: number;
   label?: Label[];
-  comments?: Comment[];
+  comments?: CommentResponse[];
+  users?: UserResponse[];
+  listTrelloId?: number;
 }

@@ -1,11 +1,15 @@
-import {Component, EventEmitter, Inject, Input, OnInit, Output, TemplateRef} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormControl} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
-import {MatChipInputEvent} from '@angular/material/chips';
 import {Card} from '../../../interface/card';
-import {CardService} from '../../../service/card/card.service';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {MAT_DIALOG_DATA} from '@angular/material';
+import {CommentResponse} from '../../../interface/comment-response';
+import {CommentService} from '../../../service/comment/comment.service';
+import {AuthenServiceService} from '../../../service/authentication/authen-service.service';
+import {List} from '../../../interface/list';
+import {CardService} from '../../../service/card/card.service';
+import {User} from '../../../interface/user';
+import {UserService} from '../../../service/user/user.service';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -13,34 +17,55 @@ import {MAT_DIALOG_DATA} from '@angular/material';
   styleUrls: ['./card-edit-form.component.css']
 })
 export class CardEditFormComponent implements OnInit {
-  @Input()
-    // tslint:disable-next-line:variable-name
-  card_id: any = 0;
-  card: Card = {};
-  formGroup: FormGroup;
-  formComment: FormGroup;
-  comment: string;
-  modalRef: BsModalRef;
+
+  comment: CommentResponse;
+  display: false;
+  card: Card;
+  cardTagUsers = new FormControl();
+  user: User;
+  boardUsers: User[];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {card: Card},
+    @Inject(MAT_DIALOG_DATA) public data: { card: Card, list: List, },
     public formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CardEditFormComponent>,
+    private commentService: CommentService,
+    private authService: AuthenServiceService,
     private cardService: CardService,
-    private modalService: BsModalService,
-  ) {}
+    private userService: UserService
+  ) {
+    this.card = {
+      cardId: this.data.card.id,
+      content: this.data.card.content,
+    };
+    this.comment = {
+      content: '',
+      cardId: this.data.card.id,
+    };
+    this.boardUsers = this.userService.getTagUsers();
+  }
 
   ngOnInit() {
-    const card: Card = this.data.card;
-    this.formGroup = this.formBuilder.group({
-      title: [card.title, Validators.required],
-      content: [card.content],
-      label: [card.label],
-    });
-    this.formComment = this.formBuilder.group({
-      content: [this.comment],
-      appUser: null,
-      card: this.data.card,
+  }
+
+  editCard() {
+    if (this.card.content.trim()) {
+      this.cardService.edit(this.card).subscribe(() => {
+        this.data.card.content = this.card.content;
+        this.card.content = '';
+      });
+    }
+  }
+
+  saveComment() {
+    const user = this.authService.currentUserValue;
+    this.commentService.create(this.comment).subscribe((response) => {
+      response.avatar = user.avatar;
+      response.username = user.username;
+      response.created_date = Date.now().toString();
+      this.data.card.comments.push(response);
+    }, error => {
+      console.log(error);
     });
   }
 
@@ -48,27 +73,4 @@ export class CardEditFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  addLabel(event: MatChipInputEvent) {
-    const tagsControl = this.formGroup.get('tags');
-    if (tagsControl.value) {
-      tagsControl.value.push({name: event.value, color: '#e0e0e0'});
-    } else {
-      tagsControl.setValue([event.value]);
-    }
-    event.input.value = '';
-  }
-  @Output()
-  isUpdate = new EventEmitter();
-  editCard() {
-    this.cardService.editCard(this.card_id, this.card).subscribe(() => {
-      this.isUpdate.emit(true);
-    });
-  }
-
-  openModalWithClass(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(
-      template,
-      Object.assign({}, { class: 'center modal-lg' })
-    );
-  }
 }

@@ -10,7 +10,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {
   MatButtonModule,
@@ -26,9 +26,6 @@ import { MemberComponent } from './member/member.component';
 import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
 import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
 import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
-import {AddMemberForCardComponent} from './board/add-member-for-card/add-member-for-card.component';
-import {CardDetailComponent} from './board/card-detail/card-detail.component';
-import {CommentComponent} from './board/comment/comment.component';
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MemberDialogComponent} from './member/member-dialog/member-dialog.component';
@@ -45,23 +42,18 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     ListBoardComponent,
     ListBoardGroupComponent,
     ListBoardPublicComponent,
-    AddMemberForCardComponent,
-    CommentComponent,
     CreateLabelComponent,
-    MemberDialogComponent
   ],
   exports: [
     UpdateComponent,
     HomeComponent,
     CardComponent,
     MemberComponent,
-    AddMemberForCardComponent,
-    CommentComponent,
     CreateLabelComponent
   ],
   providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} },
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}},
     MemberComponent,
     ListBoardComponent,
     ListBoardGroupComponent,
@@ -93,6 +85,6 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     MatGridListModule,
     MDBBootstrapModule,
   ],
-  entryComponents: [MemberDialogComponent]
+  // entryComponents: [MemberDialogComponent]
 })
 export class UserModule { }
