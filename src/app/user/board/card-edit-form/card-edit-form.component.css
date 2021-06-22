@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.mat-list-item{
+.mat-list-option{
   display: flex;
   flex-direction: row;
 }

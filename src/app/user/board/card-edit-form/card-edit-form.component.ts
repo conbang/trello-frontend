@@ -82,6 +82,7 @@ export class CardEditFormComponent implements OnInit {
     });
     if (this.cardTagUsers.length) {
       this.cardService.tagUser(this.cardTagUsers, this.data.card.id).subscribe((response) => {
+        console.log(response)
         this.data.card.users.push(...response);
         this.cardTagUsers = [];
       });

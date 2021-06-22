@@ -27,7 +27,6 @@ const routes: Routes = [
     path: 'boards/public',
     component: ListBoardPublicComponent
   },
-
 ];
 
 @NgModule({
