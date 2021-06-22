@@ -57,8 +57,8 @@
       <input type="file" class="form-control-file" id="avatar" name="avatar" (change)="onFileSelected($event)" autocomplete="off">
     </div>
 
-    <button type="submit" class="btn btn-primary">Update</button>
-    <button class="btn btn-outline-primary" [routerLink]="'/home'">Back</button>
+    <button type="submit" mat-raised-button color="primary">Update</button>
+    <button mat-stroked-button color="primary" [routerLink]="'/home'">Back</button>
   </form>
 
 </div>

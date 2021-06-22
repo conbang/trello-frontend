@@ -1,6 +1,4 @@
 .navbar{
-  display:flex;
-  justify-content: space-between;
   height: 45px;
 }
 
@@ -25,4 +23,10 @@
 
 .notification_content{
   background-color: #F4F5F7;
+}
+.trello{
+  font-size: larger;
+}
+.material-icons.trello {
+  font-size: 30px
 }

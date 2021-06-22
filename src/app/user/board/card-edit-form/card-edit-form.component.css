@@ -5,6 +5,16 @@
 .content {
   width: 70%;
 }
-h5,h6{
 
+.mat-icon{
+  cursor: pointer;
+}
+
+.mat-list-item{
+  display: flex;
+  flex-direction: row;
+}
+.mat-list-item div{
+  display: flex;
+  flex-direction: column;
 }

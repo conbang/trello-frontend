@@ -1,13 +1,26 @@
 <mat-expansion-panel hideToggle>
   <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{group.name}}
+
+    <mat-panel-title >
+      <div class="avatar-sample initials">
+        <igx-avatar initials="GR" size="small"></igx-avatar>
+      </div>
+      <div class="board name">{{group.name}}</div>
+
     </mat-panel-title>
   </mat-expansion-panel-header>
   <mat-list>
-    <mat-list-item><button mat-button><mat-icon color="primary" >table_chart</mat-icon>Table</button></mat-list-item>
-    <mat-list-item [routerLink]="'/home/groups/'+group.id+'/members'"><button mat-button><mat-icon color="primary" >person_add</mat-icon>Participants</button></mat-list-item>
-    <mat-list-item><button mat-button><mat-icon color="accent" >favorite</mat-icon>Event</button></mat-list-item>
-    <mat-list-item><button mat-button><mat-icon> settings</mat-icon>Setting</button></mat-list-item>
+    <div style="margin-left: 10px ">
+      <button mat-stroked-button color="primary"><span class="material-icons board">space_dashboard</span>   Board</button>
+        <br>
+    </div>
+    <div style="margin-left: 10px">
+    <button mat-stroked-button color="primary" [routerLink]="'/home/groups/'+group.id+'/members'"><span class="material-icons member">person_add</span>   Members</button>
+      <br>
+    </div>
+    <div style="margin-left: 10px">
+    <button mat-stroked-button color="primary" routerLink="/setting"><span class="material-icons setting">settings</span>  Settings</button>
+      <br>
+    </div>
   </mat-list>
 </mat-expansion-panel>

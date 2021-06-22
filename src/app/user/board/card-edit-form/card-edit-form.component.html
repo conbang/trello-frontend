@@ -1,12 +1,12 @@
 <div class="modal-header">
-  <h6 mat-dialog-title contenteditable="true" [textContent]="data.card?.title" [(ngModel)]="card.title"></h6>
-  <span aria-hidden="true" matDialogClose>×</span>
+  <h6 mat-dialog-title [textContent]="data.card?.title"></h6>
+  <span aria-hidden="true" matDialogClose><mat-icon>close</mat-icon></span>
 </div>
 <mat-dialog-content>
   <div class="content">
     <div style="display: flex; justify-content: flex-start">
       <p>Description<span *ngIf="!display" (click)="display = !display"><mat-icon color="primary"
-                                    style="cursor: pointer">edit</mat-icon></span>
+                                                                                  style="cursor: pointer">edit</mat-icon></span>
       </p>
     </div>
     <p [textContent]="data.card.content" *ngIf="!display"></p>
@@ -22,17 +22,24 @@
       <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
     </div>
     <mat-list>
-      <mat-list-item *ngFor="let comment of card.comments">
-
+      <mat-list-item *ngFor="let comment of data.card.comments">
         <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
-        {{comment.username}}<span>{{comment.created_date | date:"fullDate"}}</span>
-        <p>{{comment.content}}</p>
+        <div>
+          <p><strong>{{comment.username}} </strong><small>{{comment.created_date | date:"fullDate"}}</small></p>
+          <p>{{comment.content}}</p>
+        </div>
       </mat-list-item>
     </mat-list>
   </div>
   <div>
-    <p>Attached file</p>
-    <p>Labels</p>
     <p>Member</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Toppings</mat-label>
+      <mat-select [formControl]="cardTagUsers" multiple>
+        <mat-option *ngFor="let user of boardUsers" [value]="user.id">
+          <img class="avatar" src="{{user.avatar}}" alt="avatar"/>{{user.username}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </mat-dialog-content>

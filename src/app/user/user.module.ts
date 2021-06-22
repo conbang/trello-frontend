@@ -10,7 +10,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {IgxAvatarModule} from 'igniteui-angular';
-import { HomeComponent } from './home/home.component';
+import {HomeComponent} from './home/home.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {
   MatButtonModule,
@@ -54,8 +54,8 @@ import {CardCreateFormComponent} from './board/card-create-form/card-create-form
     CreateLabelComponent
   ],
   providers: [
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} },
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}},
     MemberComponent,
     ListBoardComponent,
     ListBoardGroupComponent,
@@ -87,8 +87,6 @@ import {CardCreateFormComponent} from './board/card-create-form/card-create-form
     MatTableModule,
     MatGridListModule,
   ],
-  // entryComponents: [
-  //  MemberDialogComponent,
-  // ],
+  // entryComponents: [MemberDialogComponent]
 })
 export class UserModule { }

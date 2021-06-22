@@ -7,12 +7,21 @@ import {User} from 'src/app/interface/user';
 import {CardUser} from 'src/app/interface/card-user';
 import {UserUpdate} from '../../interface/user-update';
 
-const API_USER = environment.api_url;
+const API_URL = environment.api_url;
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  log: Register = {
+    id: 0,
+    username: '',
+    password: '',
+    email: '',
+    confirmPassword: '',
+    phone: '',
+    role: [],
+  };
   userUpdateDto: UserUpdate = {
     id: 0,
     userName: '',
@@ -25,31 +34,37 @@ export class UserService {
     oldPassWord: '',
     newPassWord: '',
   };
+  private tagUsers: User[];
 
   constructor(private httpClient: HttpClient) {
   }
 
+  public setTagUsers(tagUsers: User[]) {
+    this.tagUsers = tagUsers;
+  }
+
+  public getTagUsers() {
+    return this.tagUsers;
+  }
+
   editAppUser(userUpdateDto: UserUpdate, id: number): Observable<any> {
-    return this.httpClient.put<UserUpdate>(API_USER + 'user/' + id, userUpdateDto);
+    return this.httpClient.put<UserUpdate>(API_URL + 'user/' + id, userUpdateDto);
   }
 
   findUserById(id: number): Observable<UserUpdate> {
-    return this.httpClient.get<UserUpdate>(API_USER + 'user/' + id);
+    return this.httpClient.get<UserUpdate>(API_URL + 'user/' + id);
   }
 
   getListSelected(card_id: number): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_USER + 'card/tagUser/selected/' + card_id);
+    return this.httpClient.get<User[]>(API_URL + 'card/tagUser/selected/' + card_id);
   }
 
-  getAppUserByCard(card_id: number): Observable<User[]> {
-    return this.httpClient.get<User[]>(API_USER + 'card/tagUser/' + card_id);
+  getUserByBoardId(boardId: number): Observable<any> {
+    return this.httpClient.get<any>(API_URL + `boardTagUser/${boardId}/users`);
   }
 
-  addAppUserToCard(iCardUser: CardUser): Observable<any> {
-    return this.httpClient.post(API_USER + 'card/tagUser/addAppUserToCard', iCardUser);
-  }
 
   getAllUser(): Observable<any> {
-    return this.httpClient.get(API_USER + 'list');
+    return this.httpClient.get(API_URL + 'list');
   }
 }

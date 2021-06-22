@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {GroupForm} from '../../interface/groupForm';
 
 @Component({
   selector: 'app-homepage',
@@ -6,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
-  constructor() { }
+  @Input() group: GroupForm;
 
   ngOnInit() {
   }

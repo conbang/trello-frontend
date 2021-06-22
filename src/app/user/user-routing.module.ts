@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {HomepageComponent} from './homepage/homepage.component';
 import {UpdateComponent} from './update/update.component';
 import {ListBoardComponent} from './list-board/list-board-private/list-board.component';
@@ -39,4 +39,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {
+}

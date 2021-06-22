@@ -1,0 +1,31 @@
+.container{
+  padding-left: 50px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+.example-card {
+  max-width: 250px;
+  float: left;
+  font-size: 100%
+}
+.example-card1 {
+  max-width: 200px;
+  float: left;
+}
+.example-header-image {
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/pic1-101f3.appspot.com/o/trelloFIle%2Fbackground.jpg?alt=media&token=c908f022-3c60-4ca5-8486-a40af24a4906');
+  background-size: cover;
+}
+div.a{
+  font-size: 180%
+}
+.div.board{
+  margin-left: 50px;
+}
+.flex-container > .mat-card {
+  margin: 10px;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+}

@@ -1,34 +1,56 @@
 <mat-toolbar color="primary" class="mat-elevation-z6 navbar">
-  <mat-icon style="cursor:pointer;">menu</mat-icon>
-  <div> Trello </div> <div>
-  <a mat-button [matMenuTriggerFor]="add"> <mat-icon>add</mat-icon> </a>
-  <a mat-button> <mat-icon>home</mat-icon> </a>
-  <a mat-button [matMenuTriggerFor]="notificationMenu">
-    <mat-icon>notifications</mat-icon>
-  </a>
+  <!--  <mat-icon style="cursor:pointer;">menu</mat-icon>-->
+  <div>
+  <button mat-stroked-button aria-label="Example icon button with a menu icon" [routerLink]="'/home'">
+    <span class="material-icons">home</span>
+  </button>
+  <button mat-stroked-button aria-label="Example icon button with a menu icon">
+    <span class="material-icons">space_dashboard</span> Boards
+  </button>
+
+<!--  <button mat-stroked-button aria-label="Example icon button with a menu icon">-->
+<!--    <input type="text">-->
+<!--    <span class="material-icons">search</span>-->
+<!--  </button>-->
+<app-search></app-search>
+  </div>
+
+  <button mat-stroked-button class="trello" [routerLink]="'/home'"> <span class="material-icons trello">dashboard</span>Trello</button>
+  <div>
+    <button mat-stroked-button aria-label="Example icon button with a menu icon" [matMenuTriggerFor]="add">
+      <span class="material-icons">add</span>
+    </button>
+    <button mat-stroked-button aria-label="Example icon button with a menu icon" [matMenuTriggerFor]="notificationMenu">
+      <span class="material-icons">notifications</span>
+    </button>
+
     <igx-avatar src={{avatar}} class="avatar"
                 [roundShape]="true"
                 size="small" [matMenuTriggerFor]="user">
     </igx-avatar>
-  <mat-menu #notificationMenu="matMenu" >
-    <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
-  </mat-menu>
-  <mat-menu #add="matMenu">
+    <mat-menu #notificationMenu="matMenu">
+      <app-noftification *ngFor="let noti of notifications" [notification]="noti"></app-noftification>
+    </mat-menu>
+    <mat-menu #add="matMenu">
     <span mat-menu-item (click)="openDialog()">
         <mat-icon>date_range</mat-icon> Create Table
     </span>
-    <span mat-menu-item > <mat-icon>person_pin</mat-icon>Create Workspace </span>
-  </mat-menu>
-  <mat-menu #user="matMenu">
-    <a mat-menu-item [routerLink]="'/update/'+userId">
-      <mat-icon>info</mat-icon>Information
-    </a>
-    <a mat-menu-item>
-      <mat-icon>settings</mat-icon>Settings
-    </a>
-    <a mat-menu-item (click)="logout()" >
-      <mat-icon color="primary">logout</mat-icon>Logout
-    </a>
-  </mat-menu></div>
+      <span mat-menu-item> <mat-icon>person_pin</mat-icon>Create Workspace </span>
+    </mat-menu>
+    <mat-menu #user="matMenu">
+      <a mat-menu-item [routerLink]="'/update/'+userId">
+        <mat-icon>info</mat-icon>
+        Information
+      </a>
+      <a mat-menu-item>
+        <mat-icon>settings</mat-icon>
+        Settings
+      </a>
+      <a mat-menu-item (click)="logout()">
+        <mat-icon color="primary">logout</mat-icon>
+        Logout
+      </a>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 

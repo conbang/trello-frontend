@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import {SidebarComponent } from './sidebar/sidebar.component';
 import {FormModule} from '../form/form.module';
 import {
+  MatBottomSheet, MatBottomSheetRef,
   MatButtonModule, MatCardModule,
   MatDialogModule, MatExpansionModule,
   MatIconModule, MatInputModule,
@@ -19,8 +20,12 @@ import { GroupMenuComponent } from './sidebar/group-menu/group-menu.component';
 import {NoftificationComponent} from './navbar/noftification/noftification.component';
 import {BoardFormComponent} from './navbar/board-form/board-form.component';
 import {IgxAvatarModule} from 'igniteui-angular';
+import { SettingComponent } from './sidebar/setting/setting.component';
+import { SearchComponent } from './navbar/search/search.component';
+import {MatBottomSheetContainer} from '@angular/material/bottom-sheet';
 
 @NgModule({
+  providers: [MatBottomSheet, ],
   declarations: [
     NavbarComponent,
     SidebarComponent,
@@ -29,11 +34,15 @@ import {IgxAvatarModule} from 'igniteui-angular';
     AlertComponent,
     NoftificationComponent,
     BoardFormComponent,
-    GroupMenuComponent
+    GroupMenuComponent,
+    SettingComponent,
+    MatBottomSheetContainer,
+    SearchComponent
   ],
   entryComponents: [GroupFormComponent,
     AlertComponent,
-    BoardFormComponent],
+    BoardFormComponent,
+    ],
     imports: [
         FormModule,
         MatListModule,
@@ -49,7 +58,7 @@ import {IgxAvatarModule} from 'igniteui-angular';
         MatSelectModule,
         MatDialogModule,
         FormsModule,
-        IgxAvatarModule
+        IgxAvatarModule,
     ],
   exports: [
     NavbarComponent,

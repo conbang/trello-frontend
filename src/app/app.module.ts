@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+
 import {ShareModule} from './share/share.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import {TokenInterceptor} from './helper/token-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import {BoardModule} from './user/board/board.module';
 import {ModalModule} from 'ngx-bootstrap/modal';
+// import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
         ShareModule,
         UserModule,
         BoardModule,
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      // MDBBootstrapModule.forRoot()
     ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
