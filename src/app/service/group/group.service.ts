@@ -16,9 +16,17 @@ const API_BACKEND = environment.api_url;
 })
 export class GroupService {
 
-  groups: Group;
+  private groups: Group[];
 
   constructor(private httpClient: HttpClient) {
+  }
+
+  setGroups(groups: Group[]): void{
+    this.groups = groups;
+  }
+
+  getListGroup(): Group[] {
+    return this.groups;
   }
 
   getGroups(id: number): Observable<Group[]> {
@@ -30,7 +38,7 @@ export class GroupService {
   }
 
   getAllUserByGroupId(id: number): Observable<GroupTagUser[]> {
-    return this.httpClient.get<GroupTagUser[]>(API_BACKEND + 'groupTagUser/listUser/'+id);
+    return this.httpClient.get<GroupTagUser[]>(API_BACKEND + 'groupTagUser/listUser/' + id);
   }
 
   setRoleUser(roleUserGroup: RoleUserGroup): Observable<GroupTagUser> {
@@ -38,7 +46,7 @@ export class GroupService {
   }
 
   deleteUser(groupId: number, userId: number): Observable<any> {
-    return this.httpClient.delete(API_BACKEND + 'groupTagUser/deleteUser/' + groupId +'/' + userId);
+    return this.httpClient.delete(API_BACKEND + 'groupTagUser/deleteUser/' + groupId + '/' + userId);
   }
 
   getGroupUsers(boardId: number): Observable<UserResponse[]> {

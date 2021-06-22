@@ -29,7 +29,7 @@ const routes: Routes = [
     component: ListBoardPublicComponent
   },
   {
-    path:'groups/:id/members',
+    path: 'groups/:id/members',
     component: MemberComponent
   }
 
