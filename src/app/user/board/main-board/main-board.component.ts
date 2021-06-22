@@ -45,7 +45,6 @@ export class MainBoardComponent implements OnInit {
           this.getTagUsersByBoardId(id);
         }
       );
-    console.table(this.tagUsers);
   }
 
   ngOnInit() {
