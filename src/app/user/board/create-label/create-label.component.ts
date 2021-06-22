@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Label} from '../../../interface/label';
 import {LabelService} from '../../../service/label/label.service';
+import {Label} from '../../../interface/label';
 
 class CardLabel {
 }
