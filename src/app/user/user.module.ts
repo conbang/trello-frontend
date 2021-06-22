@@ -29,6 +29,7 @@ import {ListBoardPublicComponent} from './list-board/list-board-public/list-boar
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { InviteFormComponent } from './member/invite-form/invite-form.component';
+import { ConfirmDeleteComponent } from './member/confirm-delete/confirm-delete.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { InviteFormComponent } from './member/invite-form/invite-form.component'
     ListBoardPublicComponent,
     CreateLabelComponent,
     InviteFormComponent,
+    ConfirmDeleteComponent,
   ],
   exports: [
     UpdateComponent,
@@ -59,7 +61,7 @@ import { InviteFormComponent } from './member/invite-form/invite-form.component'
     ListBoardGroupComponent,
     ListBoardPublicComponent
   ],
-  entryComponents: [InviteFormComponent],
+  entryComponents: [InviteFormComponent, ConfirmDeleteComponent],
 
   imports: [
     CommonModule,

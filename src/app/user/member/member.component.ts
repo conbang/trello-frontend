@@ -7,6 +7,7 @@ import {RoleUserGroup} from '../../interface/RoleUserGroup';
 import {AlertComponent} from '../../share/alert/alert.component';
 import {AuthenServiceService} from '../../service/authentication/authen-service.service';
 import {InviteFormComponent} from './invite-form/invite-form.component';
+import {ConfirmDeleteComponent} from './confirm-delete/confirm-delete.component';
 
 export interface PeriodicElement {
   name: string;
@@ -38,6 +39,7 @@ export class MemberComponent {
   };
   isAdmin = false;
   userCurrentId = 0;
+  listGroupTemp: GroupTagUser[] = [];
 
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;
@@ -60,9 +62,22 @@ export class MemberComponent {
     });
   }
 
+  confirmDelete(groupTagUser: GroupTagUser, userId: number): void {
+    const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
+      data: {groupTagUser: groupTagUser,
+      userId: userId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.member = result;
+    });
+  }
+
   getAllUserGroup(id: number) {
     this.groupService.getAllUserByGroupId(id).subscribe(groupTagUser => {
       this.groupTagUser = groupTagUser;
+      this.listGroupTemp = groupTagUser;
       for (let i=0; i<groupTagUser.length; i++) {
         if (groupTagUser[i].user.id == this.authenService.currentUserValue.id) {
           this.userCurrentId = this.authenService.currentUserValue.id;
@@ -121,5 +136,16 @@ export class MemberComponent {
     // }, error => {
     //   console.log(error.error);
     // });
+  }
+
+  search(value: string) {
+    let listUser = [];
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < this.listGroupTemp.length; i++) {
+      if (this.listGroupTemp[i].user.userName.toLowerCase().includes(value.toLowerCase())) {
+        listUser.push(this.listGroupTemp[i]);
+      }
+    }
+    this.groupTagUser = listUser;
   }
 }
