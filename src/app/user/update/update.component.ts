@@ -80,7 +80,7 @@ export class UpdateComponent implements OnInit {
 
   editUser() {
     this.userService.editAppUser(this.appUser, this.id).subscribe(() => {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/home');
       this.isPasswordCorrect = false;
       this.isPhoneCorrect = false;
     }, error => {
