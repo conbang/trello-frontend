@@ -3,3 +3,12 @@
 }
 .material-icons.orange600.md-18 { color: limegreen;font-size: 15px; }
 .material-icons.md-18 { color: red; font-size: 15px}
+.top{
+  padding-left: 250px;
+  float: left;
+}
+.bottom{
+  padding-top: 35px;
+  padding-left: 20px;
+  float: left;
+}

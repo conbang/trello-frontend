@@ -28,19 +28,29 @@
   </div>
 </div>
 
-<div class="container">
+
+  <div class="top">
   <h5>Workspace visibility</h5>
+
   <span class="material-icons orange600 md-18">public</span>
 Public - This Workspace is public. It's visible to anyone with the link and will show up in search engines like Google.
-  Only those invited to the Workspace can add and edit Workspace boards.
+  <br>Only those invited to the Workspace can add and edit Workspace boards.
   <br>
   <span class="material-icons md-18">vpn_key</span>
   Private - This Workspace is private. It's not indexed or visible to those outside the Workspace.
-  <p>You have received a file called "cat-picture.jpeg".</p>
+  </div>
+  <div class="bottom">
 
-  <button mat-raised-button (click)="openBottomSheet()">Open file</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose</mat-label>
+      <mat-select [(ngModel)]="selectedValue" name="food">
+        <mat-option *ngFor="let mode of mode" [value]="mode.value">
+          {{mode.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field><br>
+    Selected mode: <h6 style="color: red"> {{selectedValue}} </h6>
+  </div>
+  <br>
 
-
-
-</div>
 

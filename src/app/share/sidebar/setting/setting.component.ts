@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-// import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import {SettingDialogComponent} from '../setting-dialog/setting-dialog.component';
-import {MatBottomSheet} from '@angular/material/bottom-sheet';
+interface Mode {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-setting',
@@ -9,10 +10,13 @@ import {MatBottomSheet} from '@angular/material/bottom-sheet';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent {
-  constructor(private _bottomSheet: MatBottomSheet) {}
+  selectedValue: string;
+  mode: Mode[] = [
+    {value: 'Private', viewValue: 'Private'},
+    {value: 'Public', viewValue: 'Public'},
+  ];
+  constructor() {}
 
-  openBottomSheet(): void {
-    this._bottomSheet.open(SettingDialogComponent);
-  }
+
 }
 
