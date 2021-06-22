@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BoardService} from '../../../service/board/board.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Board} from '../../../interface/board';
 
 @Component({
@@ -22,11 +22,19 @@ export class ListBoardGroupComponent implements OnInit {
   ];
 
   constructor(private boardService: BoardService,
-              private router: Router) {
+              private router: Router,private route: ActivatedRoute) {
+    this.route.paramMap
+      .subscribe(async (params: ParamMap) => {
+          // tslint:disable-next-line:radix
+          const id = parseInt(params.get('id'));
+          this.findBoardGroup(id);
+        }
+      );
+
   }
 
-  findBoardGroup() {
-    this.boardService.getBoardGroup().subscribe(boards => {
+  findBoardGroup(id:number) {
+    this.boardService.getBoardByGroupId(id).subscribe(boards => {
       this.boards = boards;
       let j = 0;
       for (let i = 0; i < boards.length; i++) {
@@ -40,7 +48,7 @@ export class ListBoardGroupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.findBoardGroup();
+
   }
 
 }

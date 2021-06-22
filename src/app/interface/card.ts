@@ -1,4 +1,4 @@
-import {Label} from './Label';
+import {Label} from './label';
 import {CommentResponse} from './comment-response';
 import {UserResponse} from './user-response';
 

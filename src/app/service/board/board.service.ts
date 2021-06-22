@@ -51,4 +51,7 @@ export class BoardService {
   getBoardPublic(): Observable<Board[]> {
     return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardPublic');
   }
+  getBoardByGroupId(id: number): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(API_URL + `board/list-board-in-group/${id}`);
+  }
 }

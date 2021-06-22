@@ -20,7 +20,7 @@ const routes: Routes = [
     component: ListBoardComponent
   },
   {
-    path: 'boards/groups',
+    path: 'boards/groups/:id',
     component: ListBoardGroupComponent
   },
   {

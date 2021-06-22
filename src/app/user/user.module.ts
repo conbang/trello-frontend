@@ -29,7 +29,6 @@ import { ListBoardPublicComponent } from './list-board/list-board-public/list-bo
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MemberDialogComponent} from './member/member-dialog/member-dialog.component';
-import {MDBBootstrapModule} from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -82,9 +81,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
     MatInputModule,
     MatInputModule,
     MatTableModule,
-    MatGridListModule,
-    MDBBootstrapModule,
-  ],
+    MatGridListModule],
   // entryComponents: [MemberDialogComponent]
 })
 export class UserModule { }
