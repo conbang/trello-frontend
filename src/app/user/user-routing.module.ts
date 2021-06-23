@@ -25,6 +25,10 @@ const routes: Routes = [
     component: ListBoardGroupComponent
   },
   {
+    path: 'boards/groups',
+    component: ListBoardGroupComponent
+  },
+  {
     path: 'boards/public',
     component: ListBoardPublicComponent
   },

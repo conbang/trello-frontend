@@ -84,8 +84,8 @@ export class UpdateComponent implements OnInit {
   editUser() {
     this.userService.editAppUser(this.appUser, this.id).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Update success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {
