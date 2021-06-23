@@ -3,6 +3,7 @@ import {GroupForm} from '../../../interface/groupForm';
 import {GroupService} from '../../../service/group/group.service';
 import {MatDialog} from '@angular/material';
 import {AlertComponent} from '../../alert/alert.component';
+import {Group} from '../../../interface/group';
 
 @Component({
   selector: 'app-group-form',
@@ -12,7 +13,12 @@ import {AlertComponent} from '../../alert/alert.component';
 export class GroupFormComponent {
 
   data: GroupForm;
-
+  response: Group = {
+    id: 0,
+    name: '',
+    type: '',
+    description: ''
+  };
   constructor(private groupService: GroupService,
               public dialog: MatDialog) {
     this.data = {
@@ -25,8 +31,12 @@ export class GroupFormComponent {
 
   createGroup() {
     this.groupService.create(this.data).subscribe((group) => {
-      console.table(group)
-      this.groupService.getListGroup().push(group);
+      console.log(group);
+      this.response.id = group.id;
+      this.response.name = group.name;
+      this.response.type = group.type;
+      this.response.description = group.description;
+      this.groupService.getListGroup().push(this.response);
       this.dialog.open(AlertComponent, {
           width: '400px',
           height: '200px',

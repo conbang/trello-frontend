@@ -8,10 +8,6 @@
     <span class="material-icons">space_dashboard</span> Boards
   </button>
 
-<!--  <button mat-stroked-button aria-label="Example icon button with a menu icon">-->
-<!--    <input type="text">-->
-<!--    <span class="material-icons">search</span>-->
-<!--  </button>-->
 <app-search></app-search>
   </div>
 
@@ -38,13 +34,9 @@
       <span mat-menu-item> <mat-icon>person_pin</mat-icon>Create Workspace </span>
     </mat-menu>
     <mat-menu #user="matMenu">
-      <a mat-menu-item [routerLink]="'/update/'+userId">
+      <a mat-menu-item [routerLink]="'update/'+userId">
         <mat-icon>info</mat-icon>
         Information
-      </a>
-      <a mat-menu-item>
-        <mat-icon>settings</mat-icon>
-        Settings
       </a>
       <a mat-menu-item (click)="logout()">
         <mat-icon color="primary">logout</mat-icon>

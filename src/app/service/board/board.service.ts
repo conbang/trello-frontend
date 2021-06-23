@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Board} from '../../interface/board';
 import {List} from '../../interface/list';
+import {UserResponse} from '../../interface/user-response';
 
 const API_URL = environment.api_url;
 
@@ -52,8 +53,8 @@ export class BoardService {
     return this.httpClient.get<Board[]>(API_URL + 'board/showAllBoardPublic');
   }
 
-  tagUser(listId: number[], boardId: number): Observable<any> {
-    return this.httpClient.post<any>(API_URL + `board/${boardId}/tagUser`, listId);
+  tagUser(listId: number[], boardId: number): Observable<UserResponse[]> {
+    return this.httpClient.post<UserResponse[]>(API_URL + `board/${boardId}/tagUser`, listId);
   }
   getBoardByGroupId(id: number): Observable<Board[]> {
     return this.httpClient.get<Board[]>(API_URL + `board/list-board-in-group/${id}`);

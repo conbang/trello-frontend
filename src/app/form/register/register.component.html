@@ -11,7 +11,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>person</mat-icon></span>
               </div>
-              <input type="text" name="username" class="form-control" placeholder="username" [(ngModel)]="login.username"
+              <input type="text" name="username" class="form-control" placeholder="Username" [(ngModel)]="login.username"
                      #name="ngModel" required  maxlength="20" pattern="^[a-zA-Z0-9][a-zA-Z0-9]{3,30}">
             </div>
             <span class="error" *ngIf="error1"> Username is existed! </span>
@@ -48,7 +48,7 @@
               Confirm passord!
         		</span>
             </div>
-            <span *ngIf="(confirmPsw?.value != password?.value) && !confirmPsw.errors?.required && confirmPsw.touched">
+            <span *ngIf="(confirmPsw?.value != password?.value) && !confirmPsw.errors?.required && confirmPsw.touched" class="error">
                 Password doesn't match!
 		          </span>
             <div class="input-group form-group">
@@ -71,7 +71,7 @@
                      #phone="ngModel" pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b">
             </div>
             <div class="error" *ngIf="phone.invalid && phone.touched">
-              <span *ngIf="phone.errors?.pattern"> Invalid phone </span>
+              <span *ngIf="phone.errors?.pattern"> Invalid phone !</span>
             </div>
             <div class="form-group">
               <input type="submit" value="Register" class="btn float-right login_btn">

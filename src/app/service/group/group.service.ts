@@ -4,10 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Group} from '../../interface/group';
 import {GroupForm} from '../../interface/groupForm';
-import {Board} from '../../interface/board';
 import {GroupTagUser} from '../../interface/group-tag-user';
 import {RoleUserGroup} from '../../interface/RoleUserGroup';
 import {UserResponse} from '../../interface/user-response';
+import {GroupTagUserDto} from '../../interface/group-tag-user-dto';
 
 const API_BACKEND = environment.api_url;
 
@@ -33,8 +33,8 @@ export class GroupService {
     return this.httpClient.get<Group[]>(API_BACKEND + `groupTagUser/listgroup/${id}`);
   }
 
-  create(group: GroupForm): Observable<Group> {
-    return this.httpClient.post<Group>(API_BACKEND + 'group/create', group);
+  create(group: GroupForm): Observable<GroupForm> {
+    return this.httpClient.post<GroupForm>(API_BACKEND + 'group/create', group);
   }
 
   getAllUserByGroupId(id: number): Observable<GroupTagUser[]> {
@@ -51,6 +51,9 @@ export class GroupService {
 
   getGroupUsers(boardId: number): Observable<UserResponse[]> {
     return this.httpClient.get<UserResponse[]>(API_BACKEND + `group/${boardId}/users`);
+  }
 
+  tagUser(groupTagUser: GroupTagUserDto): Observable<GroupTagUserDto> {
+    return  this.httpClient.post<GroupTagUserDto>(API_BACKEND + 'groupTagUser/add', groupTagUser);
   }
 }

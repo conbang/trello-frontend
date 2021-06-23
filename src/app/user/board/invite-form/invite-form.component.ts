@@ -6,6 +6,7 @@ import {BoardService} from '../../../service/board/board.service';
 import {Group} from '../../../interface/group';
 import {GroupService} from '../../../service/group/group.service';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {UserResponse} from '../../../interface/user-response';
 
 @Component({
   selector: 'app-invite-form',
@@ -14,25 +15,32 @@ import {ActivatedRoute, ParamMap} from '@angular/router';
 })
 export class InviteFormComponent implements OnInit {
 
-  users: User[] = [];
+  users: User[];
   listId: number[];
+  userInBoards: UserResponse[];
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { users: User[], boardId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { boardId: number },
     private boardService: BoardService,
     private groupService: GroupService,
+    private userService: UserService,
     private route: ActivatedRoute) {
-    this.route.paramMap
-      .subscribe(async (params: ParamMap) => {
-          // tslint:disable-next-line:radix
-          const id = parseInt(params.get('id'));
-          this.groupService.getGroupUsers(id).subscribe();
-        }
-      );
+    this.userInBoards = this.userService.getTagUsers();
+    this.groupService.getGroupUsers(data.boardId).subscribe((users) => {
+      this.users = users.filter((e) => {
+        return this.userInBoards.indexOf(e);
+      });
+    });
   }
 
   ngOnInit() {
   }
 
+  // tagUser() {
+  //   this.listId = this.listId.map(id => parseInt(id));
+  //   this.boardService.tagUser(this.listId, this.data.boardId).subscribe((users) => {
+  //     console.log(users);
+  //   });
+  // }
 
 }

@@ -52,7 +52,7 @@ export class MainBoardComponent implements OnInit {
 
   showInviteForm(): void {
     this.dialog.open(InviteFormComponent, {
-      data: {user: this.tagUsers, boardId: this.board.id}
+      data: {boardId: this.board.id}
     });
   }
 
