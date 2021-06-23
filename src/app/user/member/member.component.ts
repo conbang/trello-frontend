@@ -53,6 +53,8 @@ export class MemberComponent {
   name: string;
   openDialog(groupTagUser: GroupTagUser): void {
     const dialogRef = this.dialog.open(InviteFormComponent, {
+      minWidth: '440px',
+      minHeight: '300px',
       data: {groupTagUser: groupTagUser}
     });
 
@@ -103,8 +105,8 @@ export class MemberComponent {
     this.roleUserGroup.roleUser = roleUser;
     this.groupService.setRoleUser(this.roleUserGroup).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Update success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {
@@ -119,8 +121,8 @@ export class MemberComponent {
   deleteUser(userId: number) {
     this.groupService.deleteUser(this.id, userId).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Delete success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {

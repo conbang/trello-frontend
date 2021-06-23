@@ -31,7 +31,10 @@ export class HomepageComponent implements OnInit {
     })
   }
   openDialog(): void{
-    this.dialog.open(BoardFormComponent);
+    this.dialog.open(BoardFormComponent, {
+      minWidth: '450px',
+      minHeight: '320px',
+    });
 }
 
 

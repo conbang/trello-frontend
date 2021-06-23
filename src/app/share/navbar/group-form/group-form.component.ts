@@ -4,6 +4,7 @@ import {GroupService} from '../../../service/group/group.service';
 import {MatDialog} from '@angular/material';
 import {AlertComponent} from '../../alert/alert.component';
 import {Group} from '../../../interface/group';
+import {AuthenServiceService} from '../../../service/authentication/authen-service.service';
 
 @Component({
   selector: 'app-group-form',
@@ -21,7 +22,8 @@ export class GroupFormComponent {
   };
 
   constructor(private groupService: GroupService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog,
+              private authenSerice: AuthenServiceService) {
     this.data = {
       id: 0,
       name: '',
@@ -32,12 +34,18 @@ export class GroupFormComponent {
 
   createGroup() {
     this.groupService.create(this.data).subscribe((group) => {
-      console.log(group);
-      this.response.id = group.id;
-      this.response.name = group.name;
-      this.response.type = group.type;
-      this.response.description = group.description;
-      this.groupService.getListGroup().push(this.response);
+      const currentUser = this.authenSerice.currentUserValue;
+      const id = currentUser.id;
+      if (currentUser && id) {
+        this.groupService.getGroups(id).subscribe(groups => {
+          const size = groups.length;
+          const e = groups[size - 1];
+          this.groupService.getListGroup().push(e);
+        }, error => {
+          console.log(error);
+        });
+      }
+
       this.dialog.open(AlertComponent, {
           minHeight: '80px',
           minWidth: '300px',

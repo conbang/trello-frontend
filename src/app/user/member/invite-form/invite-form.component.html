@@ -14,16 +14,9 @@
 
 
 
-<div class="group_form">
-  <div>
-    <span mat-dialog-close style="margin-left: 0px"><mat-icon>close</mat-icon></span>
-  </div>
-  <div>
-    <p mat-dialog-title class="title">Enter email address</p>
-  </div>
+    <h6 mat-dialog-title class="title" style="text-align: center; margin-bottom: 20px">Enter email address</h6>
 
-  <div mat-dialog-content>
-    <div>
+<mat-dialog-content class="group_form" style="display: flex; flex-flow: column">
       <mat-form-field appearance="legacy" class="input">
         <mat-label>Email</mat-label>
         <input matInput type="text"  name="email" #title="ngModel" [(ngModel)]="groupTagUserDto.email" required maxlength="60">
@@ -33,8 +26,6 @@
           <span *ngIf="title?.errors.required">This field is required</span>
         </mat-error>
       </mat-form-field>
-    </div>
-    <div>
       <mat-form-field appearance="legacy" class="input">
         <mat-label>Role</mat-label>
         <mat-select  name="roleUser" #Type="ngModel" [(ngModel)]="groupTagUserDto.roleUser" required>
@@ -51,9 +42,7 @@
 <!--          <span *ngIf="Type?.errors.required">This field is required</span>-->
 <!--        </mat-error>-->
       </mat-form-field>
-    </div>
-  </div>
-  <div mat-dialog-actions>
+  </mat-dialog-content>
+  <div mat-dialog-actions align="end">
     <button mat-raised-button color="primary" (click)="tagUser()">Invite</button>
   </div>
-</div>

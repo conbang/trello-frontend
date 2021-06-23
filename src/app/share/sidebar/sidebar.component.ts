@@ -10,7 +10,7 @@ import {GroupFormComponent} from '../navbar/group-form/group-form.component';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit{
 
   groups: Group[] = [];
 
@@ -41,4 +41,5 @@ export class SidebarComponent implements OnInit {
       minWidth: '400px',
     });
   }
+
 }
