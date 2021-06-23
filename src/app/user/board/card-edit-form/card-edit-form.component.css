@@ -23,3 +23,9 @@
   display: flex;
   flex-direction: column;
 }
+.item img{
+  margin-right: 10px;
+}
+.item img span{
+ vertical-align: baseline;
+}
