@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit {
 
   openDialog(): void {
     this.dialog.open(BoardFormComponent, {
-      minWidth: '490px',
+      minWidth: '450px',
       minHeight: '320px',
     });
   }

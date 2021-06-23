@@ -19,6 +19,7 @@ export class GroupFormComponent {
     type: '',
     description: ''
   };
+
   constructor(private groupService: GroupService,
               public dialog: MatDialog) {
     this.data = {
@@ -38,8 +39,8 @@ export class GroupFormComponent {
       this.response.description = group.description;
       this.groupService.getListGroup().push(this.response);
       this.dialog.open(AlertComponent, {
-          width: '400px',
-          height: '200px',
+          minHeight: '80px',
+          minWidth: '300px',
           data: {message: 'Create success!', success: 'check_circle_outline'}
         }
       );

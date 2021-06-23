@@ -37,6 +37,8 @@ export class SidebarComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(GroupFormComponent);
+    this.dialog.open(GroupFormComponent,{
+      minWidth: '400px',
+    });
   }
 }

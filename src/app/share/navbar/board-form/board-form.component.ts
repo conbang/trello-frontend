@@ -32,7 +32,8 @@ export class BoardFormComponent implements OnInit {
   createBoard() {
     this.boardService.createBoard(this.data).subscribe((board) => {
       this.dialog.open(AlertComponent, {
-
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Create success', success: 'check_circle_outline'}
       });
       setTimeout(() => {

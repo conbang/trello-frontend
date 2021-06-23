@@ -14,3 +14,7 @@
 width: 90%;
 }
 
+.mat-dialog-actions button{
+  float: right;
+
+}
