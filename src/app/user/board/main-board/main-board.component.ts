@@ -139,6 +139,7 @@ export class MainBoardComponent implements OnInit {
   createList() {
     this.list.board = this.board;
     this.listService.create(this.list).subscribe((list) => {
+      console.table(list);
       this.lists.push(list);
     }, error => {
       console.log(error);

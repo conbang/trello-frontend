@@ -23,14 +23,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
 
 ];
+
 @Component({
   selector: 'app-member',
   templateUrl: './member.component.html',
   styleUrls: ['./member.component.css']
 })
 export class MemberComponent {
-  groupTagUser: GroupTagUser[] = [
-  ];
+  groupTagUser: GroupTagUser[] = [];
   id = 0;
   roleUserGroup: RoleUserGroup = {
     groupId: null,
@@ -43,19 +43,22 @@ export class MemberComponent {
 
   displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
   dataSource = ELEMENT_DATA;
+
   constructor(public dialog: MatDialog,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private groupService: GroupService,
-              private authenService: AuthenServiceService) {}
+              private authenService: AuthenServiceService) {
+  }
 
   member: string;
   name: string;
+
   openDialog(groupTagUser: GroupTagUser): void {
     const dialogRef = this.dialog.open(InviteFormComponent, {
       minWidth: '440px',
       minHeight: '300px',
-      data: {groupTagUser: groupTagUser}
+      data: {groupTagUser: groupTagUser, groups: this.groupTagUser}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -66,8 +69,10 @@ export class MemberComponent {
 
   confirmDelete(groupTagUser: GroupTagUser, userId: number): void {
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
-      data: {groupTagUser: groupTagUser,
-      userId: userId}
+      data: {
+        groupTagUser: groupTagUser,
+        userId: userId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -80,7 +85,7 @@ export class MemberComponent {
     this.groupService.getAllUserByGroupId(id).subscribe(groupTagUser => {
       this.groupTagUser = groupTagUser;
       this.listGroupTemp = groupTagUser;
-      for (let i=0; i<groupTagUser.length; i++) {
+      for (let i = 0; i < groupTagUser.length; i++) {
         if (groupTagUser[i].user.id == this.authenService.currentUserValue.id) {
           this.userCurrentId = this.authenService.currentUserValue.id;
           if (groupTagUser[i].roleUser == 'ROLE_ADMIN') {

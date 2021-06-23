@@ -17,11 +17,11 @@ export class InviteFormComponent implements OnInit {
   error1 = false;
   error2 = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { groupTagUser: GroupTagUser },
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { groupTagUser: GroupTagUser, groups: GroupTagUser[] },
               public dialog: MatDialog,
               private router: Router,
               private activatedRoute: ActivatedRoute,
-              private groupService: GroupService,) {
+              private groupService: GroupService) {
     this.groupTagUserDto = {
       groupId: 0,
       email: '',
@@ -38,7 +38,10 @@ export class InviteFormComponent implements OnInit {
     //   }
     // );
     this.groupTagUserDto.groupId = this.data.groupTagUser.groupTrello.id;
-    this.groupService.tagUser(this.groupTagUserDto).subscribe(() => {
+    this.groupService.tagUser(this.groupTagUserDto).subscribe((groupUser) => {
+      console.table(this.data.groups);
+      this.data.groups.push(groupUser);
+      console.table(this.data.groups);
       this.dialog.open(AlertComponent, {
         minHeight: '80px',
         minWidth: '300px',
@@ -46,7 +49,7 @@ export class InviteFormComponent implements OnInit {
       });
       setTimeout(() => {
         this.dialog.closeAll();
-        this.router.navigate(['/home/groups/'+this.groupTagUserDto.groupId+'/members']);
+        this.router.navigate(['/home/groups/' + this.groupTagUserDto.groupId + '/members']);
       }, 2000);
     }, e => {
       this.error1 = e.error.indexOf('exist') >= 0;

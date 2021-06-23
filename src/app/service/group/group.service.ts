@@ -17,11 +17,20 @@ const API_BACKEND = environment.api_url;
 export class GroupService {
 
   private groups: Group[];
+  private userGroup: GroupTagUser[];
 
   constructor(private httpClient: HttpClient) {
   }
 
-  setGroups(groups: Group[]): void{
+  setGroupTagUser(userGroup) {
+    this.userGroup = userGroup;
+  }
+
+  getGroupTagUser() {
+    return this.userGroup;
+  }
+
+  setGroups(groups: Group[]): void {
     this.groups = groups;
   }
 
@@ -53,7 +62,7 @@ export class GroupService {
     return this.httpClient.get<UserResponse[]>(API_BACKEND + `group/${boardId}/users`);
   }
 
-  tagUser(groupTagUser: GroupTagUserDto): Observable<GroupTagUserDto> {
-    return  this.httpClient.post<GroupTagUserDto>(API_BACKEND + 'groupTagUser/add', groupTagUser);
+  tagUser(groupTagUser: GroupTagUserDto): Observable<GroupTagUser> {
+    return this.httpClient.post<GroupTagUser>(API_BACKEND + 'groupTagUser/add', groupTagUser);
   }
 }

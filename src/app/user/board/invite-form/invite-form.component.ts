@@ -36,11 +36,12 @@ export class InviteFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  // tagUser() {
-  //   this.listId = this.listId.map(id => parseInt(id));
-  //   this.boardService.tagUser(this.listId, this.data.boardId).subscribe((users) => {
-  //     console.log(users);
-  //   });
-  // }
+  tagUser() {
+    // // tslint:disable-next-line:radix
+    // this.listId = this.listId.map(id => parseInt(id));
+    // this.boardService.tagUser(this.listId, this.data.boardId).subscribe((users) => {
+    //   console.log(users);
+    // });
+  }
 
 }

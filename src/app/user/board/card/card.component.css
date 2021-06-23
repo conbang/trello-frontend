@@ -27,6 +27,8 @@
 
 .card {
   position: relative;
+  min-height: 95px;
+  cursor: pointer;
 }
 
 .icon {
