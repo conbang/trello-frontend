@@ -33,8 +33,8 @@ export class ConfirmDeleteComponent implements OnInit {
   deleteUser() {
     this.groupService.deleteUser(this.data.groupTagUser.groupTrello.id, this.data.userId).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Delete success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {

@@ -40,8 +40,8 @@ export class InviteFormComponent implements OnInit {
     this.groupTagUserDto.groupId = this.data.groupTagUser.groupTrello.id;
     this.groupService.tagUser(this.groupTagUserDto).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Invite success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {
