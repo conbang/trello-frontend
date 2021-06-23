@@ -2,7 +2,8 @@
   <mat-dialog-content>
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput placeholder="Title" required [(ngModel)]="card.title" >
+      <input matInput placeholder="Title" required #title="ngModel" [(ngModel)]="card.title" >
+      <span style="color: red" *ngIf="title?.errors.required"></span>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Description</mat-label>
@@ -10,7 +11,7 @@
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-button type="submit" color="primary" (click)="onSubmit()">Add card</button>
+    <button mat-button type="submit" color="primary" (click)="card.title&&onSubmit()">Add card</button>
     <button mat-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </div>
