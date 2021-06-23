@@ -14,18 +14,6 @@ import {Token} from '../../interface/token';
 export class NavbarComponent implements OnInit {
 
   notifications: Notification[] = [
-    {
-      id: 1,
-      from: null,
-      title: 'thanh',
-      content: 'asdfasdf'
-    },
-    {
-      id: 1,
-      from: null,
-      title: 'thanh',
-      content: 'asdfasdf'
-    }
   ];
 
   @Input() username = '';

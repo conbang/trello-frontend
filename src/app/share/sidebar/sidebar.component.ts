@@ -28,7 +28,8 @@ export class SidebarComponent implements OnInit {
     const id = currentUser.id;
     if (currentUser && id) {
       this.groupService.getGroups(id).subscribe(groups => {
-          this.groups = groups;
+        this.groups = groups;
+        this.groupService.setGroups(groups);
       }, error => {
         console.log(error);
       });

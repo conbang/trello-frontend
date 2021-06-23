@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HomepageComponent } from './homepage/homepage.component';
-import { WorkspaceComponent } from './workspace/workspace.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HomepageComponent} from './homepage/homepage.component';
+import {WorkspaceComponent} from './workspace/workspace.component';
 import {ShareModule} from '../share/share.module';
 import {UserRoutingModule} from './user-routing.module';
 import {UpdateComponent} from './update/update.component';
@@ -22,16 +22,13 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {CardComponent} from './board/card/card.component';
-import { MemberComponent } from './member/member.component';
-import { ListBoardComponent } from './list-board/list-board-private/list-board.component';
-import { ListBoardGroupComponent } from './list-board/list-board-group/list-board-group.component';
-import { ListBoardPublicComponent } from './list-board/list-board-public/list-board-public.component';
+import {MemberComponent} from './member/member.component';
+import {ListBoardComponent} from './list-board/list-board-private/list-board.component';
+import {ListBoardGroupComponent} from './list-board/list-board-group/list-board-group.component';
+import {ListBoardPublicComponent} from './list-board/list-board-public/list-board-public.component';
 import {CreateLabelComponent} from './board/create-label/create-label.component';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MainBoardComponent} from './board/main-board/main-board.component';
-import {CardEditFormComponent} from './board/card-edit-form/card-edit-form.component';
-import {MemberDialogComponent} from './member/member-dialog/member-dialog.component';
-import {CardCreateFormComponent} from './board/card-create-form/card-create-form.component';
+import { InviteFormComponent } from './member/invite-form/invite-form.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +42,7 @@ import {CardCreateFormComponent} from './board/card-create-form/card-create-form
     ListBoardGroupComponent,
     ListBoardPublicComponent,
     CreateLabelComponent,
+    InviteFormComponent,
   ],
   exports: [
     UpdateComponent,
@@ -61,6 +59,8 @@ import {CardCreateFormComponent} from './board/card-create-form/card-create-form
     ListBoardGroupComponent,
     ListBoardPublicComponent
   ],
+  entryComponents: [InviteFormComponent],
+
   imports: [
     CommonModule,
     UserRoutingModule,
@@ -87,6 +87,6 @@ import {CardCreateFormComponent} from './board/card-create-form/card-create-form
     MatTableModule,
     MatGridListModule,
   ],
-  // entryComponents: [MemberDialogComponent]
 })
-export class UserModule { }
+export class UserModule {
+}
