@@ -138,12 +138,19 @@ export class MainBoardComponent implements OnInit {
 
   createList() {
     this.list.board = this.board;
+    const e = {
+      id: 0,
+      position: 0,
+      title: '',
+      cardDtoList: [],
+      board: this.board,
+    };
     this.listService.create(this.list).subscribe((list) => {
-      this.list.id = list.id;
-      this.list.position = list.position;
-      this.list.title = list.title;
-      this.list.cardDtoList = [];
-      this.lists.push(this.list);
+      e.id = list.id;
+      e.position = list.position;
+      e.title = list.title;
+      e.cardDtoList = [];
+      this.lists.push(e);
     }, error => {
       console.log(error);
     });

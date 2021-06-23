@@ -7,7 +7,7 @@
     <div class="board" cdkDropList (cdkDropListDropped)="columnDrop($event)" cdkDropListOrientation="horizontal">
       <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let column of lists; let trackIndex = index " >
         <div class="row" fxLayoutAlign="start center" class="header_column" cdkDragHandle >
-          <h6 contenteditable="true" [textContent]="column.title"></h6>
+          <h6  [textContent]="column.title"></h6>
         </div>
         <div class="card-list-content" cdkDropList id="{{column.id}}" [cdkDropListConnectedTo]="listIds()"
              [cdkDropListData]="column?.cardDtoList" (cdkDropListDropped)="cardDrop($event)">
