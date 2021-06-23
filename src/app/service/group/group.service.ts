@@ -7,6 +7,7 @@ import {GroupForm} from '../../interface/groupForm';
 import {GroupTagUser} from '../../interface/group-tag-user';
 import {RoleUserGroup} from '../../interface/RoleUserGroup';
 import {UserResponse} from '../../interface/user-response';
+import {GroupTagUserDto} from '../../interface/group-tag-user-dto';
 
 const API_BACKEND = environment.api_url;
 
@@ -50,6 +51,9 @@ export class GroupService {
 
   getGroupUsers(boardId: number): Observable<UserResponse[]> {
     return this.httpClient.get<UserResponse[]>(API_BACKEND + `group/${boardId}/users`);
+  }
 
+  tagUser(groupTagUser: GroupTagUserDto): Observable<GroupTagUserDto> {
+    return  this.httpClient.post<GroupTagUserDto>(API_BACKEND + 'groupTagUser/add', groupTagUser);
   }
 }

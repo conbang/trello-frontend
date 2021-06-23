@@ -6,6 +6,8 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
 import {finalize} from 'rxjs/operators';
 import {UserUpdate} from '../../interface/user-update';
+import {AlertComponent} from '../../share/alert/alert.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-update',
@@ -34,6 +36,7 @@ export class UpdateComponent implements OnInit {
   id = 0;
 
   constructor(private userService: UserService,
+              public dialog: MatDialog,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private storage: AngularFireStorage) {
@@ -80,13 +83,30 @@ export class UpdateComponent implements OnInit {
 
   editUser() {
     this.userService.editAppUser(this.appUser, this.id).subscribe(() => {
-      this.router.navigateByUrl('/home');
-      this.isPasswordCorrect = false;
-      this.isPhoneCorrect = false;
+      this.dialog.open(AlertComponent, {
+        width: '420px',
+        height: '210px',
+        data: {message: 'Update success!', success: 'check_circle_outline'}
+      });
+      setTimeout(() => {
+        this.isPasswordCorrect = false;
+          this.isPhoneCorrect = false;
+        this.dialog.closeAll();
+        this.router.navigate(['/home']);
+      }, 2000);
     }, error => {
       this.isPasswordCorrect = true;
       this.isPhoneCorrect = true;
+      console.log(error.error);
     });
+    // (() => {
+    //   this.router.navigateByUrl('/home');
+    //   this.isPasswordCorrect = false;
+    //   this.isPhoneCorrect = false;
+    // }, error => {
+    //   this.isPasswordCorrect = true;
+    //   this.isPhoneCorrect = true;
+    // });
   }
 
 }
