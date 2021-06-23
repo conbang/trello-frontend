@@ -1,8 +1,7 @@
 <div class="group_form">
   <div style="display: flex; flex-direction: row">
-    <h6 mat-dialog-title class="title">Create new board</h6><span mat-dialog-close style=""><mat-icon>close</mat-icon></span>
+    <h6 mat-dialog-title class="title">Create new board <span mat-dialog-close style=""><mat-icon>close</mat-icon></span></h6>
   </div>
-
   <div mat-dialog-content>
     <div>
       <mat-form-field appearance="legacy" class="input">
@@ -27,7 +26,7 @@
 <!--      <mat-error *ngIf=""> This field is required </mat-error>-->
     </div>
   </div>
-  <div mat-dialog-actions>
+  <mat-dialog-actions align="end">
     <button mat-raised-button color="primary" (click)="createBoard()">create</button>
-  </div>
+  </mat-dialog-actions>
 </div>

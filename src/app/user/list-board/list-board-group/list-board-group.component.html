@@ -1,7 +1,10 @@
-<p><b>Board group</b></p>
-<mat-grid-list cols="5" rowHeight="3:1">
-  <mat-grid-tile *ngFor="let b of boards" [ngStyle]="{'background-image': 'url(' + b.image + ')'}" style="background-size: cover; color: white" [routerLink]="'/board/'+ b.id">
+<div class="body">
+  <h5><b>Board group</b></h5>
+  <mat-grid-list cols="5" rowHeight="3:1">
+    <mat-grid-tile *ngFor="let b of boards" [ngStyle]="{'background-image': 'url(' + b.image + ')'}"
+                   style="background-size: cover; color: white" [routerLink]="'/board/'+ b.id">
   <span [routerLink]="'/board/'+ b.id">
-    <b >{{b.name}}</b></span>
-  </mat-grid-tile>
-</mat-grid-list>
+    <b>{{b.name}}</b></span>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

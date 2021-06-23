@@ -26,7 +26,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>vpn_key</mat-icon></span>
               </div>
-              <input type="password" name="password" class="form-control" placeholder="password"
+              <input type="password" name="password" class="form-control" placeholder="Password"
                      [(ngModel)]="login.password" #password="ngModel" required pattern="^[a-zA-Z0-9][a-zA-Z0-9]{5,30}">
             </div>
             <div class="error" *ngIf="password.invalid && password.touched">
@@ -55,8 +55,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>mail</mat-icon></span>
               </div>
-              <input type="email" name="email" class="form-control" placeholder="email" [(ngModel)]="login.email"
-                     #email="ngModel" required pattern="^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$">
+              <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="login.email"
+                     #email="ngModel" required pattern="^[a-z][a-z0-9_\.]{2,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$">
             </div>
             <span class="error" *ngIf="error2"> Email is existed! </span>
             <div class="error" *ngIf="email.touched && email.invalid">
@@ -67,7 +67,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><mat-icon>phone_iphone</mat-icon></span>
               </div>
-              <input type="text" name="phone" class="form-control" placeholder="phone" [(ngModel)]="login.phone"
+              <input type="text" name="phone" class="form-control" placeholder="Phone" [(ngModel)]="login.phone"
                      #phone="ngModel" pattern="(84|0[3|5|7|8|9])+([0-9]{8})\b">
             </div>
             <div class="error" *ngIf="phone.invalid && phone.touched">

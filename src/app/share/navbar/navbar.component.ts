@@ -13,8 +13,7 @@ import {Token} from '../../interface/token';
 })
 export class NavbarComponent implements OnInit {
 
-  notifications: Notification[] = [
-  ];
+  notifications: Notification[] = [];
 
   @Input() username = '';
   @Input() avatar = '';
@@ -46,7 +45,10 @@ export class NavbarComponent implements OnInit {
   }
 
   openDialog(): void {
-    this.dialog.open(BoardFormComponent);
+    this.dialog.open(BoardFormComponent, {
+      minWidth: '490px',
+      minHeight: '320px',
+    });
   }
 
 }

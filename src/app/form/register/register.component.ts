@@ -32,8 +32,8 @@ export class RegisterComponent {
   register() {
     this.loginService.createAppUser(this.login).subscribe(() => {
       this.dialog.open(AlertComponent, {
-        width: '420px',
-        height: '210px',
+        minHeight: '80px',
+        minWidth: '300px',
         data: {message: 'Register success!', success: 'check_circle_outline'}
       });
       setTimeout(() => {
