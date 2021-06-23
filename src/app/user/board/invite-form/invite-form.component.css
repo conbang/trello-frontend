@@ -1,0 +1,28 @@
+.avatar{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: 1px solid #ADADAD;
+  margin-right: 15px;
+}
+.content{
+  min-width: 300px;
+}
+
+.content button{
+  margin-top: 25px;
+  float: right;
+
+}
+
+h5{
+  text-align: center;
+  margin-top: -10px;
+  padding-bottom: 15px;
+}
+
+.item{
+  display: flex;
+  flex-direction: row;
+  vertical-align: baseline;
+}

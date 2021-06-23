@@ -1,7 +1,12 @@
-<h5>Invite Users to Board</h5>
-<mat-selection-list [(ngModel)]="listId">
-  <mat-list-option *ngFor="let user of users" value="{{user.id}}">
-    <mat-icon color="primary">account_circle</mat-icon>{{user.username}}
-  </mat-list-option>
-</mat-selection-list>
-<button mat-raised-button (click)="tagUser()"><mat-icon color="primary">save</mat-icon></button>
+<h5 mat-dialog-title>Invite</h5>
+<div class="content">
+  <mat-selection-list [(ngModel)]="listId">
+    <mat-list-option *ngFor="let user of users" value="{{user.id}}">
+      <div class="item">
+      <p><img src="{{user.avatar}}" alt="avatar" class="avatar">{{user.username}}</p>
+      </div>
+    </mat-list-option>
+  </mat-selection-list>
+  <button mat-button (click)="tagUser()" color="primary" [mat-dialog-close]="true">Save</button>
+  <button mat-button  color="warn" mat-dialog-close>Cancel</button>
+</div>

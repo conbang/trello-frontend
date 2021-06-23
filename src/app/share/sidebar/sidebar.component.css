@@ -3,6 +3,9 @@
   min-width: 260px;
   max-width: 260px;
 }
+.mat-icon{
+  cursor: pointer;
+}
 
 .sidebar button {
   width:100%;

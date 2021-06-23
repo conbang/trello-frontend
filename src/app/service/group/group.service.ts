@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Group} from '../../interface/group';
 import {GroupForm} from '../../interface/groupForm';
-import {Board} from '../../interface/board';
 import {GroupTagUser} from '../../interface/group-tag-user';
 import {RoleUserGroup} from '../../interface/RoleUserGroup';
 import {UserResponse} from '../../interface/user-response';
@@ -33,8 +32,8 @@ export class GroupService {
     return this.httpClient.get<Group[]>(API_BACKEND + `groupTagUser/listgroup/${id}`);
   }
 
-  create(group: GroupForm): Observable<Group> {
-    return this.httpClient.post<Group>(API_BACKEND + 'group/create', group);
+  create(group: GroupForm): Observable<GroupForm> {
+    return this.httpClient.post<GroupForm>(API_BACKEND + 'group/create', group);
   }
 
   getAllUserByGroupId(id: number): Observable<GroupTagUser[]> {
