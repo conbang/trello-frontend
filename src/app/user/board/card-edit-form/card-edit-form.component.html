@@ -15,24 +15,36 @@
     <p [textContent]="data.card.content" *ngIf="!display"></p>
     <div *ngIf="display">
       <mat-form-field>
-        <textarea matInput [textContent]="data.card?.content" cols="40" [(ngModel)]="card.content"></textarea>
+        <textarea matInput [textContent]="data.card?.content" cols="100" [(ngModel)]="card.content"></textarea>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="display = !display" (click)="editCard()">Save</button>
+     <div align="center">
+       <button  mat-raised-button color="primary" (click)="display = !display" (click)="editCard()">Save</button>
+     </div>
+
     </div>
     <div>
       <p>Action</p>
       <textarea matInput placeholder="Comment something here" [(ngModel)]="comment.content"></textarea>
-      <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
+      <div align="center">
+        <button mat-flat-button color="primary" (click)="saveComment()">Save</button>
+      </div>
+
     </div>
-    <mat-list>
-      <mat-list-item *ngFor="let comment of data.card.comments">
-        <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
-        <div>
-          <p><strong>{{comment.username}} </strong><small>{{comment.created_date | date:"fullDate"}}</small></p>
-          <p>{{comment.content}}</p>
-        </div>
-      </mat-list-item>
-    </mat-list>
+    <br>
+    <div >
+      <mat-list >
+        <mat-list-item *ngFor="let comment of data.card.comments">
+
+          <igx-avatar src="{{comment.avatar}}" [roundShape]="true" size="small"></igx-avatar>
+          <div>
+            <span><strong>{{comment.username}} </strong><small>{{comment.created_date | date:"fullDate"}}</small></span>
+            <span style="display: inline-block">{{comment.content}}</span>
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+    </div>
+
   </div>
   <div>
     <button mat-button (click)="hidden = !hidden" color="primary"><mat-icon>person</mat-icon>Member</button>

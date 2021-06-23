@@ -25,4 +25,7 @@ export class ListService {
   changePosition(lists: List[]): Observable<any> {
     return this.httpClient.put(URL_API + `list/editPositionList`, lists);
   }
+  changeTitle(list : List,id:number):Observable<any>{
+    return this.httpClient.put(URL_API + `list/editTitleList/{id}${id}`,list);
+  }
 }
