@@ -13,7 +13,12 @@ import {Group} from '../../../interface/group';
 export class GroupFormComponent {
 
   data: GroupForm;
-  response: Group;
+  response: Group = {
+    id: 0,
+    name: '',
+    type: '',
+    description: ''
+  };
   constructor(private groupService: GroupService,
               public dialog: MatDialog) {
     this.data = {
